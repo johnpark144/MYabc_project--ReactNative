@@ -1,8 +1,28 @@
 import { Redirect } from 'expo-router';
-import { ImageBackground } from 'react-native';
+import { useContext, useEffect, useState } from 'react';
+import { Text } from 'react-native';
+import { onAuthStateChanged } from 'firebase/auth';
+import { authService } from './../lib/fBase';
+import AuthContext from '../context/AuthContext';
 
 const StartPage = () => {
-  return <Redirect href='/log-in' />;
+  let { user } = useContext(AuthContext);
+
+  return (
+    <>
+      {user ? (
+        // 로그인이 된경우
+        <Text>
+          <Redirect href='/home' />;
+        </Text>
+      ) : (
+        // 로그인이 안된경우
+        <Text>
+          <Redirect href='/log-in' />;
+        </Text>
+      )}
+    </>
+  );
 };
 
 export default StartPage;

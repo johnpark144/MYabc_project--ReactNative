@@ -1,10 +1,23 @@
 import { Stack } from 'expo-router';
+import { useFonts } from 'expo-font';
+import { AuthProvider } from '../context/AuthContext';
 
 const Layout = () => {
+  // 폰트
+  const [fontsLoaded] = useFonts({
+    PTSansNarrowBold: require('../assets/font/PTSansNarrow-Bold.ttf'),
+    VariableFontWght: require('../assets/font/PublicSans-VariableFont_wght.ttf'),
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
-    <Stack>
-      <Stack.Screen name='(auth)' options={{ headerShown: false }} />
-    </Stack>
+    <AuthProvider>
+      <Stack>
+        <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+        <Stack.Screen name='home' options={{ headerShown: false }} />
+      </Stack>
+    </AuthProvider>
   );
 };
 
