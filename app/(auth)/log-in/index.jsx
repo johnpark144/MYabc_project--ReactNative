@@ -5,10 +5,25 @@ import CommonBackground from '../../../components/CommonBackground';
 import { VariableFontWght, pTSansNarrowBold } from '../../../commonStyles';
 import FontText from './../../../components/CommonFontText';
 import AuthContext from '../../../context/AuthContext';
+import { AntDesign } from '@expo/vector-icons';
 
 const logIn = () => {
   let { user, loginUser, email, setEmail, password, setPassword, error } =
     useContext(AuthContext);
+
+  // Oauth 버튼 만들기
+  const MakeOAuthButton = (iconName, InitCapitalName, color) => {
+    return (
+      <TouchableOpacity
+        className={`bg-[#${color}] w-full h-9 flex-row justify-center items-center`}
+      >
+        <AntDesign name={iconName} size={24} color='black' />
+        <FontText className='text-center ml-3'>
+          Continue with {InitCapitalName}
+        </FontText>
+      </TouchableOpacity>
+    );
+  };
 
   return user ? (
     <Redirect href='/home' />
@@ -60,7 +75,7 @@ const logIn = () => {
               Sign in
             </FontText>
           </TouchableOpacity>
-          <Text>{error?.slice(10, -1)}</Text>
+          <Text className='text-red-600'>{error?.slice(10, -1)}</Text>
 
           {/* -- OR -- */}
           <View className='flex flex-row justify-between w-full'>
@@ -72,21 +87,9 @@ const logIn = () => {
           {/* Google, gitHub, FaceBook */}
           <View className='w-full'>
             <View className='gap-y-2'>
-              <TouchableOpacity className='bg-[#a8a8a8] w-full h-9 p-2'>
-                <FontText className='text-center'>
-                  Continue with Google
-                </FontText>
-              </TouchableOpacity>
-              <TouchableOpacity className='bg-[#505050] w-full h-9 p-2'>
-                <FontText className='text-center'>
-                  Continue with Github
-                </FontText>
-              </TouchableOpacity>
-              <TouchableOpacity className='bg-[#4a7edf] w-full h-9 p-2'>
-                <FontText className='text-center'>
-                  Continue with Facebook
-                </FontText>
-              </TouchableOpacity>
+              {MakeOAuthButton('google', 'Google', 'dbdbdb')}
+              {MakeOAuthButton('github', 'Github', '747373')}
+              {MakeOAuthButton('facebook-square', 'Facebook', '4a7edf')}
             </View>
           </View>
         </View>
