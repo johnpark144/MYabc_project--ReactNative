@@ -11,7 +11,7 @@ const home = () => {
   useEffect(() => {
     checkAuthState();
   }, []);
-
+  console.log(user);
   return (
     <TouchableOpacity
       onPress={logoutUser}

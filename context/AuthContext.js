@@ -1,4 +1,5 @@
 import {
+  FacebookAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
@@ -9,10 +10,11 @@ import { createContext, useEffect, useState } from 'react';
 import { authService } from '../lib/fBase';
 import { useRouter } from 'expo-router';
 import * as Google from 'expo-auth-session/providers/google';
+import * as Facebook from 'expo-auth-session/providers/facebook';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Linking } from 'react-native';
 
 const AuthContext = createContext();
 export default AuthContext;
@@ -24,7 +26,6 @@ export const AuthProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const [user, setUser] = useState(null);
 
   // 일반 로그인
@@ -37,6 +38,7 @@ export const AuthProvider = ({ children }) => {
       );
       router.push('/home');
       setPassword('');
+      setError('');
     } catch (err) {
       setError(err.message);
     }
@@ -47,6 +49,7 @@ export const AuthProvider = ({ children }) => {
     expoClientId: process.env.EXPOCLIENT_ID,
     iosClientId: process.env.IOSCLIENT_ID,
     androidClientId: process.env.ANDROIDCLIENT_ID,
+    webClientId: process.env.EXPOCLIENT_ID,
     responseType: 'id_token',
   });
 
@@ -59,6 +62,22 @@ export const AuthProvider = ({ children }) => {
       router.replace('/home');
     }
   }, [res]);
+
+  // 페이스북 로그인
+  const [req2, res2, promptAsync2] = Facebook.useAuthRequest({
+    clientId: process.env.FACEBOOK_CLINET_ID,
+    clientSecret: process.env.FACEBOOK_CLINET_SECRET,
+  });
+
+  // 페이스북 로그인 성공시
+  useEffect(() => {
+    if (res2?.type === 'success') {
+      const { accessToken } = res2.authentication;
+      const credential = FacebookAuthProvider.credential(accessToken);
+      signInWithCredential(authService, credential);
+      router.replace('/home');
+    }
+  }, [res2]);
 
   // 로그아웃
   const logoutUser = async () => {
@@ -93,6 +112,7 @@ export const AuthProvider = ({ children }) => {
     error,
     checkAuthState,
     promptAsync,
+    promptAsync2,
     logoutUser,
   };
 

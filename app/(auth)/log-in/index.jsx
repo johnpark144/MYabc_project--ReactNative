@@ -6,6 +6,7 @@ import { VariableFontWght, pTSansNarrowBold } from '../../../commonStyles';
 import FontText from './../../../components/CommonFontText';
 import AuthContext from '../../../context/AuthContext';
 import { AntDesign } from '@expo/vector-icons';
+import * as Linking from 'expo-linking';
 
 const logIn = () => {
   let {
@@ -17,13 +18,18 @@ const logIn = () => {
     setPassword,
     error,
     promptAsync,
+    promptAsync2,
   } = useContext(AuthContext);
+
+  console.log(Linking.createURL());
 
   // Oauth 버튼 만들기
   const MakeOAuthButton = (iconName, InitCapitalName, color) => {
     return (
       <TouchableOpacity
-        onPress={() => promptAsync()}
+        onPress={() =>
+          InitCapitalName === 'Google' ? promptAsync() : promptAsync2()
+        }
         style={{ backgroundColor: `#${color}` }}
         className={'w-full h-9 flex-row justify-center items-center'}
       >
