@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Stack, Redirect } from 'expo-router';
 import CommonBackground from '../../../components/CommonBackground';
 import { VariableFontWght, pTSansNarrowBold } from '../../../commonStyles';
@@ -8,17 +8,27 @@ import AuthContext from '../../../context/AuthContext';
 import { AntDesign } from '@expo/vector-icons';
 
 const logIn = () => {
-  let { user, loginUser, email, setEmail, password, setPassword, error } =
-    useContext(AuthContext);
+  let {
+    user,
+    loginUser,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    error,
+    promptAsync,
+  } = useContext(AuthContext);
 
   // Oauth 버튼 만들기
   const MakeOAuthButton = (iconName, InitCapitalName, color) => {
     return (
       <TouchableOpacity
-        className={`bg-[#${color}] w-full h-9 flex-row justify-center items-center`}
+        onPress={() => promptAsync()}
+        style={{ backgroundColor: `#${color}` }}
+        className={'w-full h-9 flex-row justify-center items-center'}
       >
         <AntDesign name={iconName} size={24} color='black' />
-        <FontText className='text-center ml-3'>
+        <FontText className={`text-center ml-3`}>
           Continue with {InitCapitalName}
         </FontText>
       </TouchableOpacity>

@@ -1,10 +1,22 @@
 {
   "expo": {
-    "scheme": "acme",
+    "scheme": "MYabcRn",
     "web": {
       "bundler": "metro"
     },
     "name": "MYabc-Rn",
-    "slug": "MYabc-Rn"
+    "slug": "MYabc-Rn",
+    "extra": {
+      "eas": {
+        "projectId": "e48e7541-c4a8-47bd-9e14-6e33cb70691a"
+      }
+    },
+    "ios": {
+      "supportsTablet" : true,
+      "bundleIdentifier": "com.vyckd354.MYabcRn"
+    },
+    "android": {
+      "package": "com.vyckd354.MYabcRn"
+    }
   }
 }
