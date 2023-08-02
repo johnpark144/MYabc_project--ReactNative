@@ -1,11 +1,12 @@
 import { View, Text, Image } from 'react-native';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../../context/AuthContext';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import FontText from '../../../components/CommonFontText';
 import { Stack } from 'expo-router';
 import CommonBackground from './../../../components/CommonBackground';
 import { pTSansNarrowBold, sairaCondensedLight } from '../../../commonStyles';
+import Greeting from '../../../components/home/Greeting';
 
 const home = () => {
   let { user, loginUser, error, checkAuthState, logoutUser } =
@@ -16,42 +17,26 @@ const home = () => {
   }, []);
   return (
     <CommonBackground>
-      <View className='p-5'>
+      <View>
         <Stack.Screen
           options={{
             headerShown: false,
           }}
         />
-        {/* 첫 페이지 */}
-        <View className='w-full h-full gap-y-3'>
-          <View className='flex h-2/5 justify-center items-center'>
-            <Image
-              source={{
-                uri: 'https://user-images.githubusercontent.com/106279616/217299245-76306248-6c80-4bf8-a1f0-ccb962648a8f.png',
-              }}
-              className='w-56 h-56'
-            />
-          </View>
-          <View className='gap-y-5'>
-            <Text style={pTSansNarrowBold} className='text-2xl'>
-              Hey {user?.displayName}! {'\n'}ARE YOU READY TO ENJOY ENGLISH?
-            </Text>
-            <Text
-              style={sairaCondensedLight}
-              className='text-xl tracking-[2px]'
-            >
-              <Text>
-                This is MYabc app for you who need to learn English{'\n'}
-              </Text>
-              <Text>
-                You can learn it in an effective and efficient way.{'\n'}
-              </Text>
-              <Text>Whoever need to use this,{'\n'}</Text>
-              <Text>Feel free to use it!{'\n'}</Text>
-              <Text>Application maker : John park (박영환)</Text>
-            </Text>
-          </View>
-        </View>
+        {/* 캐러셀 */}
+        <ScrollView
+          horizontal
+          pagingEnabled // 페이지 단위로 스크롤
+          scrollEventThrottle={200} // 스크롤시 이벤트가 발생하는데 성능문제 해결
+          decelerationRate='fast' // 스크롤 속도
+        >
+          {/* 첫 페이지 */}
+          <Greeting />
+          <Greeting />
+          <Greeting />
+          <Greeting />
+          <Greeting />
+        </ScrollView>
       </View>
     </CommonBackground>
   );
