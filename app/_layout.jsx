@@ -6,7 +6,8 @@ const Layout = () => {
   // 폰트
   const [fontsLoaded] = useFonts({
     PTSansNarrowBold: require('../assets/font/PTSansNarrow-Bold.ttf'),
-    VariableFontWght: require('../assets/font/PublicSans-VariableFont_wght.ttf'),
+    PublicSansVariable: require('../assets/font/PublicSans-VariableFont_wght.ttf'),
+    PublicSansSemiBold: require('../assets/font/PublicSans-SemiBold.ttf'),
   });
 
   if (!fontsLoaded) return null;

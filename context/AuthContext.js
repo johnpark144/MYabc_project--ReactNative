@@ -12,7 +12,7 @@ import { useRouter } from 'expo-router';
 import * as Google from 'expo-auth-session/providers/google';
 import * as Facebook from 'expo-auth-session/providers/facebook';
 import * as WebBrowser from 'expo-web-browser';
-import * as AuthSession from 'expo-auth-session';
+import * as AuthSession from 'expo-auth-session/';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text, View, Button, Linking } from 'react-native';
 
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   // 구글 로그인
-  const [req, res, promptAsync] = Google.useAuthRequest({
+  const [gg_req, gg_res, gg_promptAsync] = Google.useAuthRequest({
     expoClientId: process.env.EXPOCLIENT_ID,
     iosClientId: process.env.IOSCLIENT_ID,
     androidClientId: process.env.ANDROIDCLIENT_ID,
@@ -55,29 +55,29 @@ export const AuthProvider = ({ children }) => {
 
   // 구글 로그인 성공시
   useEffect(() => {
-    if (res?.type === 'success') {
-      const { id_token } = res.params;
+    if (gg_res?.type === 'success') {
+      const { id_token } = gg_res.params;
       const credential = GoogleAuthProvider.credential(id_token);
       signInWithCredential(authService, credential);
       router.replace('/home');
     }
-  }, [res]);
+  }, [gg_res]);
 
   // 페이스북 로그인
-  const [req2, res2, promptAsync2] = Facebook.useAuthRequest({
+  const [fb_req, fb_res2, fb_promptAsync] = Facebook.useAuthRequest({
     clientId: process.env.FACEBOOK_CLINET_ID,
     clientSecret: process.env.FACEBOOK_CLINET_SECRET,
   });
 
   // 페이스북 로그인 성공시
   useEffect(() => {
-    if (res2?.type === 'success') {
-      const { accessToken } = res2.authentication;
+    if (fb_res2?.type === 'success') {
+      const { accessToken } = fb_res2.authentication;
       const credential = FacebookAuthProvider.credential(accessToken);
       signInWithCredential(authService, credential);
       router.replace('/home');
     }
-  }, [res2]);
+  }, [fb_res2]);
 
   // 로그아웃
   const logoutUser = async () => {
@@ -111,8 +111,8 @@ export const AuthProvider = ({ children }) => {
     setPassword,
     error,
     checkAuthState,
-    promptAsync,
-    promptAsync2,
+    gg_promptAsync,
+    fb_promptAsync,
     logoutUser,
   };
 
