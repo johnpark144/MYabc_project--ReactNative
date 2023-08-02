@@ -8,6 +8,7 @@ const Layout = () => {
     PTSansNarrowBold: require('../assets/font/PTSansNarrow-Bold.ttf'),
     PublicSansVariable: require('../assets/font/PublicSans-VariableFont_wght.ttf'),
     PublicSansSemiBold: require('../assets/font/PublicSans-SemiBold.ttf'),
+    SairaCondensedLight: require('../assets/font/SairaCondensed-Light.ttf'),
   });
 
   if (!fontsLoaded) return null;

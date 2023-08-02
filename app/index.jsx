@@ -10,7 +10,7 @@ const StartPage = () => {
 
   return (
     <>
-      {user ? (
+      {true ? (
         // 로그인이 된경우
         <Text>
           <Redirect href='/home' />;
