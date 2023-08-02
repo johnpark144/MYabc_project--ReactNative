@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import FontText from '../../components/CommonFontText';
@@ -15,7 +15,6 @@ export default () => {
         headerStyle: {
           backgroundColor: '#d6dff7',
         },
-        headerTitleStyle: {},
         tabBarStyle: {
           backgroundColor: '#d6dff7',
         },
@@ -33,11 +32,16 @@ export default () => {
           />
         ),
         headerRight: () => (
-          <TouchableOpacity onPress={logoutUser}>
-            <FontText className='p-2 mr-4 bg-gray-400 text-center align-middle rounded-lg shadow-md shadow-black '>
-              Log Out
+          <View className='flex flex-row content-center justify-center mr-4 px-2'>
+            <FontText className='w-28 h-8 py-2 text-right pr-3'>
+              {user?.displayName}
             </FontText>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={logoutUser}>
+              <FontText className='w-16 h-8 py-2 bg-gray-400 text-center rounded-lg shadow-md shadow-black'>
+                Log Out
+              </FontText>
+            </TouchableOpacity>
+          </View>
         ),
       }}
     >
