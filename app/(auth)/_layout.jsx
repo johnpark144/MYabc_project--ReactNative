@@ -11,7 +11,11 @@ export default () => {
         tabBarStyle: {
           backgroundColor: '#d6dff7',
         },
-        tabBarActiveTintColor: 'black',
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: 'bold',
+        },
+        tabBarActiveTintColor: '#431386',
         tabBarInactiveTintColor: 'grey',
       }}
     >
@@ -19,11 +23,12 @@ export default () => {
         name='log-in'
         options={{
           headerTitle: 'Log in',
+          tabBarLabel: 'Log in',
           tabBarIcon: ({ focused }) => (
             <Feather
               name='log-in'
               size={22}
-              color={focused ? 'black' : 'grey'}
+              color={focused ? '#431386' : 'grey'}
             />
           ),
         }}
@@ -32,11 +37,12 @@ export default () => {
         name='sign-up'
         options={{
           headerTitle: 'Sign up',
+          tabBarLabel: 'Sign up',
           tabBarIcon: ({ focused }) => (
             <FontAwesome
               name='pencil-square-o'
               size={22}
-              color={focused ? 'black' : 'grey'}
+              color={focused ? '#431386' : 'grey'}
             />
           ),
         }}

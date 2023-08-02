@@ -1,8 +1,10 @@
 import { View, Text } from 'react-native';
 import React, { useContext, useEffect } from 'react';
-import AuthContext from './../context/AuthContext';
+import AuthContext from '../../../context/AuthContext';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import FontText from '../components/CommonFontText';
+import FontText from '../../../components/CommonFontText';
+import { Stack } from 'expo-router';
+import CommonBackground from './../../../components/CommonBackground';
 
 const home = () => {
   let { user, loginUser, error, checkAuthState, logoutUser } =
@@ -13,14 +15,13 @@ const home = () => {
   }, []);
   console.log(user);
   return (
-    <TouchableOpacity
-      onPress={logoutUser}
-      className='border border-solid border-gray-300 rounded w-full mt-14'
-    >
-      <FontText className='text-center bg-[#87d892] font-medium text-xl'>
-        Sign Out
-      </FontText>
-    </TouchableOpacity>
+    <CommonBackground>
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+      />
+    </CommonBackground>
   );
 };
 

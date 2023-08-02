@@ -13,9 +13,7 @@ import { useRouter } from 'expo-router';
 import * as Google from 'expo-auth-session/providers/google';
 import * as Facebook from 'expo-auth-session/providers/facebook';
 import * as WebBrowser from 'expo-web-browser';
-import * as AuthSession from 'expo-auth-session/';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Text, View, Button, Linking } from 'react-native';
 
 const AuthContext = createContext();
 export default AuthContext;
