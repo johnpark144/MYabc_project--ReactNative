@@ -1,6 +1,7 @@
 import {
   FacebookAuthProvider,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithCredential,
   signInWithEmailAndPassword,
@@ -25,8 +26,26 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [signUpError, setSignUpError] = useState('');
+  const [logInError, setLogInError] = useState('');
   const [user, setUser] = useState(null);
+
+  // 회원가입
+  const signUpUser = async (e) => {
+    try {
+      const data = await createUserWithEmailAndPassword(
+        authService,
+        email,
+        password
+      );
+      router.push('/home');
+      setPassword('');
+      setSignUpError('');
+      setLogInError('');
+    } catch (err) {
+      setSignUpError(err.message);
+    }
+  };
 
   // 일반 로그인
   const loginUser = async (e) => {
@@ -38,9 +57,10 @@ export const AuthProvider = ({ children }) => {
       );
       router.push('/home');
       setPassword('');
-      setError('');
+      setLogInError('');
+      setSignUpError('');
     } catch (err) {
-      setError(err.message);
+      setLogInError(err.message);
     }
   };
 
@@ -109,11 +129,15 @@ export const AuthProvider = ({ children }) => {
     setEmail,
     password,
     setPassword,
-    error,
+    logInError,
+    signUpError,
+    setLogInError,
+    setSignUpError,
     checkAuthState,
     gg_promptAsync,
     fb_promptAsync,
     logoutUser,
+    signUpUser,
   };
 
   return (

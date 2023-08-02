@@ -15,6 +15,7 @@ import FontText from './../../../components/CommonFontText';
 import AuthContext from '../../../context/AuthContext';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import LottieView from 'lottie-react-native';
 
 const logIn = () => {
   let {
@@ -24,7 +25,8 @@ const logIn = () => {
     setEmail,
     password,
     setPassword,
-    error,
+    setLogInError,
+    logInError,
     gg_promptAsync,
     fb_promptAsync,
   } = useContext(AuthContext);
@@ -101,7 +103,7 @@ const logIn = () => {
                 Sign in
               </FontText>
             </TouchableOpacity>
-            <Text className='text-red-600'>{error?.slice(10, -1)}</Text>
+            <Text className='text-red-600'>{logInError?.slice(10, -1)}</Text>
 
             {/* -- OR -- */}
             <View className='flex flex-row justify-between w-full'>
