@@ -7,6 +7,10 @@ import { Stack } from 'expo-router';
 import CommonBackground from './../../../components/CommonBackground';
 import { pTSansNarrowBold, sairaCondensedLight } from '../../../commonStyles';
 import Greeting from '../../../components/home/Greeting';
+import Mem from '../../../components/home/Mem';
+import Dic from './../../../components/home/Dic';
+import Vid from '../../../components/home/Vid';
+import Gram from './../../../components/home/Gram';
 
 const home = () => {
   let { user, loginUser, error, checkAuthState, logoutUser } =
@@ -32,10 +36,10 @@ const home = () => {
         >
           {/* 첫 페이지 */}
           <Greeting />
-          <Greeting />
-          <Greeting />
-          <Greeting />
-          <Greeting />
+          <Mem />
+          <Dic />
+          <Vid />
+          <Gram />
         </ScrollView>
       </View>
     </CommonBackground>
