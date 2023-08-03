@@ -10,7 +10,7 @@ const Greeting = () => {
   return (
     <>
       {/* 첫 페이지 */}
-      <View className='w-screen h-screen p-5 gap-y-3'>
+      <View className='w-screen h-screen p-8 gap-y-3'>
         <View className='flex justify-center items-center'>
           <Image
             source={{
