@@ -28,7 +28,7 @@ const Vid = () => {
     >
       <View>
         {/* 설명 */}
-        <FontText className='text-2xl leading-10 bg-[#75c3db] rounded-3xl p-6 shadow-md shadow-black'>
+        <FontText className='text-2xl leading-9 bg-[#75c3db] rounded-3xl p-6 shadow-md shadow-black'>
           <Text style={pTSansNarrowBold} className='text-4xl'>
             VIDEO {'\n'}
           </Text>
