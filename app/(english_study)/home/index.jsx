@@ -16,12 +16,14 @@ const home = () => {
   let { user, loginUser, error, checkAuthState, logoutUser } =
     useContext(AuthContext);
 
+  // 유저체크
   useEffect(() => {
     checkAuthState();
   }, []);
   return (
     <CommonBackground>
       <View>
+        {/* 헤더 가리기 */}
         <Stack.Screen
           options={{
             headerShown: false,

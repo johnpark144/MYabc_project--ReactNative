@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
       const { id_token } = gg_res.params;
       const credential = GoogleAuthProvider.credential(id_token);
       signInWithCredential(authService, credential);
-      router.replace('/home');
+      router.replace('/memorize');
     }
   }, [gg_res]);
 
@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }) => {
       const { accessToken } = fb_res2.authentication;
       const credential = FacebookAuthProvider.credential(accessToken);
       signInWithCredential(authService, credential);
-      router.replace('/home');
+      router.replace('/memorize');
     }
   }, [fb_res2]);
 
