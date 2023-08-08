@@ -7,11 +7,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import useCallData from '../../../hooks/useCallData';
 import AuthContext from './../../../context/AuthContext';
 import { FlatList } from 'react-native';
+import AddDayModal from '../../../components/Memorize/AddDayModal';
+import DeleteDayModal from './../../../components/Memorize/DeleteDayModal';
+import CreateWordModal from '../../../components/CreateWordModal';
 
 const memorize = () => {
   const { user, loginUser, error, checkAuthState, logoutUser } =
     useContext(AuthContext);
   const [days, setDays] = useState(false);
+  const [addDayModal, setAddDayModal] = useState(false);
+  const [deleteDayModal, setDeleteDayModal] = useState(false);
+  const [createWordModal, setCreateWordModal] = useState(false);
 
   // 유저 체크
   useEffect(() => {
@@ -35,7 +41,15 @@ const memorize = () => {
         end={{ x: 1, y: 0 }}
         colors={['#a5b4fc', '#818cf8']}
       >
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            btnName === 'Add Day'
+              ? setAddDayModal(true)
+              : btnName === 'Delete Day'
+              ? setDeleteDayModal(true)
+              : setCreateWordModal(true);
+          }}
+        >
           <FontText className='text-center'>{btnName}</FontText>
         </TouchableOpacity>
       </LinearGradient>
@@ -70,6 +84,23 @@ const memorize = () => {
         )}
         keyExtractor={(day) => day?.item?.day}
       />
+
+      {/* 모달 */}
+      {addDayModal ? (
+        <AddDayModal user={user} days={days} setAddDayModal={setAddDayModal} />
+      ) : (
+        ''
+      )}
+      {deleteDayModal ? (
+        <DeleteDayModal
+          user={user}
+          days={days}
+          setDeleteDayModal={setDeleteDayModal}
+        />
+      ) : (
+        ''
+      )}
+      {createWordModal ? <CreateWordModal /> : ''}
     </CommonBackground>
   );
 };

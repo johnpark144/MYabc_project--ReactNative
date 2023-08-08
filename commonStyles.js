@@ -10,4 +10,13 @@ const pTSansNarrowBold = {
 const sairaCondensedLight = {
   fontFamily: 'SairaCondensedLight',
 };
-export { pTSansNarrowBold, publicSansVariable, sairaCondensedLight };
+
+const publicSansSemiBold = {
+  fontFamily: 'PublicSansSemiBold',
+};
+export {
+  pTSansNarrowBold,
+  publicSansVariable,
+  sairaCondensedLight,
+  publicSansSemiBold,
+};
