@@ -57,21 +57,21 @@ const DeleteDayModal = ({ user, days, setDeleteDayModal }) => {
           <Text className='text-xl' style={publicSansSemiBold}>
             Delete a day
           </Text>
-          <FontText className='flex text-lg '>
+          <FontText className='text-lg text-center'>
             Are you sure you want to delete "Day {lastDay}"?
           </FontText>
         </View>
         <View className='flex-row justify-around items-center w-full h-16 '>
           <TouchableOpacity className='py-3 w-24 bg-indigo-500 rounded-lg shadow-md shadow-black'>
             <Text onPress={_delete} className='text-center text-white'>
-              Confirm
+              Delete
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setDeleteDayModal(false)}
             className='py-3 w-24 bg-white rounded-lg shadow-md shadow-black'
           >
-            <Text className='text-center'>Cancel</Text>
+            <Text className='text-center text-indigo-500'>Cancel</Text>
           </TouchableOpacity>
         </View>
       </View>

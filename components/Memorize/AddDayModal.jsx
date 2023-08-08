@@ -43,9 +43,9 @@ const AddDayModal = ({ user, days, setAddDayModal }) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setAddDayModal(false)}
-            className='py-3 w-24 bg-white rounded-lg shadow-md shadow-black'
+            className='py-3 w-24 bg-white  rounded-lg shadow-md shadow-black'
           >
-            <Text className='text-center'>Cancel</Text>
+            <Text className='text-center text-indigo-500'>Cancel</Text>
           </TouchableOpacity>
         </View>
       </View>
