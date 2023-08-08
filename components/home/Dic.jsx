@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import FontText from '../CommonFontText';
 import { pTSansNarrowBold } from '../../commonStyles';
 import { Ionicons } from '@expo/vector-icons';
+import Arrow from './Arrow';
 
 const Dic = () => {
   const images = useRef([
@@ -118,6 +119,8 @@ const Dic = () => {
           </View>
         </View>
       </View>
+      {/* 좌우 넘김 화살표 */}
+      <Arrow leftExistance={true} rightExistance={true} />
     </ImageBackground>
   );
 };

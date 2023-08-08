@@ -5,6 +5,7 @@ import FontText from '../CommonFontText';
 import { pTSansNarrowBold } from '../../commonStyles';
 import { ResizeMode, Video } from 'expo-av';
 import { Pressable } from 'react-native';
+import Arrow from './Arrow';
 
 const Vid = () => {
   const videoRef = useRef(null);
@@ -80,6 +81,8 @@ const Vid = () => {
           </Pressable>
         )}
       </View>
+      {/* 좌우 넘김 화살표 */}
+      <Arrow leftExistance={true} rightExistance={true} />
     </ImageBackground>
   );
 };

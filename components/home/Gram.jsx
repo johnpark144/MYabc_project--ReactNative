@@ -4,6 +4,7 @@ import { ImageBackground } from 'react-native';
 import FontText from '../CommonFontText';
 import { pTSansNarrowBold } from '../../commonStyles';
 import { LinearGradient } from 'expo-linear-gradient';
+import Arrow from './Arrow';
 
 const Gram = () => {
   // 반복되는 부분 (컨테이너)
@@ -66,6 +67,8 @@ const Gram = () => {
           'https://user-images.githubusercontent.com/106279616/217297935-5429f47a-cb82-4676-b6d0-99f9e7240a5f.jpg'
         )}
       </View>
+      {/* 좌우 넘김 화살표 */}
+      <Arrow leftExistance={true} rightExistance={false} extraTop={true} />
     </ImageBackground>
   );
 };

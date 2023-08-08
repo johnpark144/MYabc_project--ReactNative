@@ -4,6 +4,7 @@ import { ImageBackground } from 'react-native';
 import FontText from './../CommonFontText';
 import { pTSansNarrowBold } from '../../commonStyles';
 import { ResizeMode, Video } from 'expo-av';
+import Arrow from './Arrow';
 
 const Mem = () => {
   return (
@@ -44,6 +45,8 @@ const Mem = () => {
           />
         </View>
       </View>
+      {/* 좌우 넘김 화살표 */}
+      <Arrow leftExistance={true} rightExistance={true} />
     </ImageBackground>
   );
 };

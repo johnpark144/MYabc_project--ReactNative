@@ -4,6 +4,7 @@ import AuthContext from '../../context/AuthContext';
 import { pTSansNarrowBold, sairaCondensedLight } from '../../commonStyles';
 import { Linking } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Arrow from './Arrow';
 
 const Greeting = () => {
   let { user, loginUser, error, checkAuthState, logoutUser } =
@@ -11,8 +12,8 @@ const Greeting = () => {
 
   return (
     <>
-      {/* 첫 페이지 */}
       <View className='w-screen h-screen p-8 gap-y-3'>
+        {/* MYabc 로고 */}
         <View className='flex justify-center items-center'>
           <Image
             source={{
@@ -22,6 +23,7 @@ const Greeting = () => {
           />
         </View>
         <View className='gap-y-5'>
+          {/* 인사말 */}
           <Text style={pTSansNarrowBold} className='text-2xl'>
             Hey {user?.displayName}! {'\n'}ARE YOU READY TO ENJOY ENGLISH?
           </Text>
@@ -36,6 +38,7 @@ const Greeting = () => {
             <Text>Feel free to use it!{'\n'}</Text>
             <Text>Application maker : John park (박영환)</Text>
           </Text>
+          {/* 웹버전 버튼 */}
           <View className='flex-row justify-center w-full'>
             <LinearGradient
               className='w-2/3 h-10 rounded-3xl flex-row justify-center items-center shadow-xl shadow-black'
@@ -56,6 +59,8 @@ const Greeting = () => {
           </View>
         </View>
       </View>
+      {/* 좌우 넘김 화살표 */}
+      <Arrow leftExistance={false} rightExistance={true} />
     </>
   );
 };
