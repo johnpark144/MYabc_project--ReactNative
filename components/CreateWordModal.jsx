@@ -18,7 +18,7 @@ import { useRouter } from 'expo-router';
 import Svg, { Path } from 'react-native-svg';
 import LoadingSavingButton from './LoadingSavingButton';
 
-const CreateWordModal = ({ user, days, setCreateWordModal, detailDay }) => {
+const CreateWordModal = ({ user, days, setSeeCreateWordModal, detailDay }) => {
   const router = useRouter();
   const [selectedValue, setSelectedValue] = useState(
     detailDay ? detailDay : 'Day'
@@ -54,7 +54,7 @@ const CreateWordModal = ({ user, days, setCreateWordModal, detailDay }) => {
         await addDoc(collection(dbService, 'words'), wordObj);
 
         router.push(`/memorize/${selectedValue}`);
-        setCreateWordModal(false);
+        setSeeCreateWordModal(false);
         setIsLoading(false);
         setKorean(null);
         setEnglish(null);
@@ -121,7 +121,7 @@ const CreateWordModal = ({ user, days, setCreateWordModal, detailDay }) => {
             </TouchableOpacity>
           )}
           <TouchableOpacity
-            onPress={() => setCreateWordModal(false)}
+            onPress={() => setSeeCreateWordModal(false)}
             className='w-20 py-3 ml-4 bg-white rounded-lg shadow-md shadow-black'
           >
             <Text className='text-center text-indigo-500'>Cancel</Text>

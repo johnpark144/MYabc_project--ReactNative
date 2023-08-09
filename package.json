@@ -17,6 +17,7 @@
     "expo-auth-session": "~4.0.3",
     "expo-av": "~13.2.1",
     "expo-blur": "~12.2.2",
+    "expo-checkbox": "^2.4.0",
     "expo-constants": "~14.2.1",
     "expo-crypto": "~12.2.1",
     "expo-dev-client": "~2.2.1",

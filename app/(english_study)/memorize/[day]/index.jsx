@@ -1,5 +1,11 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import React, { useContext, useState } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+} from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Link,
   Stack,
@@ -15,16 +21,41 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FontText from '../../../../components/CommonFontText';
 import CreateWordModal from '../../../../components/CreateWordModal';
 import AuthContext from '../../../../context/AuthContext';
+import useCallData from '../../../../hooks/useCallData';
+import TableRow from '../../../../components/Memorize/TableRow';
+import DeleteWordModal from './../../../../components/Memorize/DeleteWordModal';
 
 const index = () => {
   const router = useRouter();
-  const [createWordModal, setCreateWordModal] = useState(false);
+  const [seeCreateWordModal, setSeeCreateWordModal] = useState(false);
   const { day } = useLocalSearchParams(); // params 가져오기
   const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
     useContext(AuthContext);
+
+  const [words, setWords] = useState([]);
+  const [togleKor, setTogleKor] = useState(true);
+  const [togleEng, setTogleEng] = useState(true);
+  const [seeDeleteModal, setSeeDeleteModal] = useState(false);
+  const [wordToDelete, setWordToDelete] = useState('');
+  const [deletedWords, setDeletedWords] = useState([]);
+  const [docsToDelete, setDocsToDelete] = useState();
+
+  // 단어데이터 가져오기
+  const wordArr = useCallData('words', 'id');
+
+  useEffect(() => {
+    if (wordArr) {
+      setWords(
+        wordArr.filter(
+          (word) => word.creatorId === user?.uid && word.day === Number(day)
+        )
+      );
+    }
+  }, [wordArr, day, user?.uid]);
+
   return (
     <CommonBackground>
-      <View className='h-screen p-2'>
+      <View className='h-screen px-2 pt-6 pb-2'>
         {/* 헤더 가리기 */}
         <Stack.Screen
           options={{
@@ -52,40 +83,44 @@ const index = () => {
             >
               <TouchableOpacity
                 activeOpacity={0.6} // 터치시 투명도
-                onPress={() => setCreateWordModal(true)}
+                onPress={() => setSeeCreateWordModal(true)}
               >
                 <FontText className='text-center'>Create Word</FontText>
               </TouchableOpacity>
             </LinearGradient>
           </View>
         </View>
-        {/* 단어장 */}
-        <ScrollView className=''>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-          <Text>zz</Text>
-        </ScrollView>
-        {/* 이동 화살표, 가리기, 보이기 버튼 */}
-        <View className='fixed bottom-28 h-12 w-full flex-row items-center px-5 gap-x-1'>
+        {/* 단어장 테이블 */}
+        <TableRow
+          word={{ isDone: 'ISDONE', eng: 'ENG', kor: 'KOR' }}
+          isDelete='DELETE'
+          is1stRow={true}
+        />
+        <FlatList
+          data={words}
+          renderItem={({ item }) => (
+            <TableRow
+              word={item}
+              isDelete={'X'}
+              setSeeDeleteModal={setSeeDeleteModal}
+              setWordToDelete={setWordToDelete}
+              setDocsToDelete={setDocsToDelete}
+            />
+          )}
+          contentContainerStyle={{
+            paddingBottom: 24,
+            backgroundColor: '#e5e7eb',
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+          }}
+          keyExtractor={(item) => item.id}
+        />
+        <View className='h-[120px]'></View>
+        <View className='fixed bottom-28 h-12 w-full flex-row items-center px-5'>
+          {/* 이전 Day이동 (왼쪽 화살표) */}
           <TouchableOpacity
             disabled={Number(day) === 1}
-            className={`flex-1 h-full items-center flex-row justify-start bg-[#d6dff7] rounded-l-3xl pl-2`}
+            className={`w-[18%] h-full m-1 items-center flex-row justify-start bg-[#d6dff7] rounded-l-3xl pl-2`}
             onPress={() => router.push(`/memorize/${Number(day) - 1}`)}
           >
             <MaterialCommunityIcons
@@ -94,15 +129,17 @@ const index = () => {
               color={Number(day) === 1 ? '#b8b7b7' : 'black'}
             />
           </TouchableOpacity>
-          <TouchableOpacity className='flex-1 h-full bg-purple-300 flex-row rounded-xl'>
+          {/* Eng, Kor 가리기 버튼 */}
+          <TouchableOpacity className='flex-1 h-full m-1 bg-purple-300 flex-row rounded-xl'>
             <Text className='w-full text-center self-center'>Hide Eng</Text>
           </TouchableOpacity>
-          <TouchableOpacity className='flex-1 h-full bg-blue-300 flex-row rounded-xl'>
+          <TouchableOpacity className='flex-1 h-full m-1 bg-blue-300 flex-row rounded-xl'>
             <Text className='w-full text-center self-center'>Hide Kor</Text>
           </TouchableOpacity>
+          {/* 다음 Day이동 (오른쪽 화살표) */}
           <TouchableOpacity
             disabled={Number(day) === days?.length}
-            className='flex-1 h-full items-center flex-row justify-end bg-[#d6dff7] rounded-r-3xl pr-2'
+            className='w-[18%] h-full m-1 items-center flex-row justify-end bg-[#d6dff7] rounded-r-3xl pr-2'
             onPress={() => router.push(`/memorize/${Number(day) + 1}`)}
           >
             <MaterialCommunityIcons
@@ -114,15 +151,25 @@ const index = () => {
         </View>
       </View>
       {/* Create Word 모달 */}
-      {createWordModal ? (
+      {seeCreateWordModal && (
         <CreateWordModal
           user={user}
           days={days}
-          setCreateWordModal={setCreateWordModal}
+          setSeeCreateWordModal={setSeeCreateWordModal}
           detailDay={day}
         />
-      ) : (
-        ''
+      )}
+      {/* Delete Word 모달 */}
+      {seeDeleteModal && (
+        <DeleteWordModal
+          wordToDelete={wordToDelete}
+          setSeeDeleteModal={setSeeDeleteModal}
+          setWords={setWords}
+          words={words}
+          setDeletedWords={setDeletedWords}
+          deletedWords={deletedWords}
+          docsToDelete={docsToDelete}
+        />
       )}
     </CommonBackground>
   );

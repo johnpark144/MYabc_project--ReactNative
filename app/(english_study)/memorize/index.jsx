@@ -15,9 +15,9 @@ const memorize = () => {
   const router = useRouter();
   const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
     useContext(AuthContext);
-  const [addDayModal, setAddDayModal] = useState(false);
-  const [deleteDayModal, setDeleteDayModal] = useState(false);
-  const [createWordModal, setCreateWordModal] = useState(false);
+  const [seeAddDayModal, setSeeAddDayModal] = useState(false);
+  const [seeDeleteDayModal, setSeeDeleteDayModal] = useState(false);
+  const [seeCreateWordModal, setSeeCreateWordModal] = useState(false);
 
   // 유저 체크
   useEffect(() => {
@@ -45,10 +45,10 @@ const memorize = () => {
           activeOpacity={0.6} // 터치시 투명도
           onPress={() => {
             btnName === 'Add Day'
-              ? setAddDayModal(true)
+              ? setSeeAddDayModal(true)
               : btnName === 'Delete Day'
-              ? setDeleteDayModal(true)
-              : setCreateWordModal(true);
+              ? setSeeDeleteDayModal(true)
+              : setSeeCreateWordModal(true);
           }}
         >
           <FontText className='text-center'>{btnName}</FontText>
@@ -88,25 +88,29 @@ const memorize = () => {
       />
 
       {/* 모달 */}
-      {addDayModal ? (
-        <AddDayModal user={user} days={days} setAddDayModal={setAddDayModal} />
-      ) : (
-        ''
-      )}
-      {deleteDayModal ? (
-        <DeleteDayModal
+      {seeAddDayModal ? (
+        <AddDayModal
           user={user}
           days={days}
-          setDeleteDayModal={setDeleteDayModal}
+          setSeeAddDayModal={setSeeAddDayModal}
         />
       ) : (
         ''
       )}
-      {createWordModal ? (
+      {seeDeleteDayModal ? (
+        <DeleteDayModal
+          user={user}
+          days={days}
+          setSeeDeleteDayModal={setSeeDeleteDayModal}
+        />
+      ) : (
+        ''
+      )}
+      {seeCreateWordModal ? (
         <CreateWordModal
           user={user}
           days={days}
-          setCreateWordModal={setCreateWordModal}
+          setSeeCreateWordModal={setSeeCreateWordModal}
         />
       ) : (
         ''
