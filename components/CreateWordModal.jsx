@@ -1,10 +1,128 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { View, Text, TextInput, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore';
+import FontText from './CommonFontText';
+import { dbService } from '../lib/fBase';
+import { Picker } from '@react-native-picker/picker';
+import useCallData from './../hooks/useCallData';
+import { useRouter } from 'expo-router';
+import Svg, { Path } from 'react-native-svg';
+import LoadingSavingButton from './LoadingSavingButton';
 
-const CreateWordModal = () => {
+const CreateWordModal = ({ user, days, setCreateWordModal }) => {
+  const router = useRouter();
+  const [selectedValue, setSelectedValue] = useState('Day');
+  const [korean, setKorean] = useState(null);
+  const [english, setEnglish] = useState(null);
+  const [wordsMaxId, setWordsMaxId] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const wordsIdArr = useCallData('words', 'id');
+
+  // 가장 큰 Day 구하기
+  useEffect(() => {
+    if (wordsIdArr) {
+      const allWordsIds = wordsIdArr.map((doc) => Number(doc.id));
+      setWordsMaxId(Math.max(...allWordsIds));
+    }
+  }, [wordsIdArr, user.uid]);
+
+  // 단어 만들기
+  const onSubmit = async () => {
+    if (selectedValue !== 'Day' && korean && english) {
+      if (!isLoading) {
+        setIsLoading(true);
+        const wordObj = {
+          creatorId: user.uid,
+          id: wordsMaxId + 1,
+          day: Number(selectedValue),
+          eng: english,
+          kor: korean,
+          isDone: false,
+        };
+        await addDoc(collection(dbService, 'words'), wordObj);
+
+        router.push(`/memorize/${selectedValue}`);
+        setIsLoading(false);
+      }
+    } else {
+      // alert 창 띄우기
+      Alert.alert('Alert!', 'Please check the forms', [{ text: 'OK' }], {
+        cancelable: false,
+      });
+    }
+  };
+
   return (
-    <View>
-      <Text>CreateWordModal</Text>
+    <View className='absolute top-1/5 w-full h-full flex-row justify-center'>
+      <View className='w-4/5 px-6 py-10 flex-col items-center shadow-lg shadow-black rounded-2xl bg-white m-auto'>
+        <View className='flex-row items-center'>
+          {/* Day와 옵션선택 */}
+          <FontText className='text-lg'>Day :</FontText>
+          <View className='flex-1'>
+            <Picker
+              selectedValue={selectedValue}
+              onValueChange={(itemValue) => setSelectedValue(itemValue)}
+            >
+              <Picker.Item label='Day' value='Day' />
+              {days?.map((day) => {
+                return (
+                  <Picker.Item
+                    key={day?.day}
+                    label={String(day?.day)} // 문자열만 들어갈 수 있음
+                    value={day?.day}
+                  />
+                );
+              })}
+            </Picker>
+          </View>
+        </View>
+        {/* Korean, English */}
+        <View className='w-full gap-y-2'>
+          <FontText className='text-lg'>Korean :</FontText>
+          <TextInput
+            className='border border-slate-200 rounded-md h-9 focus:border-purple-600 px-2'
+            value={korean}
+            onChangeText={(text) => setKorean(text)}
+            placeholder='ex)사과'
+          />
+          <FontText className='text-lg'>English :</FontText>
+          <TextInput
+            className='border border-slate-200 rounded-md h-9 focus:border-purple-600 px-2'
+            value={english}
+            onChangeText={(text) => setEnglish(text)}
+            placeholder='ex)Apple'
+          />
+        </View>
+        {/* Create, Cancel 버튼 */}
+        <View className='flex-row items-center justify-center w-full h-16'>
+          {isLoading ? (
+            <LoadingSavingButton />
+          ) : (
+            <TouchableOpacity
+              onPress={onSubmit}
+              className='w-36 py-3 bg-indigo-500 rounded-lg shadow-md shadow-black'
+            >
+              <Text className='text-center text-white'>Create</Text>
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity
+            onPress={() => setCreateWordModal(false)}
+            className='w-20 py-3 ml-4 bg-white rounded-lg shadow-md shadow-black'
+          >
+            <Text className='text-center text-indigo-500'>Cancel</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };

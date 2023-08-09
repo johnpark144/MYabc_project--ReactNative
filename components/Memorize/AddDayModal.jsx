@@ -16,7 +16,6 @@ const AddDayModal = ({ user, days, setAddDayModal }) => {
     };
     setAddDayModal(false);
     await addDoc(collection(dbService, 'days'), dayObj);
-    console.log(e);
   };
 
   return (

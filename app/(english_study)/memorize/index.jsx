@@ -100,7 +100,15 @@ const memorize = () => {
       ) : (
         ''
       )}
-      {createWordModal ? <CreateWordModal /> : ''}
+      {createWordModal ? (
+        <CreateWordModal
+          user={user}
+          days={days}
+          setCreateWordModal={setCreateWordModal}
+        />
+      ) : (
+        ''
+      )}
     </CommonBackground>
   );
 };
