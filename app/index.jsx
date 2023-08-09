@@ -13,7 +13,7 @@ const StartPage = () => {
       {true ? (
         // 로그인이 된경우
         <Text>
-          <Redirect href='/memorize' />;
+          <Redirect href='/memorize/1' />;
         </Text>
       ) : (
         // 로그인이 안된경우

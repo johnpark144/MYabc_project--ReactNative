@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import CommonBackground from '../../../components/CommonBackground';
-import { Link, Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import FontText from './../../../components/CommonFontText';
 import { LinearGradient } from 'expo-linear-gradient';
 import useCallData from '../../../hooks/useCallData';
@@ -12,9 +12,9 @@ import DeleteDayModal from './../../../components/Memorize/DeleteDayModal';
 import CreateWordModal from '../../../components/CreateWordModal';
 
 const memorize = () => {
-  const { user, loginUser, error, checkAuthState, logoutUser } =
+  const router = useRouter();
+  const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
     useContext(AuthContext);
-  const [days, setDays] = useState(false);
   const [addDayModal, setAddDayModal] = useState(false);
   const [deleteDayModal, setDeleteDayModal] = useState(false);
   const [createWordModal, setCreateWordModal] = useState(false);
@@ -42,6 +42,7 @@ const memorize = () => {
         colors={['#a5b4fc', '#818cf8']}
       >
         <TouchableOpacity
+          activeOpacity={0.6} // 터치시 투명도
           onPress={() => {
             btnName === 'Add Day'
               ? setAddDayModal(true)
@@ -75,12 +76,13 @@ const memorize = () => {
         numColumns={4} // 한줄에 몇개씩 둘건지
         data={days}
         renderItem={(day) => (
-          <Link
-            className='w-[22%] mx-1 my-3 rounded-lg bg-blue-500 text-white text-center py-3'
-            href=''
+          <TouchableOpacity
+            className='w-[22%] mx-1 my-3 rounded-lg bg-blue-500 py-3'
+            activeOpacity={0.5}
+            onPress={() => router.push(`/memorize/${day?.item?.day}`)}
           >
-            Day {day?.item?.day}
-          </Link>
+            <Text className='text-white text-center'>Day {day?.item?.day}</Text>
+          </TouchableOpacity>
         )}
         keyExtractor={(day) => day?.item?.day}
       />

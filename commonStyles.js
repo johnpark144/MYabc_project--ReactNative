@@ -14,6 +14,7 @@ const sairaCondensedLight = {
 const publicSansSemiBold = {
   fontFamily: 'PublicSansSemiBold',
 };
+
 export {
   pTSansNarrowBold,
   publicSansVariable,

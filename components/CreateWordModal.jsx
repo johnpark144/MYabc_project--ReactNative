@@ -18,9 +18,11 @@ import { useRouter } from 'expo-router';
 import Svg, { Path } from 'react-native-svg';
 import LoadingSavingButton from './LoadingSavingButton';
 
-const CreateWordModal = ({ user, days, setCreateWordModal }) => {
+const CreateWordModal = ({ user, days, setCreateWordModal, detailDay }) => {
   const router = useRouter();
-  const [selectedValue, setSelectedValue] = useState('Day');
+  const [selectedValue, setSelectedValue] = useState(
+    detailDay ? detailDay : 'Day'
+  );
   const [korean, setKorean] = useState(null);
   const [english, setEnglish] = useState(null);
   const [wordsMaxId, setWordsMaxId] = useState(0);
@@ -28,13 +30,13 @@ const CreateWordModal = ({ user, days, setCreateWordModal }) => {
 
   const wordsIdArr = useCallData('words', 'id');
 
-  // 가장 큰 Day 구하기
+  // 가장 큰 Id 구하기
   useEffect(() => {
     if (wordsIdArr) {
       const allWordsIds = wordsIdArr.map((doc) => Number(doc.id));
       setWordsMaxId(Math.max(...allWordsIds));
     }
-  }, [wordsIdArr, user.uid]);
+  }, [wordsIdArr, user?.uid]);
 
   // 단어 만들기
   const onSubmit = async () => {
@@ -52,7 +54,10 @@ const CreateWordModal = ({ user, days, setCreateWordModal }) => {
         await addDoc(collection(dbService, 'words'), wordObj);
 
         router.push(`/memorize/${selectedValue}`);
+        setCreateWordModal(false);
         setIsLoading(false);
+        setKorean(null);
+        setEnglish(null);
       }
     } else {
       // alert 창 띄우기
@@ -79,7 +84,7 @@ const CreateWordModal = ({ user, days, setCreateWordModal }) => {
                   <Picker.Item
                     key={day?.day}
                     label={String(day?.day)} // 문자열만 들어갈 수 있음
-                    value={day?.day}
+                    value={String(day?.day)}
                   />
                 );
               })}

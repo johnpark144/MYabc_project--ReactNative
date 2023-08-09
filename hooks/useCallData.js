@@ -13,7 +13,6 @@ export default function useCallData(
       collection(dbService, collectionName),
       orderBy(dataField, order_by)
     );
-    // Output all datas that is called in array
     onSnapshot(q, (snapshot) => {
       setDataArr(
         snapshot.docs.map((doc) => ({
