@@ -137,7 +137,7 @@ const index = () => {
             className='flex-1 h-full m-1 bg-purple-300 flex-row rounded-xl'
           >
             <Text className='w-full text-center self-center'>
-              {isEngHide ? 'Hide' : 'Show'} Eng
+              {isEngHide ? 'Show' : 'Hide'} Eng
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -145,7 +145,7 @@ const index = () => {
             className='flex-1 h-full m-1 bg-blue-300 flex-row rounded-xl'
           >
             <Text className='w-full text-center self-center'>
-              {isKorHide ? 'Hide' : 'Show'} Kor
+              {isKorHide ? 'Show' : 'Hide'} Kor
             </Text>
           </TouchableOpacity>
           {/* 다음 Day이동 (오른쪽 화살표) */}

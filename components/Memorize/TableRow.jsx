@@ -41,22 +41,29 @@ const TableRow = ({
 
   // isDone 토글 및 바뀐정보 DB에 저장
   const togleIsdone = async (newValue) => {
-    await updateDoc(isDoneRef, {
-      isDone: !isDone,
-    });
     setIsDone(newValue);
+    await updateDoc(isDoneRef, {
+      isDone: newValue,
+    });
   };
 
   // 중복 부분
   const tableClassName = (extraStyle) =>
-    `${extraStyle} text-center text-base text-gray-800`;
+    `${extraStyle} text-center text-base ${
+      isDone && !is1stRow ? 'text-[#838383]' : 'text-gray-800'
+    }`;
 
   return (
     <View
       className={`flex-row items-center ${
-        is1stRow ? 'bg-gray-300 h-8 rounded-t-lg mt-5' : 'h-16'
+        is1stRow
+          ? 'bg-gray-300 h-8 rounded-t-lg mt-5'
+          : isDone
+          ? 'h-16 bg-[#a3a3a3]'
+          : 'h-16'
       }`}
     >
+      {/* isDone  */}
       <Text className={tableClassName('w-[18%]')}>
         {is1stRow ? (
           word.isDone
@@ -69,12 +76,15 @@ const TableRow = ({
           />
         )}
       </Text>
+      {/* Eng */}
       <Text className={tableClassName('flex-1')}>
-        {isEngHide || is1stRow ? word.eng : '_____'}
+        {!isEngHide || is1stRow || isDone ? word.eng : '_____'}
       </Text>
+      {/* Kor */}
       <Text className={tableClassName('flex-1')}>
-        {isKorHide || is1stRow ? word.kor : '_____'}
+        {!isKorHide || is1stRow || isDone ? word.kor : '_____'}
       </Text>
+      {/* Delete */}
       {is1stRow ? (
         <Text className={tableClassName('w-[18%]')}>{isDelete}</Text>
       ) : (
@@ -85,9 +95,11 @@ const TableRow = ({
               setSeeDeleteModal(true);
               setDocsToDelete(isDoneRef);
             }}
-            className='w-2/3 p-1 rounded-md bg-red-400 shadow-xl shadow-red-500'
+            className={`w-2/3 p-1 rounded-md shadow-xl shadow-red-500 ${
+              isDone ? '' : 'bg-red-400'
+            } `}
           >
-            <Text className='text-center'>{isDelete}</Text>
+            <Text className='text-center'>{!isDone && isDelete}</Text>
           </TouchableOpacity>
         </View>
       )}
