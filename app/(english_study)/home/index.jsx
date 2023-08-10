@@ -11,15 +11,25 @@ import Mem from '../../../components/home/Mem';
 import Dic from './../../../components/home/Dic';
 import Vid from '../../../components/home/Vid';
 import Gram from './../../../components/home/Gram';
+import useCallData from '../../../hooks/useCallData';
 
 const home = () => {
-  let { user, loginUser, error, checkAuthState, logoutUser } =
+  const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
     useContext(AuthContext);
 
   // 유저체크
   useEffect(() => {
     checkAuthState();
   }, []);
+
+  // Memorize의days 데이터 미리 불러오기
+  const dayArr = useCallData('days', 'day');
+  useEffect(() => {
+    if (dayArr) {
+      setDays(dayArr.filter((day) => day.creatorId === user?.uid));
+    }
+  }, [dayArr, user?.uid]);
+
   return (
     <CommonBackground>
       <View>

@@ -18,8 +18,6 @@ import CommonBackground from '../../../../components/CommonBackground';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { pTSansNarrowBold } from '../../../../commonStyles';
-import { LinearGradient } from 'expo-linear-gradient';
-import FontText from '../../../../components/CommonFontText';
 import CreateWordModal from '../../../../components/CreateWordModal';
 import AuthContext from '../../../../context/AuthContext';
 import useCallData from '../../../../hooks/useCallData';

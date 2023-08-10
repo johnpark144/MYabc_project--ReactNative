@@ -5,7 +5,7 @@ import FontText from './CommonFontText';
 const GradientBtnForModal = ({ btnName, setSeeModal }) => {
   return (
     <LinearGradient
-      className='flex-1 h-10 mx-1 rounded-xl flex-row justify-center items-center shadow-xl shadow-black'
+      className='flex-1 w-full h-10 mx-1 rounded-xl flex-row justify-center items-center shadow-xl shadow-black'
       start={{ x: 0, y: 1 }}
       end={{ x: 1, y: 0 }}
       colors={['#a5b4fc', '#818cf8']}

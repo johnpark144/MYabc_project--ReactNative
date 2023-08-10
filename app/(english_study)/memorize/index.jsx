@@ -26,14 +26,6 @@ const memorize = () => {
     checkAuthState();
   }, []);
 
-  // 데이터 불러오기
-  const dayArr = useCallData('days', 'day');
-  useEffect(() => {
-    if (dayArr) {
-      setDays(dayArr.filter((day) => day.creatorId === user?.uid));
-    }
-  }, [dayArr, user?.uid]);
-
   return (
     <CommonBackground>
       {/* 헤더 가리기 */}
@@ -86,32 +78,26 @@ const memorize = () => {
           />
 
           {/* 모달 */}
-          {seeAddDayModal ? (
+          {seeAddDayModal && (
             <AddDayModal
               user={user}
               days={days}
               setSeeAddDayModal={setSeeAddDayModal}
             />
-          ) : (
-            ''
           )}
-          {seeDeleteDayModal ? (
+          {seeDeleteDayModal && (
             <DeleteDayModal
               user={user}
               days={days}
               setSeeDeleteDayModal={setSeeDeleteDayModal}
             />
-          ) : (
-            ''
           )}
-          {seeCreateWordModal ? (
+          {seeCreateWordModal && (
             <CreateWordModal
               user={user}
               days={days}
               setSeeCreateWordModal={setSeeCreateWordModal}
             />
-          ) : (
-            ''
           )}
         </>
       )}

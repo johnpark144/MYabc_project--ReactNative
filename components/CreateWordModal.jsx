@@ -18,7 +18,13 @@ import { useRouter } from 'expo-router';
 import Svg, { Path } from 'react-native-svg';
 import LoadingSavingButton from './LoadingSavingButton';
 
-const CreateWordModal = ({ user, days, setSeeCreateWordModal, detailDay }) => {
+const CreateWordModal = ({
+  user,
+  days,
+  setSeeCreateWordModal,
+  detailDay = false,
+  isFromVideo = false,
+}) => {
   const router = useRouter();
   const [selectedValue, setSelectedValue] = useState(
     detailDay ? detailDay : 'Day'
@@ -53,7 +59,12 @@ const CreateWordModal = ({ user, days, setSeeCreateWordModal, detailDay }) => {
         };
         await addDoc(collection(dbService, 'words'), wordObj);
 
-        router.push(`/memorize/${selectedValue}`);
+        isFromVideo
+          ? Alert.alert('Alert!', 'the word saved', [{ text: 'OK' }], {
+              cancelable: false,
+            })
+          : router.push(`/memorize/${selectedValue}`);
+
         setSeeCreateWordModal(false);
         setIsLoading(false);
         setKorean(null);
