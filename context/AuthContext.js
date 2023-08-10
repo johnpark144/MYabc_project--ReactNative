@@ -112,7 +112,7 @@ export const AuthProvider = ({ children }) => {
     onAuthStateChanged(authService, async (_user) => {
       if (_user) {
         setUser({
-          displayName: _user.displayName,
+          displayName: _user?.displayName,
           uid: _user.uid,
         });
         await AsyncStorage.setItem('user', JSON.stringify(_user));

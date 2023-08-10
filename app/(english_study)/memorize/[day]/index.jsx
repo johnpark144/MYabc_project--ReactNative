@@ -71,9 +71,9 @@ const index = () => {
           <Link
             onPress={() => Vibration.vibrate(30)} // 터치시 진동효과
             href='/memorize'
-            className='ml-5'
+            className='ml-5 p-2'
           >
-            <AntDesign name='caretleft' size={24} color='black' />
+            <AntDesign name='caretleft' size={30} color='black' />
           </Link>
           {/* Day */}
           <View className='flex-1 rounded-md'>
@@ -146,7 +146,7 @@ const index = () => {
           {/* 이전 Day이동 (왼쪽 화살표) */}
           <TouchableOpacity
             disabled={Number(day) === 1}
-            className={`w-[18%] h-full m-1 items-center flex-row justify-start bg-[#d6dff7] rounded-l-3xl pl-2`}
+            className={`w-[18%] h-full m-1 items-center flex-row justify-start bg-[#d6dff7] rounded-l-3xl pl-2 shadow-lg shadow-black`}
             onPress={() => {
               Vibration.vibrate(30);
               router.push(`/memorize/${Number(day) - 1}`);
@@ -161,7 +161,7 @@ const index = () => {
           {/* Eng, Kor 가리기 버튼 */}
           <TouchableOpacity
             onPress={() => setIsEngHide(!isEngHide)}
-            className='flex-1 h-full m-1 bg-purple-300 flex-row rounded-xl'
+            className='flex-1 h-full m-1 bg-purple-300 flex-row rounded-xl shadow-lg shadow-black'
           >
             <Text className='w-full text-center self-center'>
               {isEngHide ? 'Show' : 'Hide'} Eng
@@ -169,7 +169,7 @@ const index = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setIsKorHide(!isKorHide)}
-            className='flex-1 h-full m-1 bg-blue-300 flex-row rounded-xl'
+            className='flex-1 h-full m-1 bg-blue-300 flex-row rounded-xl shadow-lg shadow-black'
           >
             <Text className='w-full text-center self-center'>
               {isKorHide ? 'Show' : 'Hide'} Kor
@@ -178,7 +178,7 @@ const index = () => {
           {/* 다음 Day이동 (오른쪽 화살표) */}
           <TouchableOpacity
             disabled={Number(day) === days?.length}
-            className='w-[18%] h-full m-1 items-center flex-row justify-end bg-[#d6dff7] rounded-r-3xl pr-2'
+            className='w-[18%] h-full m-1 items-center flex-row justify-end bg-[#d6dff7] rounded-r-3xl pr-2 shadow-lg shadow-black'
             onPress={() => {
               Vibration.vibrate(30);
               router.push(`/memorize/${Number(day) + 1}`);
