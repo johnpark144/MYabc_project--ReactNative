@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
         email,
         password
       );
-      router.push('/home');
+      router.push('/video');
       setPassword('');
       setLogInError('');
       setSignUpError('');
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
       const { id_token } = gg_res.params;
       const credential = GoogleAuthProvider.credential(id_token);
       signInWithCredential(authService, credential);
-      router.replace('/home');
+      router.replace('/video');
     }
   }, [gg_res]);
 
@@ -94,7 +94,7 @@ export const AuthProvider = ({ children }) => {
       const { accessToken } = fb_res2.authentication;
       const credential = FacebookAuthProvider.credential(accessToken);
       signInWithCredential(authService, credential);
-      router.replace('/home');
+      router.replace('/video');
     }
   }, [fb_res2]);
 
