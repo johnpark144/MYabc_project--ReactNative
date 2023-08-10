@@ -1,17 +1,19 @@
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import FontText from '../../components/CommonFontText';
+import { Vibration } from 'react-native';
 
 export default () => {
+  const router = useRouter();
   let { user, loginUser, error, checkAuthState, logoutUser } =
     useContext(AuthContext);
   return (
     <Tabs
-      screenOptions={{
+      screenOptions={({ route }) => ({
         headerStyle: {
           backgroundColor: '#d6dff7',
         },
@@ -23,6 +25,20 @@ export default () => {
         },
         tabBarActiveTintColor: '#431386',
         tabBarInactiveTintColor: 'grey',
+        tabBarButton: (props) => {
+          // 버튼 커스텀화
+          return (
+            <TouchableOpacity
+              style={{ width: '20%' }}
+              onPress={() => {
+                Vibration.vibrate(20);
+                router.push(route.name);
+              }}
+            >
+              {props.children}
+            </TouchableOpacity>
+          );
+        },
         headerLeft: () => (
           <Image
             source={{
@@ -43,7 +59,7 @@ export default () => {
             </TouchableOpacity>
           </View>
         ),
-      }}
+      })}
     >
       <Tabs.Screen
         name='home'

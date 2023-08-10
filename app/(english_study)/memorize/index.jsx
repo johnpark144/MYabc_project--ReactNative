@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Vibration } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import CommonBackground from '../../../components/CommonBackground';
 import { Stack, useRouter } from 'expo-router';
@@ -44,6 +44,7 @@ const memorize = () => {
         <TouchableOpacity
           activeOpacity={0.6} // 터치시 투명도
           onPress={() => {
+            Vibration.vibrate(30);
             btnName === 'Add Day'
               ? setSeeAddDayModal(true)
               : btnName === 'Delete Day'
@@ -79,7 +80,10 @@ const memorize = () => {
           <TouchableOpacity
             className='w-[22%] mx-1 my-3 rounded-lg bg-blue-500 py-3'
             activeOpacity={0.5}
-            onPress={() => router.push(`/memorize/${day?.item?.day}`)}
+            onPress={() => {
+              Vibration.vibrate(30);
+              router.push(`/memorize/${day?.item?.day}`);
+            }}
           >
             <Text className='text-white text-center'>Day {day?.item?.day}</Text>
           </TouchableOpacity>

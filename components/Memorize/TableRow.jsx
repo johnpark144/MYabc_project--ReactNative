@@ -11,6 +11,7 @@ import {
   where,
 } from 'firebase/firestore';
 import { dbService } from '../../lib/fBase';
+import { Vibration } from 'react-native';
 
 // 테이블 줄
 const TableRow = ({
@@ -91,6 +92,7 @@ const TableRow = ({
         <View className={tableClassName('w-[18%] flex-row justify-center')}>
           <TouchableOpacity
             onPress={() => {
+              Vibration.vibrate(30);
               setWordToDelete(word);
               setSeeDeleteModal(true);
               setDocsToDelete(isDoneRef);

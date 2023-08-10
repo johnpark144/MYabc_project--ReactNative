@@ -3,6 +3,7 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  Vibration,
   FlatList,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
@@ -64,7 +65,11 @@ const index = () => {
         />
         <View className='flex-row justify-between items-center'>
           {/* 뒤로가기 */}
-          <Link href='/memorize' className='ml-5'>
+          <Link
+            onPress={() => Vibration.vibrate(30)} // 터치시 진동효과
+            href='/memorize'
+            className='ml-5'
+          >
             <AntDesign name='caretleft' size={24} color='black' />
           </Link>
           {/* Day */}
@@ -83,7 +88,10 @@ const index = () => {
             >
               <TouchableOpacity
                 activeOpacity={0.6} // 터치시 투명도
-                onPress={() => setSeeCreateWordModal(true)}
+                onPress={() => {
+                  Vibration.vibrate(30);
+                  setSeeCreateWordModal(true);
+                }}
               >
                 <FontText className='text-center'>Create Word</FontText>
               </TouchableOpacity>
