@@ -20,6 +20,8 @@ const TableRow = ({
   setSeeDeleteModal,
   setWordToDelete,
   setDocsToDelete,
+  isKorHide,
+  isEngHide,
 }) => {
   const [isDone, setIsDone] = useState(word.isDone);
   const [isDoneRef, setIsDoneRef] = useState('');
@@ -67,8 +69,12 @@ const TableRow = ({
           />
         )}
       </Text>
-      <Text className={tableClassName('flex-1')}>{word.eng}</Text>
-      <Text className={tableClassName('flex-1')}>{word.kor}</Text>
+      <Text className={tableClassName('flex-1')}>
+        {isEngHide || is1stRow ? word.eng : '_____'}
+      </Text>
+      <Text className={tableClassName('flex-1')}>
+        {isKorHide || is1stRow ? word.kor : '_____'}
+      </Text>
       {is1stRow ? (
         <Text className={tableClassName('w-[18%]')}>{isDelete}</Text>
       ) : (

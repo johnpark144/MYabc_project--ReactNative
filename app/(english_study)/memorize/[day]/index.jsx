@@ -33,8 +33,8 @@ const index = () => {
     useContext(AuthContext);
 
   const [words, setWords] = useState([]);
-  const [togleKor, setTogleKor] = useState(true);
-  const [togleEng, setTogleEng] = useState(true);
+  const [isKorHide, setIsKorHide] = useState(false);
+  const [isEngHide, setIsEngHide] = useState(false);
   const [seeDeleteModal, setSeeDeleteModal] = useState(false);
   const [wordToDelete, setWordToDelete] = useState('');
   const [deletedWords, setDeletedWords] = useState([]);
@@ -105,6 +105,8 @@ const index = () => {
               setSeeDeleteModal={setSeeDeleteModal}
               setWordToDelete={setWordToDelete}
               setDocsToDelete={setDocsToDelete}
+              isKorHide={isKorHide}
+              isEngHide={isEngHide}
             />
           )}
           contentContainerStyle={{
@@ -130,11 +132,21 @@ const index = () => {
             />
           </TouchableOpacity>
           {/* Eng, Kor 가리기 버튼 */}
-          <TouchableOpacity className='flex-1 h-full m-1 bg-purple-300 flex-row rounded-xl'>
-            <Text className='w-full text-center self-center'>Hide Eng</Text>
+          <TouchableOpacity
+            onPress={() => setIsEngHide(!isEngHide)}
+            className='flex-1 h-full m-1 bg-purple-300 flex-row rounded-xl'
+          >
+            <Text className='w-full text-center self-center'>
+              {isEngHide ? 'Hide' : 'Show'} Eng
+            </Text>
           </TouchableOpacity>
-          <TouchableOpacity className='flex-1 h-full m-1 bg-blue-300 flex-row rounded-xl'>
-            <Text className='w-full text-center self-center'>Hide Kor</Text>
+          <TouchableOpacity
+            onPress={() => setIsKorHide(!isKorHide)}
+            className='flex-1 h-full m-1 bg-blue-300 flex-row rounded-xl'
+          >
+            <Text className='w-full text-center self-center'>
+              {isKorHide ? 'Hide' : 'Show'} Kor
+            </Text>
           </TouchableOpacity>
           {/* 다음 Day이동 (오른쪽 화살표) */}
           <TouchableOpacity

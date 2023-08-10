@@ -4,21 +4,12 @@ import { publicSansSemiBold } from '../../commonStyles';
 import FontText from './../CommonFontText';
 import { FontAwesome } from '@expo/vector-icons';
 import { deleteDoc } from 'firebase/firestore';
-import AuthContext from '../../context/AuthContext';
 
-const DeleteWordModal = ({
-  wordToDelete,
-  setSeeDeleteModal,
-  setWords,
-  words,
-  setDeletedWords,
-  deletedWords,
-  docsToDelete,
-}) => {
+const DeleteWordModal = ({ wordToDelete, setSeeDeleteModal, docsToDelete }) => {
   // 단어 지우기
   const deleteWord = async () => {
-    await deleteDoc(docsToDelete);
     setSeeDeleteModal(false);
+    await deleteDoc(docsToDelete);
   };
 
   return (
