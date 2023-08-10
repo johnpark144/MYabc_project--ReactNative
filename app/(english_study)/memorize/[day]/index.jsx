@@ -25,6 +25,7 @@ import AuthContext from '../../../../context/AuthContext';
 import useCallData from '../../../../hooks/useCallData';
 import TableRow from '../../../../components/Memorize/TableRow';
 import DeleteWordModal from './../../../../components/Memorize/DeleteWordModal';
+import * as Progress from 'react-native-progress';
 
 const index = () => {
   const router = useRouter();
@@ -34,6 +35,7 @@ const index = () => {
     useContext(AuthContext);
 
   const [words, setWords] = useState([]);
+  const [isAfterSetWords, setIsAfterSetWords] = useState(false);
   const [isKorHide, setIsKorHide] = useState(false);
   const [isEngHide, setIsEngHide] = useState(false);
   const [seeDeleteModal, setSeeDeleteModal] = useState(false);
@@ -51,6 +53,7 @@ const index = () => {
           (word) => word.creatorId === user?.uid && word.day === Number(day)
         )
       );
+      setIsAfterSetWords(true);
     }
   }, [wordArr, day, user?.uid]);
 
@@ -117,6 +120,19 @@ const index = () => {
               isEngHide={isEngHide}
             />
           )}
+          // 데이터를 아직 불러오지않고 데이터가 없는경우에만 로딩중 표시
+          ListFooterComponent={() =>
+            words.length === 0 &&
+            !isAfterSetWords && (
+              <View className='h-20 flex-row justify-center items-center'>
+                <Progress.Circle
+                  size={40}
+                  indeterminate={true}
+                  color='#6e6e6e'
+                />
+              </View>
+            )
+          }
           contentContainerStyle={{
             paddingBottom: 24,
             backgroundColor: '#e5e7eb',

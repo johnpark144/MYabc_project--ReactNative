@@ -10,6 +10,7 @@ import { FlatList } from 'react-native';
 import AddDayModal from '../../../components/Memorize/AddDayModal';
 import DeleteDayModal from './../../../components/Memorize/DeleteDayModal';
 import CreateWordModal from '../../../components/CreateWordModal';
+import * as Progress from 'react-native-progress';
 
 const memorize = () => {
   const router = useRouter();
@@ -57,6 +58,7 @@ const memorize = () => {
       </LinearGradient>
     );
   };
+
   return (
     <CommonBackground>
       {/* 헤더 가리기 */}
@@ -65,59 +67,69 @@ const memorize = () => {
           headerShown: false,
         }}
       />
-      {/* Add Day, Delete , Create Word 버튼 */}
-      <View className='flex-row justify-between gap-x-3 py-5 px-3'>
-        {GradientBtn('Add Day')}
-        {GradientBtn('Delete Day')}
-        {GradientBtn('Create Word')}
-      </View>
-      {/* Day FlatList */}
-      <FlatList
-        className='px-4'
-        numColumns={4} // 한줄에 몇개씩 둘건지
-        data={days}
-        renderItem={(day) => (
-          <TouchableOpacity
-            className='w-[22%] mx-1 my-3 rounded-lg bg-blue-500 py-3'
-            activeOpacity={0.5}
-            onPress={() => {
-              Vibration.vibrate(30);
-              router.push(`/memorize/${day?.item?.day}`);
-            }}
-          >
-            <Text className='text-white text-center'>Day {day?.item?.day}</Text>
-          </TouchableOpacity>
-        )}
-        keyExtractor={(day) => day?.item?.day}
-      />
+      {days.length <= 0 ? (
+        <View className='flex-row w-full h-full justify-center items-center'>
+          <Progress.Bar size={60} indeterminate={true} color='#431386' />
+        </View>
+      ) : (
+        <>
+          {/* Add Day, Delete , Create Word 버튼 */}
+          <View className='flex-row justify-between gap-x-3 py-5 px-3'>
+            {GradientBtn('Add Day')}
+            {GradientBtn('Delete Day')}
+            {GradientBtn('Create Word')}
+          </View>
+          {/* Day FlatList */}
+          <FlatList
+            className='px-4'
+            numColumns={4} // 한줄에 몇개씩 둘건지
+            data={days}
+            renderItem={(day) => (
+              <TouchableOpacity
+                className='w-[22%] mx-1 my-3 rounded-lg bg-blue-500 py-3'
+                activeOpacity={0.5}
+                onPress={() => {
+                  Vibration.vibrate(30);
+                  router.push(`/memorize/${day?.item?.day}`);
+                }}
+              >
+                <Text className='text-white text-center'>
+                  Day {day?.item?.day}
+                </Text>
+              </TouchableOpacity>
+            )}
+            keyExtractor={(day) => day?.item?.day}
+          />
 
-      {/* 모달 */}
-      {seeAddDayModal ? (
-        <AddDayModal
-          user={user}
-          days={days}
-          setSeeAddDayModal={setSeeAddDayModal}
-        />
-      ) : (
-        ''
-      )}
-      {seeDeleteDayModal ? (
-        <DeleteDayModal
-          user={user}
-          days={days}
-          setSeeDeleteDayModal={setSeeDeleteDayModal}
-        />
-      ) : (
-        ''
-      )}
-      {seeCreateWordModal ? (
-        <CreateWordModal
-          user={user}
-          days={days}
-          setSeeCreateWordModal={setSeeCreateWordModal}
-        />
-      ) : (
-        ''
+          {/* 모달 */}
+          {seeAddDayModal ? (
+            <AddDayModal
+              user={user}
+              days={days}
+              setSeeAddDayModal={setSeeAddDayModal}
+            />
+          ) : (
+            ''
+          )}
+          {seeDeleteDayModal ? (
+            <DeleteDayModal
+              user={user}
+              days={days}
+              setSeeDeleteDayModal={setSeeDeleteDayModal}
+            />
+          ) : (
+            ''
+          )}
+          {seeCreateWordModal ? (
+            <CreateWordModal
+              user={user}
+              days={days}
+              setSeeCreateWordModal={setSeeCreateWordModal}
+            />
+          ) : (
+            ''
+          )}
+        </>
       )}
     </CommonBackground>
   );

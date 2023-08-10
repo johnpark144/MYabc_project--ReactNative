@@ -30,6 +30,7 @@ const TableRow = ({
   // 특정 데이터 가져옴
   useEffect(() => {
     (async () => {
+      if (!word || !word.id) return; // where 쿼리문 에러방지
       const q = query(
         collection(dbService, 'words'),
         where('id', '==', word.id)

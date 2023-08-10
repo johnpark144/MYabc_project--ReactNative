@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   const [signUpError, setSignUpError] = useState('');
   const [logInError, setLogInError] = useState('');
   const [user, setUser] = useState(null);
-  const [days, setDays] = useState(null);
+  const [days, setDays] = useState([]);
 
   // 회원가입
   const signUpUser = async (e) => {
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
       const { id_token } = gg_res.params;
       const credential = GoogleAuthProvider.credential(id_token);
       signInWithCredential(authService, credential);
-      router.replace('/memorize/1');
+      router.replace('/home');
     }
   }, [gg_res]);
 
@@ -94,7 +94,7 @@ export const AuthProvider = ({ children }) => {
       const { accessToken } = fb_res2.authentication;
       const credential = FacebookAuthProvider.credential(accessToken);
       signInWithCredential(authService, credential);
-      router.replace('/memorize/1');
+      router.replace('/home');
     }
   }, [fb_res2]);
 
