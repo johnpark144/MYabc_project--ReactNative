@@ -131,7 +131,10 @@ const index = () => {
           <TouchableOpacity
             disabled={Number(day) === 1}
             className={`w-[18%] h-full m-1 items-center flex-row justify-start bg-[#d6dff7] rounded-l-3xl pl-2`}
-            onPress={() => router.push(`/memorize/${Number(day) - 1}`)}
+            onPress={() => {
+              Vibration.vibrate(30);
+              router.push(`/memorize/${Number(day) - 1}`);
+            }}
           >
             <MaterialCommunityIcons
               name='arrow-left'
@@ -160,7 +163,10 @@ const index = () => {
           <TouchableOpacity
             disabled={Number(day) === days?.length}
             className='w-[18%] h-full m-1 items-center flex-row justify-end bg-[#d6dff7] rounded-r-3xl pr-2'
-            onPress={() => router.push(`/memorize/${Number(day) + 1}`)}
+            onPress={() => {
+              Vibration.vibrate(30);
+              router.push(`/memorize/${Number(day) + 1}`);
+            }}
           >
             <MaterialCommunityIcons
               name='arrow-right'
