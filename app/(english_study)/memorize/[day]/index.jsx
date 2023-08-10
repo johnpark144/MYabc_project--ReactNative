@@ -26,13 +26,13 @@ import useCallData from '../../../../hooks/useCallData';
 import TableRow from '../../../../components/Memorize/TableRow';
 import DeleteWordModal from './../../../../components/Memorize/DeleteWordModal';
 import * as Progress from 'react-native-progress';
+import GradientBtnForModal from '../../../../components/GradientBtnForModal';
 
 const index = () => {
   const router = useRouter();
   const [seeCreateWordModal, setSeeCreateWordModal] = useState(false);
   const { day } = useLocalSearchParams(); // params 가져오기
-  const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
-    useContext(AuthContext);
+  const { user, days } = useContext(AuthContext);
 
   const [words, setWords] = useState([]);
   const [isAfterSetWords, setIsAfterSetWords] = useState(false);
@@ -83,22 +83,10 @@ const index = () => {
           </View>
           {/* Create Word 버튼 */}
           <View className='flex-1 flex-row justify-end'>
-            <LinearGradient
-              className='w-4/5 h-10 rounded-xl flex-row justify-center items-center shadow-xl shadow-black'
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 0 }}
-              colors={['#a5b4fc', '#818cf8']}
-            >
-              <TouchableOpacity
-                activeOpacity={0.6} // 터치시 투명도
-                onPress={() => {
-                  Vibration.vibrate(30);
-                  setSeeCreateWordModal(true);
-                }}
-              >
-                <FontText className='text-center'>Create Word</FontText>
-              </TouchableOpacity>
-            </LinearGradient>
+            <GradientBtnForModal
+              btnName='Create Word'
+              setSeeModal={setSeeCreateWordModal}
+            />
           </View>
         </View>
         {/* 단어장 테이블 */}

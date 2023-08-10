@@ -11,6 +11,7 @@ import AddDayModal from '../../../components/Memorize/AddDayModal';
 import DeleteDayModal from './../../../components/Memorize/DeleteDayModal';
 import CreateWordModal from '../../../components/CreateWordModal';
 import * as Progress from 'react-native-progress';
+import GradientBtnForModal from '../../../components/GradientBtnForModal';
 
 const memorize = () => {
   const router = useRouter();
@@ -33,32 +34,6 @@ const memorize = () => {
     }
   }, [dayArr, user?.uid]);
 
-  // 반복되는 버튼
-  const GradientBtn = (btnName) => {
-    return (
-      <LinearGradient
-        className='flex-1 h-10 rounded-xl flex-row justify-center items-center shadow-xl shadow-black'
-        start={{ x: 0, y: 1 }}
-        end={{ x: 1, y: 0 }}
-        colors={['#a5b4fc', '#818cf8']}
-      >
-        <TouchableOpacity
-          activeOpacity={0.6} // 터치시 투명도
-          onPress={() => {
-            Vibration.vibrate(30);
-            btnName === 'Add Day'
-              ? setSeeAddDayModal(true)
-              : btnName === 'Delete Day'
-              ? setSeeDeleteDayModal(true)
-              : setSeeCreateWordModal(true);
-          }}
-        >
-          <FontText className='text-center'>{btnName}</FontText>
-        </TouchableOpacity>
-      </LinearGradient>
-    );
-  };
-
   return (
     <CommonBackground>
       {/* 헤더 가리기 */}
@@ -74,10 +49,19 @@ const memorize = () => {
       ) : (
         <>
           {/* Add Day, Delete , Create Word 버튼 */}
-          <View className='flex-row justify-between gap-x-3 py-5 px-3'>
-            {GradientBtn('Add Day')}
-            {GradientBtn('Delete Day')}
-            {GradientBtn('Create Word')}
+          <View className='flex-row justify-between py-5 px-3'>
+            <GradientBtnForModal
+              btnName='Add Day'
+              setSeeModal={setSeeAddDayModal}
+            />
+            <GradientBtnForModal
+              btnName='Delete Day'
+              setSeeModal={setSeeDeleteDayModal}
+            />
+            <GradientBtnForModal
+              btnName='Create Word'
+              setSeeModal={setSeeCreateWordModal}
+            />
           </View>
           {/* Day FlatList */}
           <FlatList
