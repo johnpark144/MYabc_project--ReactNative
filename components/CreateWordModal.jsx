@@ -1,21 +1,12 @@
 import { View, Text, TextInput, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  query,
-  where,
-} from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import FontText from './CommonFontText';
 import { dbService } from '../lib/fBase';
 import { Picker } from '@react-native-picker/picker';
 import useCallData from './../hooks/useCallData';
 import { useRouter } from 'expo-router';
-import Svg, { Path } from 'react-native-svg';
 import LoadingSavingButton from './LoadingSavingButton';
 
 const CreateWordModal = ({
@@ -79,7 +70,7 @@ const CreateWordModal = ({
   };
 
   return (
-    <View className='absolute top-1/5 w-full h-full flex-row justify-center'>
+    <View className='absolute top-1/5 w-full h-full flex-row justify-center z-20'>
       <View className='w-4/5 px-6 py-10 flex-col items-center shadow-lg shadow-black rounded-2xl bg-white m-auto'>
         <View className='flex-row items-center'>
           {/* Day와 옵션선택 */}
