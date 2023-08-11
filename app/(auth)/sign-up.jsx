@@ -51,13 +51,13 @@ const signUp = () => {
             {/* 이메일, 패스워드, 로그인버튼 */}
             <TextInput
               value={email}
-              className='border border-solid border-gray-400 rounded w-full'
+              className='border border-solid border-gray-400 rounded w-full pl-2'
               onChangeText={(text) => setEmail(text)}
               placeholder='Email'
             />
             <TextInput
               value={password}
-              className='border border-solid border-gray-400 rounded w-full'
+              className='border border-solid border-gray-400 rounded w-full pl-2'
               onChangeText={(text) => setPassword(text)}
               placeholder='Password'
               secureTextEntry={true} //  비밀번호 형태로

@@ -19,7 +19,7 @@ const Greeting = () => {
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217299245-76306248-6c80-4bf8-a1f0-ccb962648a8f.png',
             }}
-            className='w-44 h-44'
+            className='w-[160px] h-[163px]'
           />
         </View>
         <View className='gap-y-5'>

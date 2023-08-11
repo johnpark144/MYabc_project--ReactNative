@@ -44,7 +44,7 @@ export default () => {
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217299245-76306248-6c80-4bf8-a1f0-ccb962648a8f.png',
             }}
-            className='w-9 h-9 ml-4'
+            className='w-[35px] h-[35px] ml-4'
           />
         ),
         headerRight: () => (

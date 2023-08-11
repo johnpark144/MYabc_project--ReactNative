@@ -72,7 +72,7 @@ const logIn = () => {
             <View className='flex-row items-center mb-5'>
               <Image
                 alt='ABC_LOGO'
-                className='w-16 h-16'
+                className='w-[64px] h-[65px]'
                 source={{
                   uri: 'https://user-images.githubusercontent.com/106279616/217299245-76306248-6c80-4bf8-a1f0-ccb962648a8f.png',
                 }}
@@ -84,13 +84,13 @@ const logIn = () => {
             {/* 이메일, 패스워드, 로그인버튼 */}
             <TextInput
               value={email}
-              className='border border-solid border-gray-400 rounded w-full'
+              className='border border-solid border-gray-400 rounded w-full pl-2'
               onChangeText={(text) => setEmail(text)}
               placeholder='Email'
             />
             <TextInput
               value={password}
-              className='border border-solid border-gray-400 rounded w-full'
+              className='border border-solid border-gray-400 rounded w-full pl-2'
               onChangeText={(text) => setPassword(text)}
               placeholder='Password'
               secureTextEntry={true} //  비밀번호 형태로

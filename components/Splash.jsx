@@ -14,6 +14,7 @@ const Splash = ({ setSplashComplete }) => {
   };
   return (
     <View className='w-full h-full bg-black'>
+      {/* 로고와 MYabc 애니메이션 */}
       <Animatable.View
         animation='slideInUp'
         iterationCount={1}
@@ -21,7 +22,7 @@ const Splash = ({ setSplashComplete }) => {
       >
         <Image
           alt='ABC_LOGO'
-          className='w-24 h-24'
+          className='w-[96px] h-[98px]'
           source={{
             uri: 'https://user-images.githubusercontent.com/106279616/217299245-76306248-6c80-4bf8-a1f0-ccb962648a8f.png',
           }}
@@ -30,6 +31,7 @@ const Splash = ({ setSplashComplete }) => {
           MYabc
         </Text>
       </Animatable.View>
+      {/* 비디오 */}
       <Video
         style={StyleSheet.absoluteFill}
         resizeMode={ResizeMode.STRETCH}
