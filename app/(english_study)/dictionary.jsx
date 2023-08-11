@@ -39,7 +39,7 @@ const dictionary = () => {
     let playingAudio = new Audio.Sound();
     try {
       await playingAudio.loadAsync(
-        { uri: wordInfo.phonetics[0].audio },
+        { uri: wordInfo.phonetics[0]?.audio },
         { progressUpdateIntervalMillis: 100 }
       );
       await playingAudio.playAsync();
@@ -54,7 +54,7 @@ const dictionary = () => {
       <View className='py-10 px-6 flex-row gap-x-3'>
         <View className='flex-1'>
           <TextInput
-            className='h-8 w-full bg-slate-50 shadow-md shadow-black'
+            className='h-8 pl-2 w-full bg-slate-50 shadow-md shadow-black'
             value={word}
             onChangeText={(text) => setWord(text)}
             onSubmitEditing={searchWord} // 엔터칠 때 작동
@@ -84,7 +84,7 @@ const dictionary = () => {
               <Text className='text-xl p-4' style={publicSansSemiBold}>
                 {wordInfo.word} {wordInfo.phonetic}
               </Text>
-              {wordInfo.phonetics[0].audio && ( // 오디오 파일 있는 경우만
+              {wordInfo.phonetics[0]?.audio && ( // 오디오 파일 있는 경우만
                 <TouchableOpacity className='p-4' onPress={playAudio}>
                   <AntDesign name='playcircleo' size={24} color='#da0d0d' />
                 </TouchableOpacity>

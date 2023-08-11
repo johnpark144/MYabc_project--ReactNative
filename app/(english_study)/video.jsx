@@ -22,9 +22,9 @@ const video = () => {
   // 화면 크기와서 범위 제한, 위치 초기값 가져오기
   const screenWidth = Dimensions.get('window').width;
   const screenHeight = Dimensions.get('window').height;
-  const [prevPen, setPrevPen] = useState({ x: 30, y: screenHeight - 180 });
+  const [prevPen, setPrevPen] = useState({ x: 30, y: screenHeight - 190 });
   const pan = useRef(
-    new Animated.ValueXY({ x: 30, y: screenHeight - 180 })
+    new Animated.ValueXY({ x: 30, y: screenHeight - 190 })
   ).current;
 
   const panResponder = PanResponder.create({
@@ -82,8 +82,9 @@ const video = () => {
       </Animated.View>
       {/* 웹 부분 */}
       <WebView
-        source={{ uri: 'https://youglish.com' }}
+        source={{ uri: 'https://youglish.com/pronounce/hello/english?' }}
         javaScriptEnabled={true}
+        scrollEnabled={false}
       />
 
       {/* Create Word 모달 */}

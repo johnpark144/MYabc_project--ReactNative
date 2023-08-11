@@ -51,7 +51,7 @@ const Gram = () => {
     >
       <View className='gap-y-7'>
         {ExplanationContainer(
-          'GRAMMARLY',
+          'GRAMMAR',
           'Check your grammar',
           'by writing down some sentence!'
         )}

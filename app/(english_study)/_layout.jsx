@@ -118,10 +118,10 @@ export default () => {
         }}
       />
       <Tabs.Screen
-        name='grammarly'
+        name='grammar'
         options={{
-          headerTitle: 'Grammarly',
-          tabBarLabel: 'Grammarly',
+          headerTitle: 'Grammar',
+          tabBarLabel: 'Grammar',
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name='file-document-outline'
