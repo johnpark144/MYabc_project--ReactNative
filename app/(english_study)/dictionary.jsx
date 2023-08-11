@@ -109,25 +109,25 @@ const dictionary = () => {
                         meaning.partOfSpeech.slice(1)}
                     </FontText>
                   </View>
-                  {/* synonym */}
+                  {/* Synonym */}
                   <Text className='text-base leading-8'>
-                    - synonym :
+                    - Synonym :
                     {meaning.synonyms[0] &&
                       meaning.synonyms.map((synonym, idx) => (
-                        <Text key={idx}>{synonym},</Text>
+                        <Text key={idx}>{synonym},&nbsp;</Text>
                       ))}
                   </Text>
-                  {/* antonym */}
+                  {/* Antonym */}
                   <Text className='text-base leading-8'>
-                    - antonym :
+                    - Antonym :
                     {meaning.antonyms[0] &&
                       meaning.antonyms.map((antonym, idx) => (
-                        <Text key={idx}>{antonym},</Text>
+                        <Text key={idx}>{antonym},&nbsp;</Text>
                       ))}
                   </Text>
-                  {/* definition */}
+                  {/* Definition */}
                   <Text className='text-base leading-8'>
-                    - definition : {'\n'}
+                    - Definition : {'\n'}
                     {meaning.definitions[0] &&
                       meaning.definitions.map((definition, idx) => (
                         <Text key={idx}>
