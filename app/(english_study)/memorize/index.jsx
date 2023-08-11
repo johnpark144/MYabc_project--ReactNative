@@ -15,8 +15,16 @@ import GradientBtnForModal from '../../../components/GradientBtnForModal';
 
 const memorize = () => {
   const router = useRouter();
-  const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
-    useContext(AuthContext);
+  const {
+    user,
+    loginUser,
+    error,
+    checkAuthState,
+    logoutUser,
+    setDays,
+    days,
+    isAfterSetDays,
+  } = useContext(AuthContext);
   const [seeAddDayModal, setSeeAddDayModal] = useState(false);
   const [seeDeleteDayModal, setSeeDeleteDayModal] = useState(false);
   const [seeCreateWordModal, setSeeCreateWordModal] = useState(false);
@@ -34,7 +42,8 @@ const memorize = () => {
           headerShown: false,
         }}
       />
-      {days.length <= 0 ? (
+      {days.length <= 0 && !isAfterSetDays ? (
+        // 로딩중
         <View className='flex-row w-full h-full justify-center items-center'>
           <Progress.Bar size={60} indeterminate={true} color='#431386' />
         </View>

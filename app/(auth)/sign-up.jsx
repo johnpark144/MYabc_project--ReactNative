@@ -40,7 +40,7 @@ const signUp = () => {
           style={VariableFontWght}
           className='flex justify-center items-center h-full'
         >
-          <View className='flex items-center justify-center w-11/12 h-full rounded-lg bg-white px-12 gap-y-6 overflow-hidden'>
+          <View className='flex items-center justify-center w-11/12 h-full rounded-lg bg-[#FFFFFF77] px-12 gap-y-6 overflow-hidden'>
             {/* Lottie */}
             <AnimatedLottieView
               source={require('../../assets/lottie/signup_animation.json')}
@@ -51,13 +51,13 @@ const signUp = () => {
             {/* 이메일, 패스워드, 로그인버튼 */}
             <TextInput
               value={email}
-              className='border border-solid border-gray-300 rounded w-full'
+              className='border border-solid border-gray-400 rounded w-full'
               onChangeText={(text) => setEmail(text)}
               placeholder='Email'
             />
             <TextInput
               value={password}
-              className='border border-solid border-gray-300 rounded w-full'
+              className='border border-solid border-gray-400 rounded w-full'
               onChangeText={(text) => setPassword(text)}
               placeholder='Password'
               secureTextEntry={true} //  비밀번호 형태로

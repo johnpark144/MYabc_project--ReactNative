@@ -67,7 +67,7 @@ const logIn = () => {
           style={VariableFontWght}
           className='flex justify-center items-center h-full'
         >
-          <View className='flex justify-center items-center w-11/12 h-full rounded-lg bg-white p-12 gap-y-4 overflow-hidden'>
+          <View className='flex justify-center items-center w-11/12 h-full rounded-lg bg-[#FFFFFF77] p-12 gap-y-4 overflow-hidden'>
             {/* MYabc 로고, 이름 */}
             <View className='flex-row items-center mb-5'>
               <Image
@@ -84,13 +84,13 @@ const logIn = () => {
             {/* 이메일, 패스워드, 로그인버튼 */}
             <TextInput
               value={email}
-              className='border border-solid border-gray-300 rounded w-full'
+              className='border border-solid border-gray-400 rounded w-full'
               onChangeText={(text) => setEmail(text)}
               placeholder='Email'
             />
             <TextInput
               value={password}
-              className='border border-solid border-gray-300 rounded w-full'
+              className='border border-solid border-gray-400 rounded w-full'
               onChangeText={(text) => setPassword(text)}
               placeholder='Password'
               secureTextEntry={true} //  비밀번호 형태로

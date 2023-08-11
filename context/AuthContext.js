@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }) => {
   const [logInError, setLogInError] = useState('');
   const [user, setUser] = useState(null);
   const [days, setDays] = useState([]);
+  const [isAfterSetDays, setIsAfterSetDays] = useState(false);
 
   // 회원가입
   const signUpUser = async (e) => {
@@ -101,14 +102,14 @@ export const AuthProvider = ({ children }) => {
   // 로그아웃
   const logoutUser = async () => {
     authService?.signOut();
-    setUser(undefined);
+    setUser(null);
     router.replace('log-in');
+    setDays([]);
+    setIsAfterSetDays(false);
   };
 
   // 회원 인증 체크 (로그인한 사용자 정보)
   const checkAuthState = async () => {
-    // const userJson = await AsyncStorage.getItem('user');
-    // const userData = userJson ? JSON.parse(userJson) : null;
     onAuthStateChanged(authService, async (_user) => {
       if (_user) {
         setUser({
@@ -139,6 +140,8 @@ export const AuthProvider = ({ children }) => {
     signUpUser,
     setDays,
     days,
+    isAfterSetDays,
+    setIsAfterSetDays,
   };
 
   return (

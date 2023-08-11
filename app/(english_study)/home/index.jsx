@@ -14,8 +14,16 @@ import Gram from './../../../components/home/Gram';
 import useCallData from '../../../hooks/useCallData';
 
 const home = () => {
-  const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
-    useContext(AuthContext);
+  const {
+    user,
+    loginUser,
+    error,
+    checkAuthState,
+    logoutUser,
+    setDays,
+    days,
+    setIsAfterSetDays,
+  } = useContext(AuthContext);
 
   // 유저체크
   useEffect(() => {
@@ -28,6 +36,7 @@ const home = () => {
     if (dayArr) {
       setDays(dayArr.filter((day) => day.creatorId === user?.uid));
     }
+    setIsAfterSetDays(true);
   }, [dayArr, user?.uid]);
 
   return (
