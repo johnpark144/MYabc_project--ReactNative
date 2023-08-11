@@ -10,10 +10,10 @@ const StartPage = () => {
 
   return (
     <>
-      {true ? (
+      {user ? (
         // 로그인이 된경우
         <Text>
-          <Redirect href='/video' />;
+          <Redirect href='/home' />;
         </Text>
       ) : (
         // 로그인이 안된경우

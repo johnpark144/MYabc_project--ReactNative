@@ -12,7 +12,7 @@ import FontText from '../../components/CommonFontText';
 
 const dictionary = () => {
   const [word, setWord] = useState(null);
-  const [wordInfo, setWordInfo] = useState();
+  const [wordInfo, setWordInfo] = useState([]);
 
   // 단어 찾기
   const searchWord = () => {
@@ -22,15 +22,13 @@ const dictionary = () => {
           return res.json();
         })
         .then((data) => {
-          setWordInfo(data[0]);
+          setWordInfo(data);
         })
         .catch((err) => {
           Alert.alert('Error!', err, [{ text: 'OK' }], {
             cancelable: false,
           });
         });
-    } else {
-      setWordInfo(false);
     }
   };
 
@@ -39,7 +37,7 @@ const dictionary = () => {
     let playingAudio = new Audio.Sound();
     try {
       await playingAudio.loadAsync(
-        { uri: wordInfo.phonetics[0]?.audio },
+        { uri: wordInfo[0].phonetics[0]?.audio },
         { progressUpdateIntervalMillis: 100 }
       );
       await playingAudio.playAsync();
@@ -77,14 +75,14 @@ const dictionary = () => {
       </View>
 
       <View className='flex flex-col items-center'>
-        {wordInfo && (
+        {wordInfo[0] ? (
           <>
             {/* 발음기호, 오디오 파일 */}
             <View className='flex-row justify-center items-center w-2/3 bg-[#e5e7eb] rounded-3xl'>
               <Text className='text-xl p-4' style={publicSansSemiBold}>
-                {wordInfo.word} {wordInfo.phonetic}
+                {wordInfo[0].word} {wordInfo[0].phonetic}
               </Text>
-              {wordInfo.phonetics[0]?.audio && ( // 오디오 파일 있는 경우만
+              {wordInfo[0].phonetics[0]?.audio && ( // 오디오 파일 있는 경우만
                 <TouchableOpacity className='p-4' onPress={playAudio}>
                   <AntDesign name='playcircleo' size={24} color='#da0d0d' />
                 </TouchableOpacity>
@@ -95,7 +93,7 @@ const dictionary = () => {
               className='flex-col w-full gap-y-3 mt-1'
               contentContainerStyle={{ alignItems: 'center' }}
             >
-              {wordInfo.meanings.map((meaning, idx) => (
+              {wordInfo[0].meanings.map((meaning, idx) => (
                 <View
                   key={idx}
                   className='w-[95%] p-5 gap-y-3 bg-[#e5e7eb] rounded-xl'
@@ -140,6 +138,26 @@ const dictionary = () => {
               <View className='h-[200px]'></View>
             </ScrollView>
           </>
+        ) : (
+          wordInfo?.title && (
+            // 데이터가 없는경우
+            <View className='p-4 flex-col justify-center items-center w-3/4 bg-[#e5e7eb] rounded-3xl gap-y-3'>
+              <Text
+                className='text-xl bg-red-300 rounded-lg p-1'
+                style={publicSansSemiBold}
+              >
+                - {wordInfo.title} -
+              </Text>
+              <Text
+                className='text-lg bg-blue-300 rounded-lg p-1'
+                style={publicSansSemiBold}
+              >
+                {wordInfo.message}
+                {'\n'}
+                {wordInfo.resolution}
+              </Text>
+            </View>
+          )
         )}
       </View>
     </CommonBackground>
