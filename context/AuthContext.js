@@ -1,6 +1,7 @@
 import {
   FacebookAuthProvider,
   GoogleAuthProvider,
+  GithubAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithCredential,
@@ -13,12 +14,20 @@ import { useRouter } from 'expo-router';
 import * as Google from 'expo-auth-session/providers/google';
 import * as Facebook from 'expo-auth-session/providers/facebook';
 import * as WebBrowser from 'expo-web-browser';
+import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Linking } from 'react-native';
 
 const AuthContext = createContext();
 export default AuthContext;
 
 WebBrowser.maybeCompleteAuthSession(); // 웹 브라우저를 사용하여 인증을 완료하거나 세션을 종료
+
+const initialState = {
+  displayName: '',
+  uid: '',
+  email: '',
+};
 
 export const AuthProvider = ({ children }) => {
   const router = useRouter();
@@ -84,20 +93,68 @@ export const AuthProvider = ({ children }) => {
   }, [gg_res]);
 
   // 페이스북 로그인
-  const [fb_req, fb_res2, fb_promptAsync] = Facebook.useAuthRequest({
-    clientId: process.env.FACEBOOK_CLINET_ID,
-    clientSecret: process.env.FACEBOOK_CLINET_SECRET,
+  const [fb_req, fb_res, fb_promptAsync] = Facebook.useAuthRequest({
+    clientId: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
   });
 
   // 페이스북 로그인 성공시
   useEffect(() => {
-    if (fb_res2?.type === 'success') {
-      const { accessToken } = fb_res2.authentication;
+    if (fb_res?.type === 'success') {
+      const { accessToken } = fb_res.authentication;
       const credential = FacebookAuthProvider.credential(accessToken);
       signInWithCredential(authService, credential);
       router.replace('/home');
     }
-  }, [fb_res2]);
+  }, [fb_res]);
+
+  // 깃허브 로그인
+  const [gh_req, gh_res, gh_promptAsync] = useAuthRequest(
+    {
+      clientId: process.env.GITHUB_CLIENT_ID,
+      redirectUri: makeRedirectUri({}),
+    },
+    {
+      authorizationEndpoint: `https://github.com/login/oauth/authorize`,
+      tokenEndpoint: 'https://github.com/login/oauth/access_token',
+      revocationEndpoint: `https://github.com/settings/connections/applications/${process.env.GITHUB_CLIENT_ID}`,
+    }
+  );
+
+  // 깃허브 로그인 성공 할때 필요한 함수
+  const createTokenWithCode = async (code) => {
+    const url =
+      `https://github.com/login/oauth/access_token` +
+      `?client_id=${process.env.GITHUB_CLIENT_ID}` +
+      `&client_secret=${process.env.GITHUB_CLIENT_SECRET}` +
+      `&code=${code}`;
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return res.json();
+  };
+
+  // 깃허브 로그인 성공시
+  useEffect(() => {
+    (async () => {
+      if (gh_res?.type === 'success') {
+        const { code } = gh_res.params;
+        router.replace('/home');
+        const { token_type, scope, access_token } = await createTokenWithCode(
+          code
+        );
+        if (!access_token) return;
+        const credential = GithubAuthProvider.credential(access_token);
+        await signInWithCredential(authService, credential);
+      }
+    })();
+  }, [gh_res]);
 
   // 로그아웃
   const logoutUser = async () => {
@@ -136,6 +193,7 @@ export const AuthProvider = ({ children }) => {
     checkAuthState,
     gg_promptAsync,
     fb_promptAsync,
+    gh_promptAsync,
     logoutUser,
     signUpUser,
     setDays,

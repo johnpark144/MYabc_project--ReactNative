@@ -10,7 +10,7 @@ preventAutoHideAsync();
 
 const StartPage = () => {
   const { user } = useContext(AuthContext);
-  const [splahsComplete, setSplashComplete] = useState(false);
+  const [splahsComplete, setSplashComplete] = useState(true);
   NavigationBar.setBackgroundColorAsync('black'); // 밑에 네비바 색 변경
   return (
     <>

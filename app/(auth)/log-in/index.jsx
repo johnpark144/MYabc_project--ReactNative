@@ -29,6 +29,7 @@ const logIn = () => {
     logInError,
     gg_promptAsync,
     fb_promptAsync,
+    gh_promptAsync,
   } = useContext(AuthContext);
 
   // Oauth 버튼 만들기
@@ -36,7 +37,11 @@ const logIn = () => {
     return (
       <TouchableOpacity
         onPress={() =>
-          InitCapitalName === 'Google' ? gg_promptAsync() : fb_promptAsync()
+          InitCapitalName === 'Google'
+            ? gg_promptAsync()
+            : InitCapitalName === 'Github'
+            ? gh_promptAsync()
+            : fb_promptAsync()
         }
         style={{ backgroundColor: `#${color}` }}
         className='w-full p-3 flex-row justify-center items-center shadow-md
@@ -116,6 +121,7 @@ const logIn = () => {
             <View className='w-full'>
               <View className='gap-y-2'>
                 {MakeOAuthButton('google', 'Google', 'ebebeb')}
+                {MakeOAuthButton('github', 'Github', 'bdbdbd')}
                 {MakeOAuthButton('facebook-square', 'Facebook', '4a7edf')}
               </View>
             </View>
