@@ -46,10 +46,10 @@ const Dic = () => {
         <Text
           style={[
             publicSansVariable,
-            { fontSize: ms(20, 2), lineHeight: vs(35) },
+            { fontSize: ms(20, 1), lineHeight: ms(35, 1) },
           ]}
         >
-          <Text style={pTSansNarrowBold} className='text-4xl'>
+          <Text style={[pTSansNarrowBold, { fontSize: ms(30, 1) }]}>
             DICTIONARY{'\n'}
           </Text>
           <Text>Search any words!{'\n'}</Text>
@@ -58,7 +58,7 @@ const Dic = () => {
         </Text>
         {/* 프로젝터, 부엉이, 라이트, 빔 */}
         <View
-          style={{ top: ms(175, 5) }}
+          style={{ top: ms(220, 1) }}
           className='w-full flex-row justify-center absolute'
         >
           <Image
@@ -71,7 +71,7 @@ const Dic = () => {
           />
           <Image
             alt='Owl'
-            className='absolute top-48 left-4 w-[100px] h-[130px] z-10'
+            className='relative top-48 left-1 w-[100px] h-[130px] z-10'
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217297151-fa07635c-dd00-4607-99ff-2763aefdf6cc.png',
             }}
@@ -79,7 +79,7 @@ const Dic = () => {
           />
           <Image
             alt='FlashLight'
-            className='absolute top-60 left-48 w-[100px] h-[100px]'
+            className='relative top-[240px] left-[90px] w-[100px] h-[100px]'
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217298073-8b2f6cbc-1a40-48ea-b5ba-47ac3f8c36de.png',
             }}
@@ -87,7 +87,7 @@ const Dic = () => {
           />
           <Image
             alt='Beam Projector Machine'
-            className='absolute top-64 left-56 w-[100px] h-[100px] scale-x-[-1]'
+            className='relative top-[260px] left-[15px] w-[100px] h-[100px] scale-x-[-1]'
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217298683-1f063b29-c15b-486a-8870-3420209ff79f.png',
             }}

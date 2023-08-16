@@ -60,7 +60,7 @@ const memorize = () => {
             data={days}
             renderItem={(day) => (
               <TouchableOpacity
-                className='w-[22%] mx-1 my-3 rounded-lg bg-blue-500 py-3 shadow-lg shadow-black'
+                className='w-[23%] mx-1 my-3 rounded-lg bg-blue-500 py-3 shadow-lg shadow-black'
                 activeOpacity={0.5}
                 onPress={() => {
                   Vibration.vibrate(30);

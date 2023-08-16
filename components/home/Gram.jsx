@@ -8,7 +8,7 @@ import { s, vs, ms } from 'react-native-size-matters';
 
 const Gram = () => {
   // 반복되는 부분 (컨테이너)
-  const ExplanationContainer = (title, msg1, msg2, img) => (
+  const ExplanationContainer = (title, msg, img) => (
     <LinearGradient
       style={{ padding: vs(20) }}
       className='w-full rounded-3xl flex-row justify-center items-center shadow-xl shadow-black'
@@ -19,22 +19,21 @@ const Gram = () => {
       <Text
         style={[
           publicSansVariable,
-          { fontSize: ms(20, 2), lineHeight: ms(20, 9) },
+          { fontSize: ms(20, 1), lineHeight: ms(30, 1) },
         ]}
       >
         {title && (
-          <Text style={[pTSansNarrowBold, { fontSize: ms(20, 8) }]}>
+          <Text style={[pTSansNarrowBold, { fontSize: ms(25, 1) }]}>
             {title}
             {'\n'}
           </Text>
         )}
-        {msg1 && (
+        {msg && (
           <>
             <Text>
-              {msg1}
+              {msg}
               {'\n'}
             </Text>
-            <Text>{msg2}</Text>
           </>
         )}
       </Text>
@@ -63,16 +62,14 @@ const Gram = () => {
       <View style={{ rowGap: vs(15) }}>
         {ExplanationContainer(
           'GRAMMAR',
-          'Check your grammar',
-          'by writing down some sentence!'
+          'Check your grammar by writing down some sentence!'
         )}
         {ExplanationContainer(
           null,
-          'This will let you know',
-          'what is wrong and proper words'
+          'This will let you know what is wrong and proper words',
+          ''
         )}
         {ExplanationContainer(
-          null,
           null,
           null,
           'https://user-images.githubusercontent.com/106279616/217297935-5429f47a-cb82-4676-b6d0-99f9e7240a5f.jpg'

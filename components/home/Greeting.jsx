@@ -27,11 +27,11 @@ const Greeting = () => {
         </View>
         <View style={{ rowGap: ms(7, 10) }}>
           {/* 인사말 */}
-          <Text style={[pTSansNarrowBold, { fontSize: ms(20, 2) }]}>
+          <Text style={[pTSansNarrowBold, { fontSize: ms(20, 1) }]}>
             Hey {user?.displayName}! {'\n'}ARE YOU READY TO ENJOY ENGLISH?
           </Text>
           <Text
-            style={[sairaCondensedLight, { fontSize: ms(15, 2) }]}
+            style={[sairaCondensedLight, { fontSize: ms(15, 1) }]}
             className='tracking-[2px]'
           >
             <Text>

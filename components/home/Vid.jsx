@@ -25,7 +25,7 @@ const Vid = () => {
       style={{
         paddingHorizontal: s(25),
         paddingVertical: vs(10),
-        rowGap: ms(3, 80),
+        rowGap: ms(20, 3),
       }}
       source={{
         uri: 'https://user-images.githubusercontent.com/106279616/257908892-ebac26ef-b392-4a8b-81a3-59fd95b66b2e.jpg',
@@ -37,11 +37,15 @@ const Vid = () => {
         <Text
           style={[
             publicSansVariable,
-            { fontSize: ms(19, 2), lineHeight: vs(35) },
+            {
+              fontSize: ms(20, 1),
+              lineHeight: ms(30, 1),
+              padding: ms(25, 0.7),
+            },
           ]}
-          className=' bg-[#75c3db] rounded-3xl p-6 shadow-md shadow-black'
+          className=' bg-[#75c3db] rounded-3xl shadow-md shadow-black'
         >
-          <Text style={pTSansNarrowBold} className='text-4xl'>
+          <Text style={[pTSansNarrowBold, { fontSize: ms(30, 1) }]}>
             VIDEO {'\n'}
           </Text>
           <Text>Search any words to see {'\n'}</Text>

@@ -31,8 +31,8 @@ const Arrow = ({ leftExistance, rightExistance, extraTop = false }) => {
     >
       <Text
         style={{
-          fontSize: ms(120, 3),
-          letterSpacing: vs(-20, 3),
+          fontSize: ms(90, 1),
+          letterSpacing: vs(-5, 5),
         }}
         className=' text-[#ffffff66] ml-2'
       >
@@ -44,7 +44,7 @@ const Arrow = ({ leftExistance, rightExistance, extraTop = false }) => {
         )}
       </Text>
       <Text
-        style={{ fontSize: ms(120, 3), letterSpacing: vs(-20, 3) }}
+        style={{ fontSize: ms(90, 1), letterSpacing: vs(-5, 5) }}
         className=' text-[#ffffff66] mr-2'
       >
         {rightExistance && (

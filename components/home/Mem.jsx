@@ -21,10 +21,10 @@ const Mem = () => {
         <Text
           style={[
             publicSansVariable,
-            { fontSize: ms(20, 2), lineHeight: vs(35) },
+            { fontSize: ms(20, 1), lineHeight: ms(35, 1) },
           ]}
         >
-          <Text style={pTSansNarrowBold} className='text-4xl'>
+          <Text style={[pTSansNarrowBold, { fontSize: ms(30, 1) }]}>
             MEMORIZE {'\n'}
           </Text>
           <Text>You can create 'days'{'\n'}</Text>
@@ -33,7 +33,7 @@ const Mem = () => {
         </Text>
         {/* 비디오와 TV */}
         <View
-          style={{ top: ms(210, 4) }}
+          style={{ top: ms(290, 0.7) }}
           className='w-full flex-row justify-center absolute'
         >
           <Video
