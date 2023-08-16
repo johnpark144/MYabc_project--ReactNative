@@ -1,23 +1,29 @@
 import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { ImageBackground } from 'react-native';
-import FontText from '../CommonFontText';
-import { pTSansNarrowBold } from '../../commonStyles';
+import { pTSansNarrowBold, publicSansVariable } from '../../commonStyles';
 import { LinearGradient } from 'expo-linear-gradient';
 import Arrow from './Arrow';
+import { s, vs, ms } from 'react-native-size-matters';
 
 const Gram = () => {
   // 반복되는 부분 (컨테이너)
   const ExplanationContainer = (title, msg1, msg2, img) => (
     <LinearGradient
-      className='w-full p-6 rounded-3xl flex-row justify-center items-center shadow-xl shadow-black'
+      style={{ padding: vs(20) }}
+      className='w-full rounded-3xl flex-row justify-center items-center shadow-xl shadow-black'
       start={{ x: 0, y: 1 }}
       end={{ x: 1, y: 0 }}
       colors={['#3c774e', '#06491a']}
     >
-      <FontText className='text-3xl leading-9'>
+      <Text
+        style={[
+          publicSansVariable,
+          { fontSize: ms(20, 2), lineHeight: ms(20, 9) },
+        ]}
+      >
         {title && (
-          <Text style={pTSansNarrowBold} className='text-4xl'>
+          <Text style={[pTSansNarrowBold, { fontSize: ms(20, 8) }]}>
             {title}
             {'\n'}
           </Text>
@@ -31,7 +37,7 @@ const Gram = () => {
             <Text>{msg2}</Text>
           </>
         )}
-      </FontText>
+      </Text>
       {img && (
         <Image
           className='w-[270px] h-[185px]'
@@ -43,13 +49,18 @@ const Gram = () => {
   );
   return (
     <ImageBackground
-      className='w-screen h-screen px-6 py-4'
+      style={{
+        paddingHorizontal: s(25),
+        paddingVertical: vs(10),
+        rowGap: vs(10),
+      }}
+      className='w-screen h-screen'
       source={{
         uri: 'https://user-images.githubusercontent.com/106279616/257941041-ea555faf-cab8-481f-a312-172a1346ca77.png',
       }}
       resizeMode='cover'
     >
-      <View className='gap-y-7'>
+      <View style={{ rowGap: vs(15) }}>
         {ExplanationContainer(
           'GRAMMAR',
           'Check your grammar',

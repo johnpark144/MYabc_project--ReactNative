@@ -15,7 +15,7 @@ import {
 import { dbService } from '../../lib/fBase';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const DeleteDayModal = ({ user, days, setSeeDeleteDayModal }) => {
+const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
   const [delDayRef, setDelDayRef] = useState('');
   const [lastDay, setLastDay] = useState('');
 
@@ -24,7 +24,7 @@ const DeleteDayModal = ({ user, days, setSeeDeleteDayModal }) => {
       // 마지막 Day계산
       const q_LastDay = query(
         collection(dbService, 'days'),
-        where('creatorId', '==', user.uid)
+        where('creatorId', '==', user?.uid)
       );
       const docsSnap_LastDay = await getDocs(q_LastDay);
       const lastDay = docsSnap_LastDay.docs.length;
@@ -33,14 +33,14 @@ const DeleteDayModal = ({ user, days, setSeeDeleteDayModal }) => {
       // 마지막 Day정보
       const q = query(
         collection(dbService, 'days'),
-        where('creatorId', '==', user.uid),
+        where('creatorId', '==', user?.uid),
         where('day', '==', lastDay)
       );
       const docsSnap = await getDocs(q);
       const docsId = docsSnap.docs[0].id;
       setDelDayRef(doc(dbService, 'days', docsId));
     })();
-  }, [user.uid]);
+  }, [user?.uid]);
 
   // 마지막 Day 삭제
   const _delete = async (e) => {

@@ -69,7 +69,7 @@ const logIn = () => {
           style={VariableFontWght}
           className='flex justify-center items-center h-full'
         >
-          <View className='flex justify-center items-center w-11/12 h-full rounded-lg bg-[#FFFFFF77] p-12 gap-y-4 overflow-hidden'>
+          <View className='flex justify-center items-center w-11/12 h-full rounded-lg bg-[#FFFFFFcc] p-12 gap-y-4 overflow-hidden'>
             {/* MYabc 로고, 이름 */}
             <View className='flex-row items-center mb-5'>
               <Image

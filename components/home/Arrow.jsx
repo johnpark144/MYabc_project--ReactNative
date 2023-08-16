@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { vs, ms } from 'react-native-size-matters';
 
 const Arrow = ({ leftExistance, rightExistance, extraTop = false }) => {
   const [isShow1, setIsShow1] = useState(false);
@@ -28,7 +29,13 @@ const Arrow = ({ leftExistance, rightExistance, extraTop = false }) => {
         extraTop ? 'top-[30%]' : 'top-[35%]'
       } px-2 flex-row items-center justify-between`}
     >
-      <Text className='text-[140px] text-[#ffffff66] tracking-[-15px] ml-2'>
+      <Text
+        style={{
+          fontSize: ms(120, 3),
+          letterSpacing: vs(-20, 3),
+        }}
+        className=' text-[#ffffff66] ml-2'
+      >
         {leftExistance && (
           <>
             <Text>{isShow2 ? <>&#8249;</> : ' '}</Text>
@@ -36,7 +43,10 @@ const Arrow = ({ leftExistance, rightExistance, extraTop = false }) => {
           </>
         )}
       </Text>
-      <Text className='text-[140px] text-[#ffffff66] tracking-[-15px] mr-2'>
+      <Text
+        style={{ fontSize: ms(120, 3), letterSpacing: vs(-20, 3) }}
+        className=' text-[#ffffff66] mr-2'
+      >
         {rightExistance && (
           <>
             <Text>{isShow1 ? <>&#8250;</> : ' '}</Text>

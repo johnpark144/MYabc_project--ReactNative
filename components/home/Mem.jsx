@@ -1,15 +1,16 @@
 import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { ImageBackground } from 'react-native';
-import FontText from './../CommonFontText';
-import { pTSansNarrowBold } from '../../commonStyles';
+import { pTSansNarrowBold, publicSansVariable } from '../../commonStyles';
 import { ResizeMode, Video } from 'expo-av';
 import Arrow from './Arrow';
+import { vs, ms } from 'react-native-size-matters';
 
 const Mem = () => {
   return (
     <ImageBackground
-      className='w-screen h-screen p-8 gap-y-3'
+      style={{ padding: vs(30), rowGap: vs(10) }}
+      className='w-screen h-screen'
       source={{
         uri: 'https://user-images.githubusercontent.com/106279616/257906975-4ffe54d7-891f-4e4f-918e-a174688e6136.jpg',
       }}
@@ -17,16 +18,24 @@ const Mem = () => {
     >
       <View>
         {/* 설명 */}
-        <FontText className='text-3xl leading-10'>
+        <Text
+          style={[
+            publicSansVariable,
+            { fontSize: ms(20, 2), lineHeight: vs(35) },
+          ]}
+        >
           <Text style={pTSansNarrowBold} className='text-4xl'>
             MEMORIZE {'\n'}
           </Text>
           <Text>You can create 'days'{'\n'}</Text>
           <Text>And create 'words' to memorize.{'\n'}</Text>
           <Text>If you memorized, you can click 'Isdone' or delete it</Text>
-        </FontText>
+        </Text>
         {/* 비디오와 TV */}
-        <View className='w-full flex-row justify-center absolute top-80'>
+        <View
+          style={{ top: ms(210, 4) }}
+          className='w-full flex-row justify-center absolute'
+        >
           <Video
             className='absolute top-4 w-[300px] h-[160px]'
             resizeMode={ResizeMode.CONTAIN}

@@ -2,9 +2,6 @@ import { View, Text, TouchableOpacity, Vibration } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import CommonBackground from '../../../components/CommonBackground';
 import { Stack, useRouter } from 'expo-router';
-import FontText from './../../../components/CommonFontText';
-import { LinearGradient } from 'expo-linear-gradient';
-import useCallData from '../../../hooks/useCallData';
 import AuthContext from './../../../context/AuthContext';
 import { FlatList } from 'react-native';
 import AddDayModal from '../../../components/Memorize/AddDayModal';
@@ -15,16 +12,8 @@ import GradientBtnForModal from '../../../components/GradientBtnForModal';
 
 const memorize = () => {
   const router = useRouter();
-  const {
-    user,
-    loginUser,
-    error,
-    checkAuthState,
-    logoutUser,
-    setDays,
-    days,
-    isAfterSetDays,
-  } = useContext(AuthContext);
+  const { user, checkAuthState, days, isAfterSetDays } =
+    useContext(AuthContext);
   const [seeAddDayModal, setSeeAddDayModal] = useState(false);
   const [seeDeleteDayModal, setSeeDeleteDayModal] = useState(false);
   const [seeCreateWordModal, setSeeCreateWordModal] = useState(false);

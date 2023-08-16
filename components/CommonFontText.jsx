@@ -5,7 +5,7 @@ import { publicSansVariable } from '../commonStyles';
 const FontText = (props) => {
   return (
     <Text {...props} style={[publicSansVariable, ...props?.style]}>
-      {props.children}
+      {props?.children}
     </Text>
   );
 };

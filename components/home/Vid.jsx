@@ -1,11 +1,11 @@
 import { View, Text, Image } from 'react-native';
 import React, { useRef, useState } from 'react';
 import { ImageBackground } from 'react-native';
-import FontText from '../CommonFontText';
-import { pTSansNarrowBold } from '../../commonStyles';
+import { pTSansNarrowBold, publicSansVariable } from '../../commonStyles';
 import { ResizeMode, Video } from 'expo-av';
 import { Pressable } from 'react-native';
 import Arrow from './Arrow';
+import { s, vs, ms } from 'react-native-size-matters';
 
 const Vid = () => {
   const videoRef = useRef(null);
@@ -21,7 +21,12 @@ const Vid = () => {
 
   return (
     <ImageBackground
-      className='w-screen h-screen px-6 py-4 gap-y-8'
+      className='w-screen h-screen'
+      style={{
+        paddingHorizontal: s(25),
+        paddingVertical: vs(10),
+        rowGap: ms(3, 80),
+      }}
       source={{
         uri: 'https://user-images.githubusercontent.com/106279616/257908892-ebac26ef-b392-4a8b-81a3-59fd95b66b2e.jpg',
       }}
@@ -29,7 +34,13 @@ const Vid = () => {
     >
       <View>
         {/* 설명 */}
-        <FontText className='text-2xl leading-9 bg-[#75c3db] rounded-3xl p-6 shadow-md shadow-black'>
+        <Text
+          style={[
+            publicSansVariable,
+            { fontSize: ms(19, 2), lineHeight: vs(35) },
+          ]}
+          className=' bg-[#75c3db] rounded-3xl p-6 shadow-md shadow-black'
+        >
           <Text style={pTSansNarrowBold} className='text-4xl'>
             VIDEO {'\n'}
           </Text>
@@ -37,7 +48,7 @@ const Vid = () => {
           <Text>how often they were used in Youtube, {'\n'}</Text>
           <Text>and in what context they were used, {'\n'}</Text>
           <Text>and create some words you will memorize</Text>
-        </FontText>
+        </Text>
       </View>
       <View className='w-full flex-row justify-center'>
         {/* 비디오 프레임 */}

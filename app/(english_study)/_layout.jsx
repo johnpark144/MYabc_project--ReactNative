@@ -9,8 +9,7 @@ import { Vibration } from 'react-native';
 
 export default () => {
   const router = useRouter();
-  let { user, loginUser, error, checkAuthState, logoutUser } =
-    useContext(AuthContext);
+  let { user, logoutUser } = useContext(AuthContext);
   return (
     <Tabs
       screenOptions={({ route }) => ({

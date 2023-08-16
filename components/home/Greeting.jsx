@@ -5,7 +5,7 @@ import { pTSansNarrowBold, sairaCondensedLight } from '../../commonStyles';
 import { Linking } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Arrow from './Arrow';
-import { s, vs, ms, mvs } from 'react-native-size-matters';
+import { vs, ms } from 'react-native-size-matters';
 
 const Greeting = () => {
   let { user } = useContext(AuthContext);

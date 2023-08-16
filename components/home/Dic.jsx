@@ -5,11 +5,11 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
-import FontText from '../CommonFontText';
-import { pTSansNarrowBold } from '../../commonStyles';
+import React, { useRef, useState } from 'react';
+import { pTSansNarrowBold, publicSansVariable } from '../../commonStyles';
 import { Ionicons } from '@expo/vector-icons';
 import Arrow from './Arrow';
+import { vs, ms } from 'react-native-size-matters';
 
 const Dic = () => {
   const images = useRef([
@@ -34,7 +34,8 @@ const Dic = () => {
 
   return (
     <ImageBackground
-      className='w-screen h-screen p-8 gap-y-3'
+      style={{ padding: vs(30), rowGap: vs(10) }}
+      className='w-screen h-screen'
       source={{
         uri: 'https://user-images.githubusercontent.com/106279616/217299126-32003695-2bbe-4099-bcf7-8795ccc0331f.jpg',
       }}
@@ -42,16 +43,24 @@ const Dic = () => {
     >
       <View>
         {/* 설명 */}
-        <FontText className='text-3xl leading-10'>
+        <Text
+          style={[
+            publicSansVariable,
+            { fontSize: ms(20, 2), lineHeight: vs(35) },
+          ]}
+        >
           <Text style={pTSansNarrowBold} className='text-4xl'>
             DICTIONARY{'\n'}
           </Text>
           <Text>Search any words!{'\n'}</Text>
           <Text>You can see its IPA, listen to the pronunciation,{'\n'}</Text>
           <Text>and check all the meaning of the words.</Text>
-        </FontText>
+        </Text>
         {/* 프로젝터, 부엉이, 라이트, 빔 */}
-        <View className='w-full flex-row justify-center absolute top-64'>
+        <View
+          style={{ top: ms(175, 5) }}
+          className='w-full flex-row justify-center absolute'
+        >
           <Image
             alt='Projector Screen'
             className='absolute w-[300px] h-[260px]'

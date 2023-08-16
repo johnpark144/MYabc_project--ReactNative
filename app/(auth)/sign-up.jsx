@@ -40,7 +40,7 @@ const signUp = () => {
           style={VariableFontWght}
           className='flex justify-center items-center h-full'
         >
-          <View className='flex items-center justify-center w-11/12 h-full rounded-lg bg-[#FFFFFF77] px-12 gap-y-6 overflow-hidden'>
+          <View className='flex items-center justify-center w-11/12 h-full rounded-lg bg-[#FFFFFFcc] px-12 gap-y-6 overflow-hidden'>
             {/* Lottie */}
             <AnimatedLottieView
               source={require('../../assets/lottie/signup_animation.json')}
