@@ -5,9 +5,8 @@ import {
   TouchableOpacity,
   Image,
   Keyboard,
-  KeyboardAvoidingView,
 } from 'react-native';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Stack, Redirect } from 'expo-router';
 import CommonBackground from '../../../components/CommonBackground';
 import { VariableFontWght, pTSansNarrowBold } from '../../../commonStyles';
@@ -15,17 +14,15 @@ import FontText from './../../../components/CommonFontText';
 import AuthContext from '../../../context/AuthContext';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import LottieView from 'lottie-react-native';
 
 const logIn = () => {
-  let {
+  const {
     user,
     loginUser,
     email,
     setEmail,
     password,
     setPassword,
-    setLogInError,
     logInError,
     gg_promptAsync,
     fb_promptAsync,

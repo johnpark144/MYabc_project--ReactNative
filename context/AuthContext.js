@@ -16,18 +16,11 @@ import * as Facebook from 'expo-auth-session/providers/facebook';
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Linking } from 'react-native';
 
 const AuthContext = createContext();
 export default AuthContext;
 
 WebBrowser.maybeCompleteAuthSession(); // 웹 브라우저를 사용하여 인증을 완료하거나 세션을 종료
-
-const initialState = {
-  displayName: '',
-  uid: '',
-  email: '',
-};
 
 export const AuthProvider = ({ children }) => {
   const router = useRouter();

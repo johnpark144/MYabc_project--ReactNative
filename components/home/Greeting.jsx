@@ -5,14 +5,17 @@ import { pTSansNarrowBold, sairaCondensedLight } from '../../commonStyles';
 import { Linking } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Arrow from './Arrow';
+import { s, vs, ms, mvs } from 'react-native-size-matters';
 
 const Greeting = () => {
-  let { user, loginUser, error, checkAuthState, logoutUser } =
-    useContext(AuthContext);
+  let { user } = useContext(AuthContext);
 
   return (
     <>
-      <View className='w-screen h-screen p-8 gap-y-3'>
+      <View
+        className='w-screen h-screen'
+        style={{ padding: vs(30), rowGap: vs(10) }}
+      >
         {/* MYabc 로고 */}
         <View className='flex justify-center items-center'>
           <Image
@@ -22,12 +25,15 @@ const Greeting = () => {
             className='w-[160px] h-[163px]'
           />
         </View>
-        <View className='gap-y-5'>
+        <View style={{ rowGap: ms(7, 10) }}>
           {/* 인사말 */}
-          <Text style={pTSansNarrowBold} className='text-2xl'>
+          <Text style={[pTSansNarrowBold, { fontSize: ms(20, 2) }]}>
             Hey {user?.displayName}! {'\n'}ARE YOU READY TO ENJOY ENGLISH?
           </Text>
-          <Text style={sairaCondensedLight} className='text-xl tracking-[2px]'>
+          <Text
+            style={[sairaCondensedLight, { fontSize: ms(15, 2) }]}
+            className='tracking-[2px]'
+          >
             <Text>
               This is MYabc app for you who need to learn English{'\n'}
             </Text>

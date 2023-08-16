@@ -1,11 +1,9 @@
-import { View, Text, Image } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import { View } from 'react-native';
+import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../../context/AuthContext';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import FontText from '../../../components/CommonFontText';
+import { ScrollView } from 'react-native-gesture-handler';
 import { Stack } from 'expo-router';
 import CommonBackground from './../../../components/CommonBackground';
-import { pTSansNarrowBold, sairaCondensedLight } from '../../../commonStyles';
 import Greeting from '../../../components/home/Greeting';
 import Mem from '../../../components/home/Mem';
 import Dic from './../../../components/home/Dic';
@@ -14,16 +12,8 @@ import Gram from './../../../components/home/Gram';
 import useCallData from '../../../hooks/useCallData';
 
 const home = () => {
-  const {
-    user,
-    loginUser,
-    error,
-    checkAuthState,
-    logoutUser,
-    setDays,
-    days,
-    setIsAfterSetDays,
-  } = useContext(AuthContext);
+  const { user, checkAuthState, setDays, setIsAfterSetDays } =
+    useContext(AuthContext);
 
   // 유저체크
   useEffect(() => {
