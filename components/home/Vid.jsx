@@ -25,7 +25,7 @@ const Vid = () => {
       style={{
         paddingHorizontal: s(25),
         paddingVertical: vs(10),
-        rowGap: ms(20, 3),
+        rowGap: ms(12),
       }}
       source={{
         uri: 'https://user-images.githubusercontent.com/106279616/257908892-ebac26ef-b392-4a8b-81a3-59fd95b66b2e.jpg',
@@ -38,8 +38,8 @@ const Vid = () => {
           style={[
             publicSansVariable,
             {
-              fontSize: ms(20, 1),
-              lineHeight: ms(30, 1),
+              fontSize: ms(20, 0.9),
+              lineHeight: ms(30, 0.9),
               padding: ms(25, 0.7),
             },
           ]}
@@ -57,7 +57,11 @@ const Vid = () => {
       <View className='w-full flex-row justify-center'>
         {/* 비디오 프레임 */}
         <Image
-          className='absolute w-[300px] h-[200px]'
+          style={{
+            width: ms(350, 0.3),
+            height: ms(280, 0.3),
+          }}
+          className='absolute'
           source={{
             uri: 'https://user-images.githubusercontent.com/106279616/258457106-0859463d-90f0-4d72-a53e-5ee23635016c.jpg',
           }}
@@ -69,8 +73,11 @@ const Vid = () => {
           onPress={handleImageClick}
         >
           <Video
+            style={{
+              width: ms(350, 0.3),
+              height: ms(227, 0.3),
+            }}
             ref={videoRef}
-            className='w-[300px] h-[162px]'
             resizeMode={ResizeMode.STRETCH}
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217296607-79dcf640-b492-4cbb-805c-7515ceba2de0.mp4',
@@ -80,10 +87,14 @@ const Vid = () => {
             blurRadius={0}
           />
         </Pressable>
-        {/* 재생버튼 */}
+        {/* Blur효과 및 재생버튼 */}
         {isPaused && (
           <Pressable // 버튼 효과 내 줄 수있는 또 다른 옵션
-            className='w-[300px] h-[162px] flex-row justify-center items-center bg-[#000000aa]' // blur 효과
+            style={{
+              width: ms(350, 0.3),
+              height: ms(227, 0.3),
+            }}
+            className='flex-row justify-center items-center bg-[#000000aa]' // blur 효과
             onPress={handleImageClick}
           >
             <Image

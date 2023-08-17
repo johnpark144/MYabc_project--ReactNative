@@ -58,12 +58,13 @@ const Dic = () => {
         </Text>
         {/* 프로젝터, 부엉이, 라이트, 빔 */}
         <View
-          style={{ top: ms(220, 1) }}
+          style={{ top: ms(230, 0.6) }}
           className='w-full flex-row justify-center absolute'
         >
           <Image
             alt='Projector Screen'
-            className='absolute w-[300px] h-[260px]'
+            style={{ width: ms(350, 0.6), height: ms(250, 0.6) }}
+            className='absolute'
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217297409-91e2b44e-61c3-459c-81ee-58e8a19f08a4.png',
             }}
@@ -71,7 +72,13 @@ const Dic = () => {
           />
           <Image
             alt='Owl'
-            className='relative top-48 left-1 w-[100px] h-[130px] z-10'
+            style={{
+              top: ms(190, 0.6),
+              left: ms(-10, 3),
+              width: ms(100, 0.6),
+              height: ms(100, 0.6),
+            }}
+            className='relative z-10'
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217297151-fa07635c-dd00-4607-99ff-2763aefdf6cc.png',
             }}
@@ -79,7 +86,13 @@ const Dic = () => {
           />
           <Image
             alt='FlashLight'
-            className='relative top-[240px] left-[90px] w-[100px] h-[100px]'
+            style={{
+              top: ms(210, 0.6),
+              left: ms(100, 0.6),
+              width: ms(100, 0.6),
+              height: ms(100, 0.6),
+            }}
+            className='relative'
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217298073-8b2f6cbc-1a40-48ea-b5ba-47ac3f8c36de.png',
             }}
@@ -87,6 +100,12 @@ const Dic = () => {
           />
           <Image
             alt='Beam Projector Machine'
+            style={{
+              top: ms(230, 0.6),
+              left: ms(20, 0.6),
+              width: ms(100, 0.6),
+              height: ms(100, 0.6),
+            }}
             className='relative top-[260px] left-[15px] w-[100px] h-[100px] scale-x-[-1]'
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217298683-1f063b29-c15b-486a-8870-3420209ff79f.png',
@@ -94,19 +113,25 @@ const Dic = () => {
             resizeMode='contain'
           />
           {/* 버튼, 이미지 */}
-          <View className='flex-row absolute top-12'>
+          <View className='flex-row absolute' style={{ top: ms(47, 0.6) }}>
             {/* 왼쪽 버튼 */}
             <TouchableOpacity
               onPress={() => {
                 moveSlide(-1);
               }}
               className='relative top-20'
+              style={{ top: ms(70) }}
             >
-              <Ionicons name='ios-arrow-back-circle' size={44} color='gray' />
+              <Ionicons
+                name='ios-arrow-back-circle'
+                size={ms(50, 0.7)}
+                color='gray'
+              />
             </TouchableOpacity>
             {/* 이미지 */}
             <Image
-              className='bg-slate-200 w-[290px] h-[190px] z-0'
+              style={{ width: ms(286, 0.61), height: ms(180, 0.61) }}
+              className='z-0'
               source={{
                 uri: images.current[current].src,
               }}
@@ -118,10 +143,11 @@ const Dic = () => {
                 moveSlide(1);
               }}
               className='relative top-20'
+              style={{ top: ms(70) }}
             >
               <Ionicons
                 name='ios-arrow-forward-circle'
-                size={44}
+                size={ms(50, 0.7)}
                 color='gray'
               />
             </TouchableOpacity>

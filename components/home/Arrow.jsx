@@ -2,7 +2,7 @@ import { View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { vs, ms } from 'react-native-size-matters';
 
-const Arrow = ({ leftExistance, rightExistance, extraTop = false }) => {
+const Arrow = ({ leftExistance, rightExistance }) => {
   const [isShow1, setIsShow1] = useState(false);
   const [isShow2, setIsShow2] = useState(false);
 
@@ -25,9 +25,7 @@ const Arrow = ({ leftExistance, rightExistance, extraTop = false }) => {
 
   return (
     <View
-      className={`absolute w-screen ${
-        extraTop ? 'top-[30%]' : 'top-[35%]'
-      } px-2 flex-row items-center justify-between`}
+      className={`absolute w-screen top-[30%] px-2 flex-row items-center justify-between`}
     >
       <Text
         style={{

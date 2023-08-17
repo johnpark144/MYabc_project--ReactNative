@@ -39,7 +39,7 @@ const Gram = () => {
       </Text>
       {img && (
         <Image
-          className='w-[270px] h-[185px]'
+          style={{ width: ms(280, 0.4), height: ms(170, 0.4) }}
           source={{ uri: img }}
           resizeMode='contain'
         />
@@ -76,7 +76,7 @@ const Gram = () => {
         )}
       </View>
       {/* 좌우 넘김 화살표 */}
-      <Arrow leftExistance={true} rightExistance={false} extraTop={true} />
+      <Arrow leftExistance={true} rightExistance={false} />
     </ImageBackground>
   );
 };

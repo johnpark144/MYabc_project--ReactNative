@@ -33,11 +33,16 @@ const Mem = () => {
         </Text>
         {/* 비디오와 TV */}
         <View
-          style={{ top: ms(290, 0.7) }}
+          style={{ top: ms(260, 0.6) }}
           className='w-full flex-row justify-center absolute'
         >
           <Video
-            className='absolute top-4 w-[300px] h-[160px]'
+            style={{
+              top: ms(-34, 0.4),
+              width: ms(300, 0.4),
+              height: ms(300, 0.4),
+            }}
+            className='absolute'
             resizeMode={ResizeMode.CONTAIN}
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217297804-d2f45a50-2820-469d-87ae-b52df07ebbaf.mp4',
@@ -46,7 +51,8 @@ const Mem = () => {
             shouldPlay={true}
           />
           <Image
-            className='absolute w-[300px] h-[260px]'
+            style={{ width: ms(300, 0.4), height: ms(300, 0.4) }}
+            className='absolute'
             source={{
               uri: 'https://user-images.githubusercontent.com/106279616/217298597-68295156-5beb-484a-912d-5c90432f32c9.png',
             }}
