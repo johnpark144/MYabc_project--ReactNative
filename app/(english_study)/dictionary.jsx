@@ -6,12 +6,12 @@ import { TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Audio } from 'expo-av';
 import { AntDesign } from '@expo/vector-icons';
-import { publicSansSemiBold } from '../../commonStyles';
+import { publicSansSemiBold, publicSansVariable } from '../../commonStyles';
 import { MaterialIcons } from '@expo/vector-icons';
-import FontText from '../../components/CommonFontText';
+import { ms } from 'react-native-size-matters';
 
 const dictionary = () => {
-  const [word, setWord] = useState(null);
+  const [word, setWord] = useState('');
   const [wordInfo, setWordInfo] = useState([]);
 
   // 단어 찾기
@@ -52,7 +52,8 @@ const dictionary = () => {
       <View className='py-10 px-6 flex-row gap-x-3'>
         <View className='flex-1'>
           <TextInput
-            className='h-8 pl-2 w-full bg-slate-50 shadow-md shadow-black'
+            style={{ height: ms(30, 0.2), fontSize: ms(13, 0.2) }}
+            className='pl-2 w-full bg-slate-50 shadow-sm shadow-black'
             value={word}
             onChangeText={(text) => setWord(text)}
             onSubmitEditing={searchWord} // 엔터칠 때 작동
@@ -60,7 +61,8 @@ const dictionary = () => {
           />
         </View>
         <LinearGradient
-          className='w-20 h-8 rounded-3xl shadow-xl shadow-black'
+          style={{ height: ms(30, 0.2) }}
+          className='w-20 rounded-3xl shadow-sm shadow-black'
           start={{ x: 0, y: 1 }}
           end={{ x: 1, y: 0 }}
           colors={['#52e4e0', '#4ce2b6']}
@@ -69,7 +71,7 @@ const dictionary = () => {
             onPress={searchWord}
             className='h-full flex-row justify-center items-center'
           >
-            <Entypo name='magnifying-glass' size={20} color='black' />
+            <Entypo name='magnifying-glass' size={ms(17, 0.2)} color='black' />
           </TouchableOpacity>
         </LinearGradient>
       </View>
@@ -79,12 +81,19 @@ const dictionary = () => {
           <>
             {/* 발음기호, 오디오 파일 */}
             <View className='flex-row justify-center items-center w-2/3 bg-[#e5e7eb] rounded-3xl'>
-              <Text className='text-xl p-4' style={publicSansSemiBold}>
+              <Text
+                className='p-4'
+                style={[publicSansSemiBold, { fontSize: ms(25, 0.5) }]}
+              >
                 {wordInfo[0].word} {wordInfo[0].phonetic}
               </Text>
               {wordInfo[0].phonetics[0]?.audio && ( // 오디오 파일 있는 경우만
                 <TouchableOpacity className='p-4' onPress={playAudio}>
-                  <AntDesign name='playcircleo' size={24} color='#da0d0d' />
+                  <AntDesign
+                    name='playcircleo'
+                    size={ms(30, 0.7)}
+                    color='#da0d0d'
+                  />
                 </TouchableOpacity>
               )}
             </View>
@@ -100,15 +109,24 @@ const dictionary = () => {
                 >
                   {/* 아이콘, 품사 */}
                   <View className='flex-row items-center'>
-                    <MaterialIcons name='menu-book' size={24} color='black' />
-                    <FontText className='text-2xl'>
+                    <MaterialIcons
+                      name='menu-book'
+                      size={ms(30, 0.7)}
+                      color='black'
+                    />
+                    <Text
+                      style={[publicSansVariable, { fontSize: ms(22, 0.3) }]}
+                    >
                       &nbsp;
                       {meaning.partOfSpeech.charAt(0).toUpperCase() +
                         meaning.partOfSpeech.slice(1)}
-                    </FontText>
+                    </Text>
                   </View>
                   {/* Synonym */}
-                  <Text className='text-base leading-8'>
+                  <Text
+                    style={{ fontSize: ms(18, 0.3), lineHeight: ms(27, 0.5) }}
+                    className='leading-8'
+                  >
                     - Synonym :
                     {meaning.synonyms[0] &&
                       meaning.synonyms.map((synonym, idx) => (
@@ -116,7 +134,10 @@ const dictionary = () => {
                       ))}
                   </Text>
                   {/* Antonym */}
-                  <Text className='text-base leading-8'>
+                  <Text
+                    style={{ fontSize: ms(18, 0.3), lineHeight: ms(27, 0.5) }}
+                    className='leading-8'
+                  >
                     - Antonym :
                     {meaning.antonyms[0] &&
                       meaning.antonyms.map((antonym, idx) => (
@@ -124,7 +145,10 @@ const dictionary = () => {
                       ))}
                   </Text>
                   {/* Definition */}
-                  <Text className='text-base leading-8'>
+                  <Text
+                    style={{ fontSize: ms(18, 0.3), lineHeight: ms(27, 0.5) }}
+                    className='leading-8'
+                  >
                     - Definition : {'\n'}
                     {meaning.definitions[0] &&
                       meaning.definitions.map((definition, idx) => (

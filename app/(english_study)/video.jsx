@@ -12,6 +12,7 @@ import WebView from 'react-native-webview';
 import GradientBtnForModal from './../../components/GradientBtnForModal';
 import CreateWordModal from '../../components/CreateWordModal';
 import AuthContext from '../../context/AuthContext';
+import { ms } from 'react-native-size-matters';
 
 const video = () => {
   const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
@@ -22,9 +23,9 @@ const video = () => {
   // 화면 크기와서 범위 제한, 위치 초기값 가져오기
   const screenWidth = Dimensions.get('window').width;
   const screenHeight = Dimensions.get('window').height;
-  const [prevPen, setPrevPen] = useState({ x: 30, y: screenHeight - 190 });
+  const [prevPen, setPrevPen] = useState({ x: 30, y: screenHeight - 220 });
   const pan = useRef(
-    new Animated.ValueXY({ x: 30, y: screenHeight - 190 })
+    new Animated.ValueXY({ x: 30, y: screenHeight - 220 })
   ).current;
 
   const panResponder = PanResponder.create({
@@ -68,12 +69,12 @@ const video = () => {
     <CommonBackground>
       {/* See Create 버튼 */}
       <Animated.View
-        className='absolute w-32 h-12 z-10'
-        style={[pan.getLayout()]}
+        className='absolute z-10'
+        style={[pan.getLayout(), { width: ms(120, 0.2), height: ms(60, 0.2) }]}
         {...panResponder.panHandlers}
       >
         {!hideText && (
-          <Text className='text-gray-400 text-center'>Move this button</Text>
+          <Text className=' text-gray-400 text-center'>Move this button</Text>
         )}
         <GradientBtnForModal
           btnName='See Create'

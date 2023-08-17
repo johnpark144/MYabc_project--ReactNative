@@ -14,6 +14,7 @@ import {
 } from 'firebase/firestore';
 import { dbService } from '../../lib/fBase';
 import { MaterialIcons } from '@expo/vector-icons';
+import { ms } from 'react-native-size-matters';
 
 const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
   const [delDayRef, setDelDayRef] = useState('');
@@ -51,29 +52,45 @@ const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
 
   return (
     <View className='absolute top-1/5 w-full h-full flex-row justify-center'>
-      <View className='w-4/5 h-2/5 p-5 shadow-lg shadow-black rounded-2xl bg-white m-auto'>
+      <View
+        style={{ padding: ms(30, 0.7) }}
+        className='w-4/5 h-2/5 shadow-md shadow-black rounded-2xl bg-white m-auto'
+      >
         {/* 아이콘, 문구 */}
         <View className='flex-1 flex-col justify-center items-center '>
-          <MaterialIcons name='event-busy' size={50} color='#373add' />
-          <Text className='text-xl' style={publicSansSemiBold}>
+          <MaterialIcons name='event-busy' size={ms(50, 0.7)} color='#373add' />
+          <Text style={[publicSansSemiBold, { fontSize: ms(20, 0.7) }]}>
             Delete a day
           </Text>
-          <FontText className='text-lg text-center'>
+          <FontText style={{ fontSize: ms(15, 0.7) }} className='text-center'>
             Are you sure you want to delete "Day {lastDay}"?
           </FontText>
         </View>
         {/* Delete, Cancel 버튼 */}
-        <View className='flex-row justify-around items-center w-full h-16 '>
-          <TouchableOpacity className='py-3 w-24 bg-indigo-500 rounded-lg shadow-md shadow-black'>
-            <Text onPress={_delete} className='text-center text-white'>
+        <View
+          style={{ height: ms(40, 0.3) }}
+          className='flex-row justify-around items-center w-full'
+        >
+          <TouchableOpacity
+            style={{ width: ms(100, 1) }}
+            className='py-3 h-full bg-indigo-500 flex-row items-center justify-center rounded-lg shadow-sm shadow-black'
+          >
+            <Text
+              style={{ fontSize: ms(12, 0.7) }}
+              onPress={_delete}
+              className='text-white'
+            >
               Delete
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
+            style={{ width: ms(100, 1) }}
             onPress={() => setSeeDeleteDayModal(false)}
-            className='py-3 w-24 bg-white rounded-lg shadow-md shadow-black'
+            className='py-3 h-full bg-white flex-row items-center justify-center rounded-lg shadow-sm shadow-black'
           >
-            <Text className='text-center text-indigo-500'>Cancel</Text>
+            <Text style={{ fontSize: ms(12, 0.7) }} className='text-indigo-500'>
+              Cancel
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -52,7 +52,7 @@ export default () => {
               {user?.displayName}
             </FontText>
             <TouchableOpacity onPress={logoutUser}>
-              <FontText className='w-16 h-8 py-2 bg-gray-400 text-center rounded-lg shadow-md shadow-black'>
+              <FontText className='w-16 h-8 py-2 bg-gray-400 text-center rounded-lg shadow-sm shadow-black'>
                 Log Out
               </FontText>
             </TouchableOpacity>

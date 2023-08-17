@@ -8,6 +8,7 @@ import { Picker } from '@react-native-picker/picker';
 import useCallData from './../hooks/useCallData';
 import { useRouter } from 'expo-router';
 import LoadingSavingButton from './LoadingSavingButton';
+import { ms } from 'react-native-size-matters';
 
 const CreateWordModal = ({
   user,
@@ -71,7 +72,10 @@ const CreateWordModal = ({
 
   return (
     <View className='absolute top-1/5 w-full h-full flex-row justify-center z-20'>
-      <View className='w-4/5 px-6 py-10 flex-col items-center shadow-lg shadow-black rounded-2xl bg-white m-auto'>
+      <View
+        style={{ padding: ms(30, 0.7) }}
+        className='w-4/5 flex-col items-center shadow-md shadow-black rounded-2xl bg-white m-auto'
+      >
         <View className='flex-row items-center'>
           {/* Day와 옵션선택 */}
           <FontText className='text-lg'>Day :</FontText>
@@ -97,6 +101,7 @@ const CreateWordModal = ({
         <View className='w-full gap-y-2'>
           <FontText className='text-lg'>Korean :</FontText>
           <TextInput
+            style={{ height: ms(30, 0.2), fontSize: ms(13, 0.2) }}
             className='border border-slate-200 rounded-md h-9 focus:border-purple-600 px-2'
             value={korean}
             onChangeText={(text) => setKorean(text)}
@@ -104,6 +109,7 @@ const CreateWordModal = ({
           />
           <FontText className='text-lg'>English :</FontText>
           <TextInput
+            style={{ height: ms(30, 0.2), fontSize: ms(13, 0.2) }}
             className='border border-slate-200 rounded-md h-9 focus:border-purple-600 px-2'
             value={english}
             onChangeText={(text) => setEnglish(text)}
@@ -111,22 +117,31 @@ const CreateWordModal = ({
           />
         </View>
         {/* Create, Cancel 버튼 */}
-        <View className='flex-row items-center justify-center w-full h-16'>
+        <View
+          style={{ height: ms(40, 0.3), marginTop: ms(30, 0.5) }}
+          className='flex-row items-center justify-centew-full'
+        >
           {isLoading ? (
             <LoadingSavingButton />
           ) : (
             <TouchableOpacity
+              style={{ width: ms(130, 1) }}
               onPress={onSubmit}
-              className='w-36 py-3 bg-indigo-500 rounded-lg shadow-md shadow-black'
+              className='w-36 py-3 h-full flex-row justify-center items-center bg-indigo-500 rounded-lg shadow-sm shadow-black'
             >
-              <Text className='text-center text-white'>Create</Text>
+              <Text style={{ fontSize: ms(12, 0.7) }} className='text-white'>
+                Create
+              </Text>
             </TouchableOpacity>
           )}
           <TouchableOpacity
+            style={{ width: ms(80, 1) }}
             onPress={() => setSeeCreateWordModal(false)}
-            className='w-20 py-3 ml-4 bg-white rounded-lg shadow-md shadow-black'
+            className='w-20 py-3 h-full flex-row justify-center items-center ml-4 bg-white rounded-lg shadow-sm shadow-black'
           >
-            <Text className='text-center text-indigo-500'>Cancel</Text>
+            <Text style={{ fontSize: ms(12, 0.7) }} className='text-indigo-500'>
+              Cancel
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

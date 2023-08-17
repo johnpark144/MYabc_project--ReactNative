@@ -25,7 +25,7 @@ const Greeting = () => {
             className='w-[160px] h-[163px]'
           />
         </View>
-        <View style={{ rowGap: ms(7, 10) }}>
+        <View style={{ rowGap: ms(30, 2) }}>
           {/* 인사말 */}
           <Text style={[pTSansNarrowBold, { fontSize: ms(20, 1) }]}>
             Hey {user?.displayName}! {'\n'}ARE YOU READY TO ENJOY ENGLISH?
@@ -47,7 +47,8 @@ const Greeting = () => {
           {/* 웹버전 버튼 */}
           <View className='flex-row justify-center w-full'>
             <LinearGradient
-              className='w-2/3 h-10 rounded-3xl flex-row justify-center items-center shadow-xl shadow-black'
+              style={{ height: ms(35, 0.3) }}
+              className='w-2/3 rounded-3xl flex-row justify-center items-center shadow-xl shadow-black'
               start={{ x: 0, y: 1 }}
               end={{ x: 1, y: 0 }}
               colors={['#52e4e0', '#4ce2b6']}
@@ -59,7 +60,7 @@ const Greeting = () => {
                   )
                 }
               >
-                <Text>Web Version</Text>
+                <Text style={{ fontSize: ms(15, 0.3) }}>Web Version</Text>
               </TouchableOpacity>
             </LinearGradient>
           </View>
