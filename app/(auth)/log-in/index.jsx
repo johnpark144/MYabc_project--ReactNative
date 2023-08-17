@@ -36,10 +36,10 @@ const logIn = () => {
       <TouchableOpacity
         onPress={() =>
           InitCapitalName === 'Google'
-            ? gg_promptAsync()
+            ? gg_promptAsync({ showInRecents: true })
             : InitCapitalName === 'Github'
-            ? gh_promptAsync()
-            : fb_promptAsync()
+            ? gh_promptAsync({ showInRecents: true })
+            : fb_promptAsync({ showInRecents: true })
         }
         style={{
           backgroundColor: `#${color}`,

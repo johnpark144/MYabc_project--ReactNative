@@ -1,6 +1,6 @@
 import { Redirect, Stack } from 'expo-router';
 import { useContext, useState } from 'react';
-import { Text } from 'react-native';
+import { Text, Platform } from 'react-native';
 import AuthContext from '../context/AuthContext';
 import Splash from '../components/Splash';
 import { preventAutoHideAsync } from 'expo-splash-screen';
@@ -11,7 +11,8 @@ preventAutoHideAsync();
 const StartPage = () => {
   const { user } = useContext(AuthContext);
   const [splahsComplete, setSplashComplete] = useState(false);
-  NavigationBar.setBackgroundColorAsync('black'); // 밑에 네비바 색 변경
+  Platform.OS !== 'ios' && NavigationBar.setBackgroundColorAsync('black'); // 밑에 네비바 색 변경
+
   return (
     <>
       {/* 헤더 가리기 */}
@@ -21,9 +22,9 @@ const StartPage = () => {
         }}
       />
       {/* 스플래시 스크린 */}
-      {splahsComplete ? (
+      {!splahsComplete ? (
         <Splash setSplashComplete={setSplashComplete} />
-      ) : !user ? (
+      ) : user ? (
         // 로그인이 된경우
         <Text>
           <Redirect href='/home' />;

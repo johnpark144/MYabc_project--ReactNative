@@ -105,7 +105,10 @@ export const AuthProvider = ({ children }) => {
   const [gh_req, gh_res, gh_promptAsync] = useAuthRequest(
     {
       clientId: process.env.GITHUB_CLIENT_ID,
-      redirectUri: makeRedirectUri({}),
+      redirectUri: makeRedirectUri({
+        useProxy: true,
+        projectNameForProxy: 'myabcrn',
+      }),
     },
     {
       authorizationEndpoint: `https://github.com/login/oauth/authorize`,
