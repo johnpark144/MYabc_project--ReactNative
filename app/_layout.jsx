@@ -10,7 +10,6 @@ const Layout = () => {
     PublicSansSemiBold: require('../assets/font/PublicSans-SemiBold.ttf'),
     SairaCondensedLight: require('../assets/font/SairaCondensed-Light.ttf'),
   });
-
   if (!fontsLoaded) return null;
 
   return (
