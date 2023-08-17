@@ -14,6 +14,7 @@ import FontText from './../../../components/CommonFontText';
 import AuthContext from '../../../context/AuthContext';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { ms } from 'react-native-size-matters';
 
 const logIn = () => {
   const {
@@ -40,12 +41,19 @@ const logIn = () => {
             ? gh_promptAsync()
             : fb_promptAsync()
         }
-        style={{ backgroundColor: `#${color}` }}
-        className='w-full p-3 flex-row justify-center items-center shadow-md
-        shadow-black'
+        style={{
+          backgroundColor: `#${color}`,
+          height: ms(40, 0.3),
+          padding: ms(5, 0.3),
+        }}
+        className='w-full flex-row justify-center items-center shadow-sm
+        shadow-slate-500'
       >
-        <AntDesign name={iconName} size={24} color='black' />
-        <FontText className={`text-center ml-3`}>
+        <AntDesign name={iconName} size={ms(25, 0.3)} color='black' />
+        <FontText
+          style={{ fontSize: ms(15, 0.3) }}
+          className={`text-center ml-3`}
+        >
           Continue with {InitCapitalName}
         </FontText>
       </TouchableOpacity>
@@ -69,39 +77,57 @@ const logIn = () => {
           style={VariableFontWght}
           className='flex justify-center items-center h-full'
         >
-          <View className='flex justify-center items-center w-11/12 h-full rounded-lg bg-[#FFFFFFcc] p-12 gap-y-4 overflow-hidden'>
+          <View
+            style={{ rowGap: ms(10, 1.5) }}
+            className='flex justify-center items-center w-11/12 h-full rounded-lg bg-[#FFFFFFcc] p-12 overflow-hidden'
+          >
             {/* MYabc 로고, 이름 */}
             <View className='flex-row items-center mb-5'>
               <Image
                 alt='ABC_LOGO'
-                className='w-[64px] h-[65px]'
+                style={{ width: ms(60, 0.5), height: ms(61, 0.5) }}
                 source={{
                   uri: 'https://user-images.githubusercontent.com/106279616/217299245-76306248-6c80-4bf8-a1f0-ccb962648a8f.png',
                 }}
               />
-              <Text style={pTSansNarrowBold} className='text-4xl ml-4'>
+              <Text
+                style={[pTSansNarrowBold, { fontSize: ms(50, 0.5) }]}
+                className='ml-4'
+              >
                 MYabc
               </Text>
             </View>
             {/* 이메일, 패스워드, 로그인버튼 */}
             <TextInput
               value={email}
+              style={{ height: ms(30, 0.2), fontSize: ms(13, 0.2) }}
               className='border border-solid border-gray-400 rounded w-full pl-2'
               onChangeText={(text) => setEmail(text)}
               placeholder='Email'
+              placeholderTextColor='gray'
             />
             <TextInput
               value={password}
+              style={{ height: ms(30, 0.2), fontSize: ms(13, 0.2) }}
               className='border border-solid border-gray-400 rounded w-full pl-2'
               onChangeText={(text) => setPassword(text)}
               placeholder='Password'
+              placeholderTextColor='gray'
               secureTextEntry={true} //  비밀번호 형태로
             />
             <TouchableOpacity
               onPress={loginUser}
-              className='border border-solid border-gray-300 rounded w-full shadow-md shadow-black'
+              className='border border-solid border-gray-300 rounded w-full shadow-sm
+              shadow-slate-500'
             >
-              <FontText className='text-center bg-[#87d892] font-normal text-xl p-1'>
+              <FontText
+                style={{
+                  height: ms(30, 0.5),
+                  fontSize: ms(15, 0.5),
+                  padding: ms(5, 0.7),
+                }}
+                className='text-center bg-[#87d892]'
+              >
                 Sign in
               </FontText>
             </TouchableOpacity>
@@ -116,7 +142,7 @@ const logIn = () => {
 
             {/* Google, gitHub, FaceBook */}
             <View className='w-full'>
-              <View className='gap-y-2'>
+              <View style={{ rowGap: ms(5, 0.5) }}>
                 {MakeOAuthButton('google', 'Google', 'ebebeb')}
                 {MakeOAuthButton('github', 'Github', 'bdbdbd')}
                 {MakeOAuthButton('facebook-square', 'Facebook', '4a7edf')}

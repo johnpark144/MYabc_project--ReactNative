@@ -5,11 +5,13 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import FontText from '../../components/CommonFontText';
-import { Vibration } from 'react-native';
+import { Vibration, Platform } from 'react-native';
+import { Text } from 'react-native';
 
 export default () => {
   const router = useRouter();
   let { user, logoutUser } = useContext(AuthContext);
+  const isIOS = Platform.OS === 'ios';
   return (
     <Tabs
       screenOptions={({ route }) => ({
@@ -18,26 +20,26 @@ export default () => {
         },
         tabBarStyle: {
           backgroundColor: '#d6dff7',
+          paddingHorizontal: isIOS ? 40 : 0,
+          paddingBottom: isIOS ? 8 : 0,
         },
         tabBarLabelStyle: {
           fontSize: 12,
+          fontWeight: 'bold',
         },
         tabBarActiveTintColor: '#431386',
         tabBarInactiveTintColor: 'grey',
-        tabBarButton: (props) => {
-          // 버튼 커스텀화
-          return (
-            <TouchableOpacity
-              style={{ width: '20%' }}
-              onPress={() => {
-                Vibration.vibrate(20);
-                router.push(route.name);
-              }}
-            >
-              {props.children}
-            </TouchableOpacity>
-          );
-        },
+        tabBarButton: ({ children }) => (
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => {
+              Vibration.vibrate(20);
+              router.push(route.name);
+            }}
+          >
+            {isIOS ? <Text>{children}</Text> : children}
+          </TouchableOpacity>
+        ),
         headerLeft: () => (
           <Image
             source={{

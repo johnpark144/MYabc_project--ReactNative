@@ -106,6 +106,7 @@ const CreateWordModal = ({
             value={korean}
             onChangeText={(text) => setKorean(text)}
             placeholder='ex)사과'
+            placeholderTextColor='gray'
           />
           <FontText className='text-lg'>English :</FontText>
           <TextInput
@@ -114,6 +115,7 @@ const CreateWordModal = ({
             value={english}
             onChangeText={(text) => setEnglish(text)}
             placeholder='ex)Apple'
+            placeholderTextColor='gray'
           />
         </View>
         {/* Create, Cancel 버튼 */}
