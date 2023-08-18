@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import { dbService } from '../../lib/fBase';
 import { Vibration } from 'react-native';
+import { Pressable } from 'react-native';
 
 // 테이블 줄
 const TableRow = ({
@@ -66,20 +67,22 @@ const TableRow = ({
       }`}
     >
       {/* isDone  */}
-      <Text className={tableClassName('w-[18%]')}>
-        {is1stRow ? (
-          word.isDone
-        ) : (
-          <View className='w-full px-[45%]'>
-            <CheckBox
-              disabled={false}
-              value={isDone}
-              onValueChange={(newValue) => togleIsdone(newValue)}
-              style={{ transform: [{ scaleX: 0.9 }, { scaleY: 0.9 }] }}
-            />
-          </View>
-        )}
-      </Text>
+      <Pressable onPress={() => togleIsdone(!isDone)} className='w-[18%]'>
+        <Text className={tableClassName('w-full')}>
+          {is1stRow ? (
+            word.isDone
+          ) : (
+            <View className='w-full h-full flex-row items-center px-[45%]'>
+              <CheckBox
+                disabled={false}
+                value={isDone}
+                onValueChange={(newValue) => togleIsdone(newValue)}
+                style={{ transform: [{ scaleX: 0.9 }, { scaleY: 0.9 }] }}
+              />
+            </View>
+          )}
+        </Text>
+      </Pressable>
       {/* Eng */}
       <Text className={tableClassName('flex-1')}>
         {!isEngHide || is1stRow || isDone ? word.eng : '_____'}
@@ -100,8 +103,10 @@ const TableRow = ({
               setSeeDeleteModal(true);
               setDocsToDelete(isDoneRef);
             }}
-            className={`w-2/3 p-1 rounded-md shadow-sm shadow-red-500 ${
-              isDone ? '' : 'bg-red-400'
+            className={`w-2/3 p-1 rounded-md shadow-sm  ${
+              isDone
+                ? 'bg-[#a3a3a3] shadow-[#535353]'
+                : 'bg-red-400 shadow-red-500'
             } `}
           >
             <Text className='text-center'>{!isDone && isDelete}</Text>
