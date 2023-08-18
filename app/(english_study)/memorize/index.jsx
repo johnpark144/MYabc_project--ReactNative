@@ -9,6 +9,7 @@ import DeleteDayModal from './../../../components/Memorize/DeleteDayModal';
 import CreateWordModal from '../../../components/CreateWordModal';
 import * as Progress from 'react-native-progress';
 import GradientBtnForModal from '../../../components/GradientBtnForModal';
+import { ms } from 'react-native-size-matters';
 
 const memorize = () => {
   const router = useRouter();
@@ -55,26 +56,25 @@ const memorize = () => {
           </View>
           {/* Day FlatList */}
           <FlatList
-            className='px-4'
+            style={{ paddingHorizontal: ms(20) }}
             numColumns={4} // 한줄에 몇개씩 둘건지
             data={days}
             renderItem={(day) => (
               <TouchableOpacity
-                className='w-[23%] mx-1 my-3 rounded-lg bg-blue-500 py-3 shadow-lg shadow-black'
+                style={{ width: ms(70, 1.18), height: ms(40, 0.3) }}
+                className='mx-1 my-3 rounded-lg bg-blue-500 py-3 flex-row justify-center items-center shadow-sm
+                shadow-slate-500'
                 activeOpacity={0.5}
                 onPress={() => {
                   Vibration.vibrate(30);
                   router.push(`/memorize/${day?.item?.day}`);
                 }}
               >
-                <Text className='text-white text-center'>
-                  Day {day?.item?.day}
-                </Text>
+                <Text className='text-white'>Day {day?.item?.day}</Text>
               </TouchableOpacity>
             )}
             keyExtractor={(day) => day?.item?.day}
           />
-
           {/* 모달 */}
           {seeAddDayModal && (
             <AddDayModal

@@ -74,7 +74,7 @@ const CreateWordModal = ({
     <View className='absolute top-1/5 w-full h-full flex-row justify-center z-20'>
       <View
         style={{ padding: ms(30, 0.7) }}
-        className='w-4/5 flex-col items-center shadow-md shadow-black rounded-2xl bg-white m-auto'
+        className='w-4/5 flex-col items-center shadow-sm shadow-slate-500 rounded-2xl bg-white m-auto'
       >
         <View className='flex-row items-center'>
           {/* Day와 옵션선택 */}
@@ -129,7 +129,7 @@ const CreateWordModal = ({
             <TouchableOpacity
               style={{ width: ms(130, 1) }}
               onPress={onSubmit}
-              className='w-36 py-3 h-full flex-row justify-center items-center bg-indigo-500 rounded-lg shadow-sm shadow-black'
+              className='w-36 py-3 h-full flex-row justify-center items-center bg-indigo-500 rounded-lg shadow-sm shadow-slate-500'
             >
               <Text style={{ fontSize: ms(12, 0.7) }} className='text-white'>
                 Create
@@ -139,7 +139,7 @@ const CreateWordModal = ({
           <TouchableOpacity
             style={{ width: ms(80, 1) }}
             onPress={() => setSeeCreateWordModal(false)}
-            className='w-20 py-3 h-full flex-row justify-center items-center ml-4 bg-white rounded-lg shadow-sm shadow-black'
+            className='w-20 py-3 h-full flex-row justify-center items-center ml-4 bg-white rounded-lg shadow-sm shadow-slate-500'
           >
             <Text style={{ fontSize: ms(12, 0.7) }} className='text-indigo-500'>
               Cancel

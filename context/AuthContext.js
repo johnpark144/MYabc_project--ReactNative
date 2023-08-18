@@ -6,7 +6,6 @@ import {
   onAuthStateChanged,
   signInWithCredential,
   signInWithEmailAndPassword,
-  signInWithPopup,
 } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import { authService } from '../lib/fBase';

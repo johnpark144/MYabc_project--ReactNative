@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  Keyboard,
-} from 'react-native';
+import { View, Text, TextInput, Image, Keyboard } from 'react-native';
 import React, { useContext } from 'react';
 import { Stack, Redirect } from 'expo-router';
 import CommonBackground from '../../../components/CommonBackground';
@@ -13,7 +6,10 @@ import { VariableFontWght, pTSansNarrowBold } from '../../../commonStyles';
 import FontText from './../../../components/CommonFontText';
 import AuthContext from '../../../context/AuthContext';
 import { AntDesign } from '@expo/vector-icons';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import {
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 import { ms } from 'react-native-size-matters';
 
 const logIn = () => {
@@ -117,7 +113,7 @@ const logIn = () => {
             />
             <TouchableOpacity
               onPress={loginUser}
-              className='border border-solid border-gray-300 rounded w-full shadow-sm
+              className='border border-solid border-gray-300 rounded shadow-sm
               shadow-slate-500'
             >
               <FontText
@@ -125,6 +121,7 @@ const logIn = () => {
                   height: ms(30, 0.5),
                   fontSize: ms(15, 0.5),
                   padding: ms(5, 0.7),
+                  width: ms(222, 1.46),
                 }}
                 className='text-center bg-[#87d892]'
               >

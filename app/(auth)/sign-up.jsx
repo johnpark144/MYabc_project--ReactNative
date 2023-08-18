@@ -2,7 +2,6 @@ import {
   View,
   Text,
   TextInput,
-  TouchableOpacity,
   Image,
   Keyboard,
   KeyboardAvoidingView,
@@ -14,19 +13,20 @@ import { VariableFontWght } from '../../commonStyles';
 import FontText from './../../components/CommonFontText';
 import AuthContext from '../../context/AuthContext';
 import AnimatedLottieView from 'lottie-react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import {
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 import { ms } from 'react-native-size-matters';
 
 const signUp = () => {
   let {
     user,
-    loginUser,
     email,
     setEmail,
     password,
     setPassword,
     signUpError,
-    setSignUpError,
     signUpUser,
   } = useContext(AuthContext);
 
@@ -80,6 +80,7 @@ const signUp = () => {
                   height: ms(30, 0.5),
                   fontSize: ms(15, 0.5),
                   padding: ms(5, 0.7),
+                  width: ms(222, 1.46),
                 }}
                 className='text-center bg-[#87d892] font-normal'
               >

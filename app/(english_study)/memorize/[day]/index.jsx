@@ -2,18 +2,11 @@ import {
   View,
   Text,
   TouchableOpacity,
-  ScrollView,
   Vibration,
   FlatList,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
-import {
-  Link,
-  Stack,
-  useLocalSearchParams,
-  useRouter,
-  useSearchParams,
-} from 'expo-router';
+import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import CommonBackground from '../../../../components/CommonBackground';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -25,6 +18,7 @@ import TableRow from '../../../../components/Memorize/TableRow';
 import DeleteWordModal from './../../../../components/Memorize/DeleteWordModal';
 import * as Progress from 'react-native-progress';
 import GradientBtnForModal from '../../../../components/GradientBtnForModal';
+import { ms } from 'react-native-size-matters';
 
 const index = () => {
   const router = useRouter();
@@ -128,11 +122,14 @@ const index = () => {
           keyExtractor={(item) => item.id}
         />
         <View className='h-[120px]'></View>
-        <View className='fixed bottom-28 h-12 w-full flex-row items-center px-5'>
+        <View
+          style={{ bottom: ms(105, 0.12), height: ms(47, 0.12) }}
+          className='fixed bottom-28 h-12 w-full flex-row items-center px-5'
+        >
           {/* 이전 Day이동 (왼쪽 화살표) */}
           <TouchableOpacity
             disabled={Number(day) === 1}
-            className={`w-[18%] h-full m-1 items-center flex-row justify-start bg-[#d6dff7] rounded-l-3xl pl-2 shadow-lg shadow-black`}
+            className={`w-[18%] h-full m-1 items-center flex-row justify-start bg-[#d6dff7] rounded-l-3xl pl-2 shadow-md shadow-slate-500`}
             onPress={() => {
               Vibration.vibrate(30);
               router.push(`/memorize/${Number(day) - 1}`);
@@ -147,7 +144,7 @@ const index = () => {
           {/* Eng, Kor 가리기 버튼 */}
           <TouchableOpacity
             onPress={() => setIsEngHide(!isEngHide)}
-            className='flex-1 h-full m-1 bg-purple-300 flex-row rounded-xl shadow-lg shadow-black'
+            className='flex-1 h-full m-1 bg-purple-300 flex-row rounded-xl shadow-md shadow-slate-500'
           >
             <Text className='w-full text-center self-center'>
               {isEngHide ? 'Show' : 'Hide'} Eng
@@ -155,7 +152,7 @@ const index = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setIsKorHide(!isKorHide)}
-            className='flex-1 h-full m-1 bg-blue-300 flex-row rounded-xl shadow-lg shadow-black'
+            className='flex-1 h-full m-1 bg-blue-300 flex-row rounded-xl shadow-md shadow-slate-500'
           >
             <Text className='w-full text-center self-center'>
               {isKorHide ? 'Show' : 'Hide'} Kor
@@ -164,7 +161,7 @@ const index = () => {
           {/* 다음 Day이동 (오른쪽 화살표) */}
           <TouchableOpacity
             disabled={Number(day) === days?.length}
-            className='w-[18%] h-full m-1 items-center flex-row justify-end bg-[#d6dff7] rounded-r-3xl pr-2 shadow-lg shadow-black'
+            className='w-[18%] h-full m-1 items-center flex-row justify-end bg-[#d6dff7] rounded-r-3xl pr-2 shadow-md shadow-slate-500'
             onPress={() => {
               Vibration.vibrate(30);
               router.push(`/memorize/${Number(day) + 1}`);

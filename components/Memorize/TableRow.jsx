@@ -70,12 +70,14 @@ const TableRow = ({
         {is1stRow ? (
           word.isDone
         ) : (
-          <CheckBox
-            disabled={false}
-            value={isDone}
-            onValueChange={(newValue) => togleIsdone(newValue)}
-            style={{ transform: [{ scaleX: 0.9 }, { scaleY: 0.9 }] }}
-          />
+          <View className='w-full px-[45%]'>
+            <CheckBox
+              disabled={false}
+              value={isDone}
+              onValueChange={(newValue) => togleIsdone(newValue)}
+              style={{ transform: [{ scaleX: 0.9 }, { scaleY: 0.9 }] }}
+            />
+          </View>
         )}
       </Text>
       {/* Eng */}
@@ -98,7 +100,7 @@ const TableRow = ({
               setSeeDeleteModal(true);
               setDocsToDelete(isDoneRef);
             }}
-            className={`w-2/3 p-1 rounded-md shadow-xl shadow-red-500 ${
+            className={`w-2/3 p-1 rounded-md shadow-sm shadow-red-500 ${
               isDone ? '' : 'bg-red-400'
             } `}
           >

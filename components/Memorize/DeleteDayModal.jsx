@@ -4,7 +4,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import FontText from '../CommonFontText';
 import { publicSansSemiBold } from '../../commonStyles';
 import {
-  addDoc,
   collection,
   deleteDoc,
   doc,
@@ -54,7 +53,8 @@ const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
     <View className='absolute top-1/5 w-full h-full flex-row justify-center'>
       <View
         style={{ padding: ms(30, 0.7) }}
-        className='w-4/5 h-2/5 shadow-md shadow-black rounded-2xl bg-white m-auto'
+        className='w-4/5 h-2/5 shadow-sm
+        shadow-slate-500 rounded-2xl bg-white m-auto'
       >
         {/* 아이콘, 문구 */}
         <View className='flex-1 flex-col justify-center items-center '>
@@ -73,7 +73,8 @@ const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
         >
           <TouchableOpacity
             style={{ width: ms(100, 1) }}
-            className='py-3 h-full bg-indigo-500 flex-row items-center justify-center rounded-lg shadow-sm shadow-black'
+            className='py-3 h-full bg-indigo-500 flex-row items-center justify-center rounded-lg shadow-sm
+            shadow-slate-500'
           >
             <Text
               style={{ fontSize: ms(12, 0.7) }}
@@ -86,7 +87,8 @@ const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
           <TouchableOpacity
             style={{ width: ms(100, 1) }}
             onPress={() => setSeeDeleteDayModal(false)}
-            className='py-3 h-full bg-white flex-row items-center justify-center rounded-lg shadow-sm shadow-black'
+            className='py-3 h-full bg-white flex-row items-center justify-center rounded-lg shadow-sm
+            shadow-slate-500'
           >
             <Text style={{ fontSize: ms(12, 0.7) }} className='text-indigo-500'>
               Cancel
