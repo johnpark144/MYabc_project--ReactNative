@@ -43,8 +43,7 @@ const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
   }, [user?.uid]);
 
   // 마지막 Day 삭제
-  const _delete = async (e) => {
-    e.preventDefault();
+  const _delete = async () => {
     setSeeDeleteDayModal(false);
     await deleteDoc(delDayRef);
   };
@@ -75,12 +74,9 @@ const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
             style={{ width: ms(100, 1) }}
             className='py-3 h-full bg-indigo-500 flex-row items-center justify-center rounded-lg shadow-sm
             shadow-slate-500'
+            onPress={_delete}
           >
-            <Text
-              style={{ fontSize: ms(12, 0.7) }}
-              onPress={_delete}
-              className='text-white'
-            >
+            <Text style={{ fontSize: ms(12, 0.7) }} className='text-white'>
               Delete
             </Text>
           </TouchableOpacity>

@@ -69,12 +69,19 @@ const video = () => {
     <CommonBackground>
       {/* See Create 버튼 */}
       <Animated.View
-        className='absolute z-10'
-        style={[pan.getLayout(), { width: ms(120, 0.2), height: ms(60, 0.2) }]}
+        className='absolute z-10 rounded-xl bg-[#909bfa] flex-col justify-center items-center'
+        style={[pan.getLayout(), { width: ms(100, 0.3), height: ms(50, 0.3) }]}
         {...panResponder.panHandlers}
       >
         {!hideText && (
-          <Text className=' text-gray-400 text-center'>Move this button</Text>
+          <Text
+            style={{
+              fontSize: ms(10, 0.3),
+            }}
+            className=' text-[#424563] text-center'
+          >
+            Move this button
+          </Text>
         )}
         <GradientBtnForModal
           btnName='See Create'
@@ -86,6 +93,7 @@ const video = () => {
         source={{ uri: 'https://youglish.com/pronounce/hello/english?' }}
         javaScriptEnabled={true}
         scrollEnabled={false}
+        originWhitelist={['*']}
       />
 
       {/* Create Word 모달 */}

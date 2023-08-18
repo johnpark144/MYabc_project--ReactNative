@@ -9,6 +9,7 @@ const grammar = () => {
       <WebView
         source={{ uri: 'https://quillbot.com/grammar-check' }}
         scrollEnabled={false}
+        originWhitelist={['*']}
       />
     </CommonBackground>
   );

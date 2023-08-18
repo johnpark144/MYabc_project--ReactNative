@@ -9,8 +9,7 @@ import { dbService } from '../../lib/fBase';
 import { ms } from 'react-native-size-matters';
 
 const AddDayModal = ({ user, days, setSeeAddDayModal }) => {
-  const confirm = async (e) => {
-    e.preventDefault();
+  const confirm = async () => {
     const dayObj = {
       creatorId: user.uid,
       day: days.length + 1,
@@ -47,12 +46,9 @@ const AddDayModal = ({ user, days, setSeeAddDayModal }) => {
           <TouchableOpacity
             style={{ width: ms(100, 1) }}
             className='py-3 h-full bg-indigo-500 flex-row items-center justify-center rounded-lg shadow-sm shadow-slate-500'
+            onPress={confirm}
           >
-            <Text
-              onPress={confirm}
-              style={{ fontSize: ms(12, 0.7) }}
-              className='text-white'
-            >
+            <Text style={{ fontSize: ms(12, 0.7) }} className='text-white'>
               Confirm
             </Text>
           </TouchableOpacity>
