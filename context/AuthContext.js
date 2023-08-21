@@ -107,8 +107,7 @@ export const AuthProvider = ({ children }) => {
     {
       clientId: process.env.GITHUB_CLIENT_ID,
       redirectUri: makeRedirectUri({
-        useProxy: true,
-        projectNameForProxy: 'myabcrn',
+        scheme: 'myabcrn',
       }),
     },
     {
