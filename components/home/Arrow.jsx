@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { vs, ms } from 'react-native-size-matters';
 
 const Arrow = ({ leftExistance, rightExistance }) => {
@@ -27,6 +27,7 @@ const Arrow = ({ leftExistance, rightExistance }) => {
     <View
       className={`absolute w-screen top-[30%] px-2 flex-row items-center justify-between`}
     >
+      {/* 왼쪽 화살표 */}
       <Text
         style={{
           fontSize: ms(90, 1),
@@ -41,6 +42,7 @@ const Arrow = ({ leftExistance, rightExistance }) => {
           </>
         )}
       </Text>
+      {/* 오른쪽 화살표 */}
       <Text
         style={{ fontSize: ms(90, 1), letterSpacing: vs(-5, 5) }}
         className=' text-[#ffffff66] mr-2'

@@ -1,5 +1,4 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import React, { useContext } from 'react';
 import { publicSansSemiBold } from '../../commonStyles';
 import FontText from './../CommonFontText';
 import { FontAwesome } from '@expo/vector-icons';

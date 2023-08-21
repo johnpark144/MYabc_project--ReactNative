@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Vibration } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CommonBackground from '../../../components/CommonBackground';
 import { Stack, useRouter } from 'expo-router';
 import AuthContext from './../../../context/AuthContext';

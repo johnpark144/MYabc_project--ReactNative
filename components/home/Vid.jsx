@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { ImageBackground } from 'react-native';
 import { pTSansNarrowBold, publicSansVariable } from '../../commonStyles';
 import { ResizeMode, Video } from 'expo-av';

@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, Animated, Easing, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Path, Svg } from 'react-native-svg';
 import { ms } from 'react-native-size-matters';
 
@@ -59,5 +59,4 @@ const LoadingSavingButton = () => {
     </TouchableOpacity>
   );
 };
-//  shadow-md shadow-black'
 export default LoadingSavingButton;

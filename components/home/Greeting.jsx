@@ -1,5 +1,5 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { pTSansNarrowBold, sairaCondensedLight } from '../../commonStyles';
 import { Linking } from 'react-native';

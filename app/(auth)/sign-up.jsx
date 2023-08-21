@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Keyboard } from 'react-native';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Redirect } from 'expo-router';
 import CommonBackground from '../../components/CommonBackground';
 import { VariableFontWght } from '../../commonStyles';
@@ -45,7 +45,7 @@ const signUp = () => {
               loop
               className='w-9/12 max-w-xl'
             />
-            {/* 이메일, 패스워드, 로그인버튼 */}
+            {/* 이메일, 패스워드 */}
             <TextInput
               value={email}
               style={{ height: ms(30, 0.2), fontSize: ms(13, 0.2) }}
@@ -63,6 +63,7 @@ const signUp = () => {
               placeholderTextColor='gray'
               secureTextEntry={true} //  비밀번호 형태로
             />
+            {/* 가입 버튼 */}
             <TouchableOpacity
               onPress={signUpUser}
               className='border border-solid border-gray-300 rounded w-full shadow-sm

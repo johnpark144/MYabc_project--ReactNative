@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Alert, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CommonBackground from '../../components/CommonBackground';
 import { Entypo } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';

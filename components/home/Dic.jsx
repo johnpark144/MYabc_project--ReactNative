@@ -5,7 +5,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { pTSansNarrowBold, publicSansVariable } from '../../commonStyles';
 import { Ionicons } from '@expo/vector-icons';
 import Arrow from './Arrow';

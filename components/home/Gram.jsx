@@ -59,6 +59,7 @@ const Gram = () => {
       }}
       resizeMode='cover'
     >
+      {/* 사각형 컨테이너 박스들 */}
       <View style={{ rowGap: vs(15) }}>
         {ExplanationContainer(
           'GRAMMAR',

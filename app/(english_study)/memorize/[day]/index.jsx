@@ -5,7 +5,7 @@ import {
   Vibration,
   FlatList,
 } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import CommonBackground from '../../../../components/CommonBackground';
 import { AntDesign } from '@expo/vector-icons';

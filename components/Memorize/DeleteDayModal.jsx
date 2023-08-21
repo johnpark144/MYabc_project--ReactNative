@@ -1,24 +1,15 @@
 import { View, Text } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FontText from '../CommonFontText';
 import { publicSansSemiBold } from '../../commonStyles';
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  query,
-  where,
-} from 'firebase/firestore';
-import { dbService } from '../../lib/fBase';
+import { deleteDoc } from 'firebase/firestore';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ms } from 'react-native-size-matters';
 import AuthContext from '../../context/AuthContext';
 
 const DeleteDayModal = ({ setSeeDeleteDayModal }) => {
-  const { user, delDayRef, setDelDayRef, lastDay, setLastDay } =
-    useContext(AuthContext);
+  const { delDayRef, lastDay } = useContext(AuthContext);
 
   // 마지막 Day 삭제
   const _delete = async () => {

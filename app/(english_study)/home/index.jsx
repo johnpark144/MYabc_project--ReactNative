@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import AuthContext from '../../../context/AuthContext';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Stack } from 'expo-router';
@@ -28,7 +28,7 @@ const home = () => {
     checkAuthState();
   }, []);
 
-  // Memorize의 days 및 삭제시 필요한 데이터 미리 불러오기
+  // Days 와 삭제시 필요한 데이터 미리 불러오기
   const dayArr = useCallData('days', 'day');
   useEffect(() => {
     (async () => {
@@ -39,7 +39,7 @@ const home = () => {
         setDays(allDays);
         setLastDay(lastDayNum);
 
-        // 마지막 Day정보
+        // 나중에 삭제를 위한 LastDay정보
         const q = query(
           collection(dbService, 'days'),
           where('creatorId', '==', user?.uid),

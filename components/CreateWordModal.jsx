@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { addDoc, collection } from 'firebase/firestore';
 import FontText from './CommonFontText';
