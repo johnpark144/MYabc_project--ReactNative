@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Alert, ScrollView } from 'react-native';
-import { useState } from 'react';
+import { Key, useState } from 'react';
 import CommonBackground from '../../components/CommonBackground';
 import { Entypo } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
@@ -12,7 +12,7 @@ import { ms } from 'react-native-size-matters';
 
 const dictionary = () => {
   const [word, setWord] = useState('');
-  const [wordInfo, setWordInfo] = useState([]);
+  const [wordInfo, setWordInfo] = useState<wordInfoType>([]);
 
   // 단어 찾기
   const searchWord = () => {
@@ -102,7 +102,7 @@ const dictionary = () => {
               className='flex-col w-full gap-y-3 mt-1'
               contentContainerStyle={{ alignItems: 'center' }}
             >
-              {wordInfo[0].meanings.map((meaning, idx) => (
+              {wordInfo[0].meanings.map((meaning: meaningType, idx: number) => (
                 <View
                   key={idx}
                   className='w-[95%] p-5 gap-y-3 bg-[#e5e7eb] rounded-xl'
@@ -129,7 +129,7 @@ const dictionary = () => {
                   >
                     - Synonym :
                     {meaning.synonyms[0] &&
-                      meaning.synonyms.map((synonym, idx) => (
+                      meaning.synonyms.map((synonym, idx: number) => (
                         <Text key={idx}>{synonym},&nbsp;</Text>
                       ))}
                   </Text>
@@ -140,7 +140,7 @@ const dictionary = () => {
                   >
                     - Antonym :
                     {meaning.antonyms[0] &&
-                      meaning.antonyms.map((antonym, idx) => (
+                      meaning.antonyms.map((antonym, idx: number) => (
                         <Text key={idx}>{antonym},&nbsp;</Text>
                       ))}
                   </Text>
@@ -151,7 +151,7 @@ const dictionary = () => {
                   >
                     - Definition : {'\n'}
                     {meaning.definitions[0] &&
-                      meaning.definitions.map((definition, idx) => (
+                      meaning.definitions.map((definition, idx: number) => (
                         <Text key={idx}>
                           {idx + 1} {')'} {definition.definition} {'\n'}
                         </Text>

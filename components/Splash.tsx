@@ -1,12 +1,11 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { ResizeMode, Video } from 'expo-av';
+import { AVPlaybackStatus, ResizeMode, Video } from 'expo-av';
 import { hideAsync } from 'expo-splash-screen';
 import { pTSansNarrowBold } from '../commonStyles';
-import videoSrc from '../assets/splashScreen.mp4';
 import * as Animatable from 'react-native-animatable';
 
 const Splash = ({ setSplashComplete }) => {
-  const onPlaybackStatusUpdate = (status) => {
+  const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
     if (status.isLoaded && status.didJustFinish) {
       hideAsync();
       setSplashComplete(true);
@@ -35,7 +34,7 @@ const Splash = ({ setSplashComplete }) => {
       <Video
         style={StyleSheet.absoluteFill}
         resizeMode={ResizeMode.STRETCH}
-        source={videoSrc}
+        source={require('../assets/splashScreen.mp4')}
         isLooping={false}
         onPlaybackStatusUpdate={onPlaybackStatusUpdate}
         shouldPlay={true}

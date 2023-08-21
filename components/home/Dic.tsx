@@ -25,7 +25,7 @@ const Dic = () => {
   ]);
   const [current, setCurrent] = useState(0);
 
-  const moveSlide = (i) => {
+  const moveSlide = (i: number) => {
     let nextIndex = current + i;
     if (nextIndex < 0) nextIndex = 2;
     else if (nextIndex >= 3) nextIndex = 0;

@@ -15,7 +15,7 @@ import CreateWordModal from '../../../../components/CreateWordModal';
 import AuthContext from '../../../../context/AuthContext';
 import useCallData from '../../../../hooks/useCallData';
 import TableRow from '../../../../components/Memorize/TableRow';
-import DeleteWordModal from './../../../../components/Memorize/DeleteWordModal';
+import DeleteWordModal from '../../../../components/Memorize/DeleteWordModal';
 import * as Progress from 'react-native-progress';
 import GradientBtnForModal from '../../../../components/GradientBtnForModal';
 import { ms } from 'react-native-size-matters';

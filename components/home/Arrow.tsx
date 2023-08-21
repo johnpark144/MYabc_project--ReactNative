@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import { useEffect, useState } from 'react';
-import { vs, ms } from 'react-native-size-matters';
+import { ms } from 'react-native-size-matters';
 
 const Arrow = ({ leftExistance, rightExistance }) => {
   const [isShow1, setIsShow1] = useState(false);
@@ -31,7 +31,7 @@ const Arrow = ({ leftExistance, rightExistance }) => {
       <Text
         style={{
           fontSize: ms(90, 1),
-          letterSpacing: vs(-5, 5),
+          letterSpacing: ms(-5, 5),
         }}
         className=' text-[#ffffff66] ml-2'
       >
@@ -44,7 +44,7 @@ const Arrow = ({ leftExistance, rightExistance }) => {
       </Text>
       {/* 오른쪽 화살표 */}
       <Text
-        style={{ fontSize: ms(90, 1), letterSpacing: vs(-5, 5) }}
+        style={{ fontSize: ms(90, 1), letterSpacing: ms(-5, 5) }}
         className=' text-[#ffffff66] mr-2'
       >
         {rightExistance && (

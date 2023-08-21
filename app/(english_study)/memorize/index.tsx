@@ -2,10 +2,10 @@ import { View, Text, TouchableOpacity, Vibration } from 'react-native';
 import { useContext, useEffect, useState } from 'react';
 import CommonBackground from '../../../components/CommonBackground';
 import { Stack, useRouter } from 'expo-router';
-import AuthContext from './../../../context/AuthContext';
+import AuthContext from '../../../context/AuthContext';
 import { FlatList } from 'react-native';
 import AddDayModal from '../../../components/Memorize/AddDayModal';
-import DeleteDayModal from './../../../components/Memorize/DeleteDayModal';
+import DeleteDayModal from '../../../components/Memorize/DeleteDayModal';
 import CreateWordModal from '../../../components/CreateWordModal';
 import * as Progress from 'react-native-progress';
 import GradientBtnForModal from '../../../components/GradientBtnForModal';
@@ -35,7 +35,12 @@ const memorize = () => {
       {days.length <= 0 && !isAfterSetDays ? (
         // 로딩중
         <View className='flex-row w-full h-full justify-center items-center'>
-          <Progress.Bar size={60} indeterminate={true} color='#431386' />
+          <Progress.Bar
+            // {/* @ts-ignore */}
+            size={60}
+            indeterminate={true}
+            color='#431386'
+          />
         </View>
       ) : (
         <>
@@ -84,11 +89,7 @@ const memorize = () => {
             />
           )}
           {seeDeleteDayModal && (
-            <DeleteDayModal
-              user={user}
-              days={days}
-              setSeeDeleteDayModal={setSeeDeleteDayModal}
-            />
+            <DeleteDayModal setSeeDeleteDayModal={setSeeDeleteDayModal} />
           )}
           {seeCreateWordModal && (
             <CreateWordModal

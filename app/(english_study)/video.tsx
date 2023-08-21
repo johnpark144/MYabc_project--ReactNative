@@ -2,7 +2,7 @@ import { Text, Animated, PanResponder, Dimensions } from 'react-native';
 import { useContext, useRef, useState } from 'react';
 import CommonBackground from '../../components/CommonBackground';
 import WebView from 'react-native-webview';
-import GradientBtnForModal from './../../components/GradientBtnForModal';
+import GradientBtnForModal from '../../components/GradientBtnForModal';
 import CreateWordModal from '../../components/CreateWordModal';
 import AuthContext from '../../context/AuthContext';
 import { ms } from 'react-native-size-matters';
@@ -16,7 +16,7 @@ const video = () => {
   const screenWidth = Dimensions.get('window').width;
   const screenHeight = Dimensions.get('window').height;
   const [prevPen, setPrevPen] = useState({ x: 30, y: screenHeight - 220 });
-  const pan = useRef(
+  const pan = useRef<any>(
     new Animated.ValueXY({ x: 30, y: screenHeight - 220 })
   ).current;
 

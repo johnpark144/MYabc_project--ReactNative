@@ -5,7 +5,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import FontText from './CommonFontText';
 import { dbService } from '../lib/fBase';
 import { Picker } from '@react-native-picker/picker';
-import useCallData from './../hooks/useCallData';
+import useCallData from '../hooks/useCallData';
 import { useRouter } from 'expo-router';
 import LoadingSavingButton from './LoadingSavingButton';
 import { ms } from 'react-native-size-matters';

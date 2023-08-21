@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import CheckBox from 'expo-checkbox';
 import {
+  DocumentData,
+  DocumentReference,
   collection,
   doc,
   getDocs,
@@ -26,7 +28,8 @@ const TableRow = ({
   isEngHide,
 }) => {
   const [isDone, setIsDone] = useState(word.isDone);
-  const [isDoneRef, setIsDoneRef] = useState('');
+  const [isDoneRef, setIsDoneRef] =
+    useState<DocumentReference<DocumentData, DocumentData>>();
 
   // 특정 데이터 가져옴
   useEffect(() => {
@@ -43,7 +46,7 @@ const TableRow = ({
   }, [word.id]);
 
   // isDone 토글 및 바뀐정보 DB에 저장
-  const togleIsdone = async (newValue) => {
+  const togleIsdone = async (newValue: boolean) => {
     setIsDone(newValue);
     await updateDoc(isDoneRef, {
       isDone: newValue,
@@ -51,7 +54,7 @@ const TableRow = ({
   };
 
   // 중복 부분
-  const tableClassName = (extraStyle) =>
+  const tableClassName = (extraStyle: string) =>
     `${extraStyle} text-center text-base ${
       isDone && !is1stRow ? 'text-[#838383]' : 'text-gray-800'
     }`;

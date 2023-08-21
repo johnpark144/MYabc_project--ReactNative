@@ -2,8 +2,7 @@ import { View, Text, TextInput, Keyboard } from 'react-native';
 import { useContext } from 'react';
 import { Redirect } from 'expo-router';
 import CommonBackground from '../../components/CommonBackground';
-import { VariableFontWght } from '../../commonStyles';
-import FontText from './../../components/CommonFontText';
+import FontText from '../../components/CommonFontText';
 import AuthContext from '../../context/AuthContext';
 import AnimatedLottieView from 'lottie-react-native';
 import {
@@ -30,10 +29,7 @@ const signUp = () => {
       <TouchableWithoutFeedback // 이 공간안 클릭했을때 키보드 사라지게
         onPress={Keyboard.dismiss}
       >
-        <View
-          style={VariableFontWght}
-          className='flex justify-center items-center h-full'
-        >
+        <View className='flex justify-center items-center h-full'>
           <View
             style={{ rowGap: ms(10, 2) }}
             className='flex items-center justify-center w-11/12 h-full rounded-lg bg-[#FFFFFFcc] px-12 overflow-hidden'
@@ -43,6 +39,7 @@ const signUp = () => {
               source={require('../../assets/lottie/signup_animation.json')}
               autoPlay
               loop
+              // {/* @ts-ignore */}
               className='w-9/12 max-w-xl'
             />
             {/* 이메일, 패스워드 */}

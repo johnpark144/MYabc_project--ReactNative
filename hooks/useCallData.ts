@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import { dbService } from '../lib/fBase';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import {
+  OrderByDirection,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+} from 'firebase/firestore';
 
 export default function useCallData(
-  collectionName,
-  dataField,
-  order_by = 'asc'
+  collectionName: string,
+  dataField: string,
+  order_by: OrderByDirection = 'asc'
 ) {
-  const [dataArr, setDataArr] = useState('');
+  const [dataArr, setDataArr] = useState([]);
   useEffect(() => {
     const q = query(
       collection(dbService, collectionName),

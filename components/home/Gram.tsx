@@ -8,7 +8,7 @@ import { s, vs, ms } from 'react-native-size-matters';
 
 const Gram = () => {
   // 반복되는 부분 (컨테이너)
-  const ExplanationContainer = (title, msg, img) => (
+  const ExplanationContainer = (title: string, msg: string, img: string) => (
     <LinearGradient
       style={{ padding: vs(20) }}
       className='w-full rounded-3xl flex-row justify-center items-center shadow-xl shadow-black'
@@ -63,7 +63,8 @@ const Gram = () => {
       <View style={{ rowGap: vs(15) }}>
         {ExplanationContainer(
           'GRAMMAR',
-          'Check your grammar by writing down some sentence!'
+          'Check your grammar by writing down some sentence!',
+          null
         )}
         {ExplanationContainer(
           null,

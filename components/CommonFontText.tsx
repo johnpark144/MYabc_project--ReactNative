@@ -2,7 +2,7 @@ import { Text } from 'react-native';
 import { publicSansVariable } from '../commonStyles';
 
 // 공통으로 동일한 폰트주기
-const FontText = (props) => {
+const FontText = (props): React.JSX.Element => {
   return (
     <Text {...props} style={[publicSansVariable, ...props?.style]}>
       {props?.children}

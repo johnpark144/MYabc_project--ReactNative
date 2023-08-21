@@ -2,8 +2,8 @@ import { View, Text, TextInput, Image, Keyboard } from 'react-native';
 import { useContext } from 'react';
 import { Stack, Redirect } from 'expo-router';
 import CommonBackground from '../../../components/CommonBackground';
-import { VariableFontWght, pTSansNarrowBold } from '../../../commonStyles';
-import FontText from './../../../components/CommonFontText';
+import { pTSansNarrowBold } from '../../../commonStyles';
+import FontText from '../../../components/CommonFontText';
 import AuthContext from '../../../context/AuthContext';
 import { AntDesign } from '@expo/vector-icons';
 import {
@@ -69,10 +69,7 @@ const logIn = () => {
             headerShown: false,
           }}
         />
-        <View
-          style={VariableFontWght}
-          className='flex justify-center items-center h-full'
-        >
+        <View className='flex justify-center items-center h-full'>
           <View
             style={{ rowGap: ms(10, 1.5) }}
             className='flex justify-center items-center w-11/12 h-full rounded-lg bg-[#FFFFFFcc] p-12 overflow-hidden'

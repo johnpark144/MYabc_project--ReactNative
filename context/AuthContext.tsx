@@ -7,7 +7,7 @@ import {
   signInWithCredential,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { authService } from '../lib/fBase';
 import { useRouter } from 'expo-router';
 import * as Google from 'expo-auth-session/providers/google';
@@ -16,7 +16,7 @@ import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 export default AuthContext;
 
 WebBrowser.maybeCompleteAuthSession(); // 웹 브라우저를 사용하여 인증을 완료하거나 세션을 종료
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
   const [lastDay, setLastDay] = useState(0);
 
   // 회원가입
-  const signUpUser = async (e) => {
+  const signUpUser = async () => {
     try {
       const data = await createUserWithEmailAndPassword(
         authService,
@@ -118,7 +118,7 @@ export const AuthProvider = ({ children }) => {
   );
 
   // 깃허브 로그인 성공 할때 필요한 함수
-  const createTokenWithCode = async (code) => {
+  const createTokenWithCode = async (code: string) => {
     const url =
       `https://github.com/login/oauth/access_token` +
       `?client_id=${process.env.GITHUB_CLIENT_ID}` +

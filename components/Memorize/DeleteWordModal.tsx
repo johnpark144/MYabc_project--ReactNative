@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import { publicSansSemiBold } from '../../commonStyles';
-import FontText from './../CommonFontText';
+import FontText from '../CommonFontText';
 import { FontAwesome } from '@expo/vector-icons';
 import { deleteDoc } from 'firebase/firestore';
 import { ms } from 'react-native-size-matters';
