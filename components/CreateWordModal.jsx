@@ -32,7 +32,10 @@ const CreateWordModal = ({
   useEffect(() => {
     if (wordsIdArr) {
       const allWordsIds = wordsIdArr.map((doc) => Number(doc.id));
-      setWordsMaxId(Math.max(...allWordsIds));
+      const wordsMax = Math.max(...allWordsIds);
+      if (wordsMax !== -Infinity) {
+        setWordsMaxId(Math.max(...allWordsIds));
+      }
     }
   }, [wordsIdArr, user?.uid]);
 

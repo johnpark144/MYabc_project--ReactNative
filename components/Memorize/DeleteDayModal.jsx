@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FontText from '../CommonFontText';
 import { publicSansSemiBold } from '../../commonStyles';
@@ -14,33 +14,11 @@ import {
 import { dbService } from '../../lib/fBase';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ms } from 'react-native-size-matters';
+import AuthContext from '../../context/AuthContext';
 
-const DeleteDayModal = ({ user, setSeeDeleteDayModal }) => {
-  const [delDayRef, setDelDayRef] = useState('');
-  const [lastDay, setLastDay] = useState('');
-
-  useEffect(() => {
-    (async () => {
-      // 마지막 Day계산
-      const q_LastDay = query(
-        collection(dbService, 'days'),
-        where('creatorId', '==', user?.uid)
-      );
-      const docsSnap_LastDay = await getDocs(q_LastDay);
-      const lastDay = docsSnap_LastDay.docs.length;
-      setLastDay(lastDay);
-
-      // 마지막 Day정보
-      const q = query(
-        collection(dbService, 'days'),
-        where('creatorId', '==', user?.uid),
-        where('day', '==', lastDay)
-      );
-      const docsSnap = await getDocs(q);
-      const docsId = docsSnap.docs[0].id;
-      setDelDayRef(doc(dbService, 'days', docsId));
-    })();
-  }, [user?.uid]);
+const DeleteDayModal = ({ setSeeDeleteDayModal }) => {
+  const { user, delDayRef, setDelDayRef, lastDay, setLastDay } =
+    useContext(AuthContext);
 
   // 마지막 Day 삭제
   const _delete = async () => {

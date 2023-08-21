@@ -30,6 +30,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [days, setDays] = useState([]);
   const [isAfterSetDays, setIsAfterSetDays] = useState(false);
+  const [delDayRef, setDelDayRef] = useState([]);
+  const [lastDay, setLastDay] = useState(0);
 
   // 회원가입
   const signUpUser = async (e) => {
@@ -195,6 +197,10 @@ export const AuthProvider = ({ children }) => {
     days,
     isAfterSetDays,
     setIsAfterSetDays,
+    delDayRef,
+    setDelDayRef,
+    lastDay,
+    setLastDay,
   };
 
   return (
