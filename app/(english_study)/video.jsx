@@ -1,12 +1,5 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Animated,
-  PanResponder,
-  Dimensions,
-} from 'react-native';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { Text, Animated, PanResponder, Dimensions } from 'react-native';
+import { useContext, useRef, useState } from 'react';
 import CommonBackground from '../../components/CommonBackground';
 import WebView from 'react-native-webview';
 import GradientBtnForModal from './../../components/GradientBtnForModal';
@@ -15,8 +8,7 @@ import AuthContext from '../../context/AuthContext';
 import { ms } from 'react-native-size-matters';
 
 const video = () => {
-  const { user, loginUser, error, checkAuthState, logoutUser, setDays, days } =
-    useContext(AuthContext);
+  const { user, days } = useContext(AuthContext);
   const [seeCreateWordModal, setSeeCreateWordModal] = useState(false);
   const [hideText, setHideText] = useState(false);
 

@@ -32,7 +32,7 @@ const home = () => {
   const dayArr = useCallData('days', 'day');
   useEffect(() => {
     (async () => {
-      if (dayArr) {
+      if (dayArr && user?.uid) {
         // 모든 Days 정보와 LastDay 숫자
         const allDays = dayArr.filter((day) => day.creatorId === user?.uid);
         const lastDayNum = allDays.length;

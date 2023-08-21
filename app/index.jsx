@@ -22,9 +22,9 @@ const StartPage = () => {
         }}
       />
       {/* 스플래시 스크린 */}
-      {splahsComplete ? (
+      {!splahsComplete ? (
         <Splash setSplashComplete={setSplashComplete} />
-      ) : !user ? (
+      ) : user ? (
         // 로그인이 된경우
         <Text>
           <Redirect href='/home' />;

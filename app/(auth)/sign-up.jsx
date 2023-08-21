@@ -1,13 +1,6 @@
-import {
-  View,
-  Text,
-  TextInput,
-  Image,
-  Keyboard,
-  KeyboardAvoidingView,
-} from 'react-native';
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import { Stack, Redirect } from 'expo-router';
+import { View, Text, TextInput, Keyboard } from 'react-native';
+import React, { useContext } from 'react';
+import { Redirect } from 'expo-router';
 import CommonBackground from '../../components/CommonBackground';
 import { VariableFontWght } from '../../commonStyles';
 import FontText from './../../components/CommonFontText';
