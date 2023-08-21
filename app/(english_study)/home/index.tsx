@@ -40,14 +40,16 @@ const home = () => {
         setLastDay(lastDayNum);
 
         // 나중에 삭제를 위한 LastDay정보
-        const q = query(
-          collection(dbService, 'days'),
-          where('creatorId', '==', user?.uid),
-          where('day', '==', lastDayNum)
-        );
-        const docsSnap = await getDocs(q);
-        const docsId = docsSnap.docs[0]?.id;
-        setDelDayRef(doc(dbService, 'days', docsId));
+        if (lastDayNum) {
+          const q = query(
+            collection(dbService, 'days'),
+            where('creatorId', '==', user?.uid),
+            where('day', '==', lastDayNum)
+          );
+          const docsSnap = await getDocs(q);
+          const docsId = docsSnap.docs[0]?.id;
+          setDelDayRef(doc(dbService, 'days', docsId));
+        }
       }
       setIsAfterSetDays(true);
     })();
