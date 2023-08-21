@@ -36,7 +36,7 @@ const memorize = () => {
         // 로딩중
         <View className='flex-row w-full h-full justify-center items-center'>
           <Progress.Bar
-            // {/* @ts-ignore */}
+            /* @ts-ignore */
             size={60}
             indeterminate={true}
             color='#431386'
@@ -96,6 +96,7 @@ const memorize = () => {
               user={user}
               days={days}
               setSeeCreateWordModal={setSeeCreateWordModal}
+              detailDay={undefined}
             />
           )}
         </>

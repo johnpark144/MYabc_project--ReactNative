@@ -12,7 +12,7 @@ import { ms } from 'react-native-size-matters';
 
 const dictionary = () => {
   const [word, setWord] = useState('');
-  const [wordInfo, setWordInfo] = useState<wordInfoType>([]);
+  const [wordInfo, setWordInfo] = useState<WordInfoType>([]);
 
   // 단어 찾기
   const searchWord = () => {
@@ -102,7 +102,7 @@ const dictionary = () => {
               className='flex-col w-full gap-y-3 mt-1'
               contentContainerStyle={{ alignItems: 'center' }}
             >
-              {wordInfo[0].meanings.map((meaning: meaningType, idx: number) => (
+              {wordInfo[0].meanings.map((meaning: MeaningType, idx: number) => (
                 <View
                   key={idx}
                   className='w-[95%] p-5 gap-y-3 bg-[#e5e7eb] rounded-xl'

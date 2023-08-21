@@ -27,7 +27,11 @@ const logIn = () => {
   } = useContext(AuthContext);
 
   // Oauth 버튼 만들기
-  const MakeOAuthButton = (iconName, InitCapitalName, color) => {
+  const MakeOAuthButton = (
+    iconName: any,
+    InitCapitalName: string,
+    color: string
+  ) => {
     return (
       <TouchableOpacity
         onPress={() =>

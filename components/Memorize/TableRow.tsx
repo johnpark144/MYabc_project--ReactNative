@@ -26,8 +26,10 @@ const TableRow = ({
   setDocsToDelete,
   isKorHide,
   isEngHide,
-}) => {
-  const [isDone, setIsDone] = useState(word.isDone);
+}: TableRowType) => {
+  const [isDone, setIsDone] = useState(
+    typeof word.isDone === 'boolean' && word.isDone
+  );
   const [isDoneRef, setIsDoneRef] =
     useState<DocumentReference<DocumentData, DocumentData>>();
 

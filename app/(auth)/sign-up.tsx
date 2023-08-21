@@ -39,7 +39,7 @@ const signUp = () => {
               source={require('../../assets/lottie/signup_animation.json')}
               autoPlay
               loop
-              // {/* @ts-ignore */}
+              /* @ts-ignore */
               className='w-9/12 max-w-xl'
             />
             {/* 이메일, 패스워드 */}

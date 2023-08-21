@@ -14,7 +14,7 @@ const CreateWordModal = ({
   user,
   days,
   setSeeCreateWordModal,
-  detailDay = false,
+  detailDay,
   isFromVideo = false,
 }) => {
   const router = useRouter();

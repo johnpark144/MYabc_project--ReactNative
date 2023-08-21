@@ -84,7 +84,7 @@ const Vid = () => {
             }}
             isLooping={true}
             shouldPlay={!isPaused}
-            // {/* @ts-ignore */}
+            /* @ts-ignore */
             blurRadius={0}
           />
         </Pressable>

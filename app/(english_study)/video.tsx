@@ -95,6 +95,7 @@ const video = () => {
           days={days}
           setSeeCreateWordModal={setSeeCreateWordModal}
           isFromVideo={true}
+          detailDay={undefined}
         />
       )}
     </CommonBackground>

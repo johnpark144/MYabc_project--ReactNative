@@ -86,18 +86,24 @@ const index = () => {
           word={{ isDone: 'ISDONE', eng: 'ENG', kor: 'KOR' }}
           isDelete='DELETE'
           is1stRow={true}
+          setSeeDeleteModal={undefined}
+          setWordToDelete={undefined}
+          setDocsToDelete={undefined}
+          isKorHide={false}
+          isEngHide={false}
         />
         <FlatList
           data={words}
           renderItem={({ item }) => (
             <TableRow
               word={item}
-              isDelete={'X'}
+              isDelete='X'
               setSeeDeleteModal={setSeeDeleteModal}
               setWordToDelete={setWordToDelete}
               setDocsToDelete={setDocsToDelete}
               isKorHide={isKorHide}
               isEngHide={isEngHide}
+              is1stRow={false}
             />
           )}
           // 데이터를 아직 불러오지않고 데이터가 없는경우에만 로딩중 표시
@@ -189,10 +195,6 @@ const index = () => {
         <DeleteWordModal
           wordToDelete={wordToDelete}
           setSeeDeleteModal={setSeeDeleteModal}
-          setWords={setWords}
-          words={words}
-          setDeletedWords={setDeletedWords}
-          deletedWords={deletedWords}
           docsToDelete={docsToDelete}
         />
       )}
