@@ -26,9 +26,7 @@ const signUp = () => {
     <Redirect href='/home' />
   ) : (
     <CommonBackground>
-      <TouchableWithoutFeedback // 이 공간안 클릭했을때 키보드 사라지게
-        onPress={Keyboard.dismiss}
-      >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View className='flex justify-center items-center h-full'>
           <View
             style={{ rowGap: ms(10, 2) }}

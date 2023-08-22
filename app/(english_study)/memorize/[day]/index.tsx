@@ -32,7 +32,6 @@ const index = () => {
   const [isEngHide, setIsEngHide] = useState(false);
   const [seeDeleteModal, setSeeDeleteModal] = useState(false);
   const [wordToDelete, setWordToDelete] = useState('');
-  const [deletedWords, setDeletedWords] = useState([]);
   const [docsToDelete, setDocsToDelete] = useState();
 
   // 단어데이터 가져오기
