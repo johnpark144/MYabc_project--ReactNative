@@ -32,25 +32,26 @@ const home = () => {
   const dayArr = useCallData('days', 'day');
   useEffect(() => {
     (async () => {
+      if (dayArr && user?.uid) {
+        // 모든 Days 정보와 LastDay 숫자
+        const allDays = dayArr.filter((day) => day.creatorId === user?.uid);
+        const lastDayNum = allDays.length;
+        setDays(allDays);
+        setLastDay(lastDayNum);
+
+        // 나중에 삭제를 위한 LastDay정보
+        if (lastDayNum) {
+          const q = query(
+            collection(dbService, 'days'),
+            where('creatorId', '==', user?.uid),
+            where('day', '==', lastDayNum)
+          );
+          const docsSnap = await getDocs(q);
+          const docsId = docsSnap.docs[0]?.id;
+          setDelDayRef(doc(dbService, 'days', docsId));
+        }
+      }
       setIsAfterSetDays(true);
-
-      // 모든 Days 정보와 LastDay 숫자
-      if (!dayArr || !user?.uid) return;
-      const allDays = dayArr.filter((day) => day.creatorId === user?.uid);
-      const lastDayNum = allDays.length;
-      setDays(allDays);
-      setLastDay(lastDayNum);
-
-      // 나중에 삭제를 위한 LastDay정보
-      if (!lastDayNum) return;
-      const q = query(
-        collection(dbService, 'days'),
-        where('creatorId', '==', user?.uid),
-        where('day', '==', lastDayNum)
-      );
-      const docsSnap = await getDocs(q);
-      const docsId = docsSnap.docs[0]?.id;
-      setDelDayRef(doc(dbService, 'days', docsId));
     })();
   }, [dayArr, user?.uid]);
 

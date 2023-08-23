@@ -1,11 +1,6 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Vibration,
-  Pressable,
-} from 'react-native';
+import { View, Text } from 'react-native';
 import { useEffect, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 import CheckBox from 'expo-checkbox';
 import {
   DocumentData,
@@ -18,6 +13,8 @@ import {
   where,
 } from 'firebase/firestore';
 import { dbService } from '../../lib/fBase';
+import { Vibration } from 'react-native';
+import { Pressable } from 'react-native';
 
 // 테이블 줄
 const TableRow = ({

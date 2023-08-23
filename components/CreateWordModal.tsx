@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Alert } from 'react-native';
-import { Key, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { addDoc, collection } from 'firebase/firestore';
 import FontText from './CommonFontText';
@@ -88,13 +88,15 @@ const CreateWordModal = ({
               onValueChange={(itemValue) => setSelectedValue(itemValue)}
             >
               <Picker.Item label='Day' value='Day' />
-              {days?.map((day: { day: Key }) => (
-                <Picker.Item
-                  key={day?.day}
-                  label={String(day?.day)} // 문자열만 들어갈 수 있음
-                  value={String(day?.day)}
-                />
-              ))}
+              {days?.map((day) => {
+                return (
+                  <Picker.Item
+                    key={day?.day}
+                    label={String(day?.day)} // 문자열만 들어갈 수 있음
+                    value={String(day?.day)}
+                  />
+                );
+              })}
             </Picker>
           </View>
         </View>
