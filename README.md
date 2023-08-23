@@ -21,7 +21,7 @@
   
 - Hard Part and Solution :
 1. Whlile using firebase with React Native, I realize the way to handle the OAuth for login is totally different from creating web site with regular React. so I've researched hard to work it out in the middle of project, and after all I solved it and applied these in my app
-2. Whenever I try to delete "Day", sometime it worked well but sometime an error happened, but It turned out that whenever the data is not ready in async and I try to delete, the error came out. so in order to buy time, I set datas to delete even from 'home' page and deliver it to 'delete Day' modal thru 'Context API'
+2. Whenever I try to delete "Day", sometime it worked well but sometime an error happened, but It turned out that whenever the data is not ready in async and I try to delete, the error came out. So In stead of having the process as loading, I set datas to delete even from 'home' page and deliver it to 'delete Day' modal thru 'Context API' in order to buy time.
 3. While I was implementing 'video' and 'Grammar' part, I found it hard because The APIs that I used for these parts of website are only for Website not for Application, so I replaced these with WebView
 4. Creating this app, I faced so many difference between Android and Ios, There are something not available in certain OS or Although both are available, but the scale, degree and range of it are so different. so I did cross-browsing comparing these two OS to apply better solutions and UI for each OS.
 
