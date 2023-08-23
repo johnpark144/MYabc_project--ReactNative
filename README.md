@@ -64,23 +64,20 @@
 - Login
 
 # Sample videos
-<h3> -- with Galaxy 23 (Android) -- </h3>
+<h3> ---- with Galaxy 23 (Android) ---- </h3>
 
 <h3> 1. Home, Memorize(Add and Remove 'Days', Add 'Words'): </h3>
-
-
-
-
-
-
-
+<video src="https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/e085283b-0395-4a8f-83b4-bad5d1e87f75"></video>
 
 <h3> 2. Memorize(Hide and Show Words, Gray row, Add and Remove 'Words', Move link day to day): </h3>
+<video src="https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/3d7fbcad-ffc1-4b95-b667-eca6a963ad7f"></video>
 
 <h3> 3. Dictionary, Video, Grammarly </h3>
+<video src="https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/e4563ebe-ffd9-4ab3-bbe7-d6fc25abea2d"></video>
 
 <h3> 4. Splash Screen, Login, Logout, login with google,github,facebook: </h3>
+<video src="https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/d1d776a1-d0a2-4a51-b270-38ae52afda64"></video>
 
-<h3> -- with Ipad Pro (IOS) -- </h3>
+<h3> ---- with Ipad Pro (IOS) ---- </h3>
 <h3> 5.  </h3>
-<video src="https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/e085283b-0395-4a8f-83b4-bad5d1e87f75"></video>
+<video src="https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/212d095f-c5f5-409a-a768-8c10dd10173c"></video>
