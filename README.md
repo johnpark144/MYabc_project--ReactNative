@@ -72,5 +72,7 @@
 <h3> 4. Dictionary, Video: </h3>
 <h3> 5. Grammarly, 404_Notfound: </h3>
 <h3> 6. Splash Screen, Login, Logout, login with google,github,facebook: </h3>
-<h3> 7. Responsive Website: </h3>
+
+<h3> -- with Ipad Pro (IOS) -- </h3>
+<h3> 7.  </h3>
 <video src="https://user-images.githubusercontent.com/106279616/199088711-705eb95a-1dd4-48f5-8047-a7056816f86d.mp4"></video>
