@@ -66,13 +66,11 @@
 # Sample videos
 <h3> -- with Galaxy 23 (Android) -- </h3>
 
-<h3> 1. Home(animation): </h3>
-<h3> 2. Memorize(Add and Remove Days, Add and Remove Words): </h3>
-<h3> 3. Memorize(Hide and Show Words, Gray row, Move link day to day): </h3>
-<h3> 4. Dictionary, Video: </h3>
-<h3> 5. Grammarly, 404_Notfound: </h3>
-<h3> 6. Splash Screen, Login, Logout, login with google,github,facebook: </h3>
+<h3> 1. Home, Memorize(Add and Remove 'Days', Add and Remove 'Words'): </h3>
+<h3> 2. Memorize(Hide and Show Words, Gray row, Move link day to day): </h3>
+<h3> 3. Dictionary, Video, Grammarly </h3>
+<h3> 4. Splash Screen, Login, Logout, login with google,github,facebook: </h3>
 
 <h3> -- with Ipad Pro (IOS) -- </h3>
-<h3> 7.  </h3>
+<h3> 5.  </h3>
 <video src="https://user-images.githubusercontent.com/106279616/199088711-705eb95a-1dd4-48f5-8047-a7056816f86d.mp4"></video>
