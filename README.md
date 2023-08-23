@@ -64,7 +64,7 @@
 - Login
 
 # Sample videos
-# with Galaxy 23 (Android)
+<h3> -- with Galaxy 23 (Android) -- </h3>
 
 <h3> 1. Home(animation): </h3>
 <h3> 2. Memorize(Add and Remove Days, Add and Remove Words): </h3>
