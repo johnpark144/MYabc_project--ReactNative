@@ -57,11 +57,20 @@
 # Sample pictures
 
 - Home
+![Home](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/820c02fd-fa96-4fdf-be75-729b848adb4b)
+
 - Memorize
+![Memorize](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/e15b3b4f-25db-4983-85b4-9f477aa20303)
+  
 - Dictionary
+
 - Video
+  
 - Grammar
+
 - Login
+![Login](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/9bd7d089-532c-49b5-bad5-f32775424e04)
+
 
 # Sample videos
 <h3> ---- with Galaxy 23 (Android) ---- </h3>
