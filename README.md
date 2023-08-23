@@ -66,8 +66,8 @@
 # Sample videos
 <h3> -- with Galaxy 23 (Android) -- </h3>
 
-<h3> 1. Home, Memorize(Add and Remove 'Days', Add and Remove 'Words'): </h3>
-<h3> 2. Memorize(Hide and Show Words, Gray row, Move link day to day): </h3>
+<h3> 1. Home, Memorize(Add and Remove 'Days', Add 'Words'): </h3>
+<h3> 2. Memorize(Hide and Show Words, Gray row, Add and Remove 'Words', Move link day to day): </h3>
 <h3> 3. Dictionary, Video, Grammarly </h3>
 <h3> 4. Splash Screen, Login, Logout, login with google,github,facebook: </h3>
 
