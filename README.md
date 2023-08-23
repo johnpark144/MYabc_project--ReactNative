@@ -17,7 +17,7 @@
   and also checking meaning of words in English was helpfull a lot to feel the true meaning,
   that's why I used to use Eng/Eng Dictionary and Youglish site in bookmark in actuality.
   retrospecting that time, I came to think that would be good to develop the website or application for English study based on my experience.
-  and put them into practice. and I already created 'MYabc' website, so I also created this app like the website
+  and put them into practice. And I've already made the 'MYabc' website, and I've made an application using React Native that has the same backend server with the website.
   
 - Hard Part and Solution :
 1. Whlile using firebase with React Native, I realize the way to handle the OAuth for login is totally different from creating web site with regular React. so I've researched hard to work it out in the middle of project, and after all I solved it and applied these in my app
