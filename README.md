@@ -67,10 +67,20 @@
 <h3> -- with Galaxy 23 (Android) -- </h3>
 
 <h3> 1. Home, Memorize(Add and Remove 'Days', Add 'Words'): </h3>
+
+
+
+
+
+
+
+
 <h3> 2. Memorize(Hide and Show Words, Gray row, Add and Remove 'Words', Move link day to day): </h3>
+
 <h3> 3. Dictionary, Video, Grammarly </h3>
+
 <h3> 4. Splash Screen, Login, Logout, login with google,github,facebook: </h3>
 
 <h3> -- with Ipad Pro (IOS) -- </h3>
 <h3> 5.  </h3>
-<video src="https://user-images.githubusercontent.com/106279616/199088711-705eb95a-1dd4-48f5-8047-a7056816f86d.mp4"></video>
+<video src="https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/e085283b-0395-4a8f-83b4-bad5d1e87f75"></video>
