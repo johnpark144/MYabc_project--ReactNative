@@ -49,21 +49,14 @@
 - 버튼을 손동작으로 옮기기
 
 # 샘플 사진 (아직 공사중)
-- Home
-![Home](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/820c02fd-fa96-4fdf-be75-729b848adb4b)
+- Home, Login
+![1](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/28668a59-e30e-4d69-b3f4-16786231c506)
 
-- Memorize
-![Memorize](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/e15b3b4f-25db-4983-85b4-9f477aa20303)
-  
-- Dictionary
+- Memorize, Dictionary
+![2](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/5df5b9f4-79c8-4903-9480-941fdbefce09)
 
-- Video
-  
-- Grammar
-
-- Login
-![Login](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/9bd7d089-532c-49b5-bad5-f32775424e04)
-
+- Video, Grammar
+![3](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/3d7a9680-6dba-4959-8bf4-cf602b6bc019)
 
 # 샘플 비디오 (아직 공사중)
 <h3> ---- 갤럭시 23으로 촬영 (안드로이드) ---- </h3>
