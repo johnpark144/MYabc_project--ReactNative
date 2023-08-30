@@ -48,7 +48,7 @@
 - 동영상 보면서 단어 저장
 - 버튼을 손동작으로 옮기기
 
-# 샘플 사진 (아직 공사중)
+# 샘플 사진
 - Home, Login
 ![1](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/28668a59-e30e-4d69-b3f4-16786231c506)
 
@@ -58,7 +58,7 @@
 - Video, Grammar
 ![3](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/3d7a9680-6dba-4959-8bf4-cf602b6bc019)
 
-# 샘플 비디오 (아직 공사중)
+# 샘플 비디오
 <h3> ---- 갤럭시 23으로 촬영 (안드로이드) ---- </h3>
 
 <h3> 1. Home, Memorize('Days' 추가 및 제거, 'Words' 추가): </h3>
