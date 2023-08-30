@@ -54,7 +54,7 @@
 - Save word watching video
 - Move button's location with touch
 
-# Sample pictures (Still Working on it)
+# Sample pictures
 
 - Home, Login
 ![1](https://github.com/johnpark144/MYabc_project--ReactNative/assets/106279616/28668a59-e30e-4d69-b3f4-16786231c506)
@@ -67,7 +67,7 @@
 
 
 
-# Sample videos (Still Working on it)
+# Sample videos
 <h3> ---- with Galaxy 23 (Android) ---- </h3>
 
 <h3> 1. Home, Memorize(Add and Remove 'Days', Add 'Words'): </h3>
