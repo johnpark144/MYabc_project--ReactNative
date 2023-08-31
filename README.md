@@ -1,5 +1,6 @@
 ---------- <a href="README_KOR.md">한글로 보기(KOR)</a> ----------
 # MYabc_project--ReactNative
+- (Please see sample videos below)
 
 - Backend (firebase for me) : https://console.firebase.google.com/project/myabc-97f03/overview?hl=ko
 
