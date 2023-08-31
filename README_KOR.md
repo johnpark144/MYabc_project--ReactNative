@@ -1,4 +1,5 @@
 # MYabc_project--ReactNative
+- (아래 샘플 영상을 참고해주세요)
 
 - 백엔드  (파이어베이스 for me) : https://console.firebase.google.com/project/myabc-97f03/overview?hl=ko
 
